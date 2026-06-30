@@ -1,0 +1,26 @@
+{
+  "name": "etched-in-stone",
+  "version": "1.0.0",
+  "description": "Etched in Stone Website",
+  "homepage": "https://github.com/shuiiiiiii/Etched-in-Stone#readme",
+  "bugs": {
+    "url": "https://github.com/shuiiiiiii/Etched-in-Stone/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuiiiiiii/Etched-in-Stone.git"
+  },
+  "license": "ISC",
+  "author": "shui",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
