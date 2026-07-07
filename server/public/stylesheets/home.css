@@ -9,6 +9,24 @@ body{
     background-color: black;
 }
 
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+  
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.589); 
+    /* border-radius: 15px; */
+    cursor: pointer;
+    transition: 0.2s;
+}
+  
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #ffffffc7; 
+}
+
 #firstSec{
     height: 100vh;
     width: 100%;
@@ -119,7 +137,6 @@ body{
     background-color: white;
     color: black;
 }
-
 
 .scrollDownIco{
     width: 100%;
@@ -381,6 +398,7 @@ body{
     background-position: center;
     background-size: cover;
     padding: 2% 9%;
+    padding-top: 0% !important;
 }
 
 .fifthSecHeader{
@@ -404,6 +422,14 @@ body{
 
 .fifthSecFormImg{
     width: 50%;
+    height: 100%;
+    display: flex;
+}
+
+.fifthSecFormImg img{
+    width: 95%;
+    object-position: center;
+    object-fit: cover;
     height: 100%;
 }
 
