@@ -175,13 +175,12 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .div25 img{
-    width: 300px;
+    width: 75%;
 }
 
 .div75 h1{
     font-size: 50px;
 }
-
 .div75 div{
     text-align: end;
 }
@@ -277,7 +276,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .thirdSec1{
     width: 100%;
-    height: 40%;
+    height: 45%;
     display: flex;
     justify-content: space-between;
 }
@@ -308,7 +307,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .thirdSec1Graphic img{
-    width: 300px;
+    width: 250px;
 }
 
 #thirdSecSeparator{
@@ -319,7 +318,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .thirdSec2{
     width: 100%;
-    height: 60%;
+    height: 55%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -328,11 +327,13 @@ body::-webkit-scrollbar-thumb:hover {
 .thirdSec2Projs{
     display: flex;
     flex-direction: column;
+    width: 30%;
+    height: 90%;
 }
 
 .thirdSec2Projs img{
-    width: 410px;
-    height: 350px;
+    width: 100%;
+    height: 80%;
     object-position: center;
     object-fit: cover;
     border-radius: 10px;
@@ -374,6 +375,8 @@ body::-webkit-scrollbar-thumb:hover {
 .fourthSecImages div{
     width: 100%;
     height: 33%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .fourthSecImages div img{
@@ -383,17 +386,17 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .fourthSecImages div:nth-child(1) img{
-    width: 518px;
+    width: 33%;
     height: 100%;
 }
 
 .fourthSecImages div:nth-child(2) img{
-    width: 388px;
+    width: 24.75%;
     height: 100%;
 }
 
 .fourthSecImages div:nth-child(3) img{
-    width: 518px;
+    width: 33%;
     height: 100%;
 }
 
