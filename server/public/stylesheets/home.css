@@ -1,0 +1,502 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Stack Sans Notch";
+}
+
+body{
+    background-color: black;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+  
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.589); 
+    /* border-radius: 15px; */
+    cursor: pointer;
+    transition: 0.2s;
+}
+  
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #ffffffc7; 
+}
+
+#firstSec{
+    height: 100vh;
+    width: 100%;
+    background-image: url("/static/images/background/1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 2% 9%;
+}
+
+.navBar{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navBar nav{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navSec1{
+    width: 50%;
+}
+
+.navSec1 img{
+    width: 16%;
+}
+
+.navSec2{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.navSec2 button{
+    outline: none;
+    padding: 1%;
+    margin-left: 4%;
+    background-color: #ffffff0d;
+    color: white;
+    width: 15%;
+    height: 40%;
+    font-size: 1.15rem;
+    border: 1px solid white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.navSec2 button:hover{
+    background-color: white;
+    color: black;
+}
+
+.heroLandingContent{
+    height: 80%;    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.heroLandingContent div{
+    height: 35%;
+    text-align: center;
+    font-size: 150px;
+    display: flex;
+    align-items: center;
+}
+
+.heroLandingContent div:nth-child(2){
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroLandingContent div:nth-child(3){
+    height: 10%;
+}
+
+.heroLandingContent div:nth-child(2), .heroLandingContent div:nth-child(3){
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.heroLandingContent div:nth-child(2) button{
+    outline: none;
+    background-color: transparent;
+    color: white;
+    width: 10%;
+    height: 80%;
+    font-size: 1.15rem;
+    border: 1px solid white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.heroLandingContent div:nth-child(2) button:hover{
+    background-color: white;
+    color: black;
+}
+
+.scrollDownIco{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollDownIco img{
+    width: 35px;
+}
+
+#secondSec{
+    height: 100vh;
+    width: 100%;
+    color: black;
+    background-color: white;
+    padding: 5% 9%;
+}
+
+.secondSec1{
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+
+.div25{
+    width: 25%;
+    height: 100%;
+}
+
+.div75{
+    width: 75%;
+    height: 100%;
+}
+
+.div25 img{
+    width: 300px;
+}
+
+.div75 h1{
+    font-size: 50px;
+}
+
+.div75 div{
+    text-align: end;
+}
+
+.div75 div:nth-child(2) p{
+    font-size: 23px;
+    color: rgb(43, 43, 43);
+    line-height: 165%;
+}
+
+.secondSec2{
+    width: 100%;
+    height: 50%;
+}
+
+.secSeparator{
+    border: none;
+    height: 2px;
+    background-color: black;
+}
+
+.secondSec2Header{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secondSec2Header h1{
+    font-size: 50px;
+}
+
+.secondSec2p{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: start;
+}
+
+.secondSec2p p{
+    font-size: 23px;
+    color: rgb(43, 43, 43);
+}
+
+.secondSec2Services{
+    width: 100%;
+    height: 50%;
+    display: flex;   
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.secondSec2Servs{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.secondSec2Servs div{
+    width: 140px;
+    height: 140px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.secondSec2Servs div img{
+    width: 80px;
+    height: 80px;
+}
+
+.secondSec2Servs span{
+    font-size: 20px;
+}
+
+#thirdSec{
+    height: 100vh;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    /* background-color: rgb(0, 0, 0); */
+    background-image: url("/static/images/background/3.png");
+    background-position: center;
+    background-size: cover;
+    padding: 2% 9%;
+}
+
+.thirdSec1{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.thirdSec1Header{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.thirdSec1Header h1:nth-child(1){
+    font-size: 50px;
+    display: none;
+}
+
+.thirdSec1Header h1:nth-child(2){
+    font-size: 99px;
+}
+
+.thirdSec1Graphic{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.thirdSec1Graphic img{
+    width: 300px;
+}
+
+#thirdSecSeparator{
+    outline: none;
+    border: 1px solid #bc3a1e;
+    display: none;
+}
+
+.thirdSec2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.thirdSec2Projs{
+    display: flex;
+    flex-direction: column;
+}
+
+.thirdSec2Projs img{
+    width: 400px;
+    height: 300px;
+    object-position: center;
+    object-fit: cover;
+}
+
+.thirdSec2Projs span{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 4%;
+}
+
+#fourthSec{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    color: black;
+    padding: 4% 9%;
+}
+
+.fourthSecHeader{
+    width: 100%;
+    height: 10%;
+}
+
+.fourthSecHeader h1{
+    font-size: 50px;
+}
+
+.fourthSecImages{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fourthSecImages div{
+    width: 100%;
+    height: 33%;
+}
+
+.fourthSecImages div:nth-child(1) img{
+    width: 518px;
+    height: 100%;
+}
+
+.fourthSecImages div:nth-child(2) img{
+    width: 388px;
+    height: 100%;
+}
+
+.fourthSecImages div:nth-child(3) img{
+    width: 518px;
+    height: 100%;
+}
+
+#fifthSec{
+    height: 100vh;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    /* background-color: rgb(0, 0, 0); */
+    background-image: url("/static/images/background/2.png");
+    background-position: center;
+    background-size: cover;
+    padding: 2% 9%;
+    padding-top: 0% !important;
+}
+
+.fifthSecHeader{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fifthSecHeader span{
+    font-size: 70px;
+}
+
+.fifthSecForm{
+    width: 100%;
+    height: 80%;
+    display: flex;
+}
+
+.fifthSecFormImg{
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+
+.fifthSecFormImg img{
+    width: 95%;
+    object-position: center;
+    object-fit: cover;
+    height: 100%;
+}
+
+.fifthSecContactForm{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2%;
+    border: 2px solid white;
+    background-color: #ffffff0d;
+}
+
+.fifthSecCFormHeader{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.fifthSecCFormHeader span{
+    font-size: 40px;
+}
+
+.fifthSecCFormInp{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.fifthSecCFormInp span{
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+
+.fifthSecCFormInp input{
+    background: transparent;
+    outline: none;
+    color: white;
+    padding: 1.5%;
+    font-size: 20px;
+    border: 2px solid white;
+}
+
+.fifthSecCFormInp input::placeholder{
+    color: rgb(177, 177, 177);
+}
+
+.fifthSecCFormBtn{
+    width: 20%;
+    height: 10%;
+}
+
+.fifthSecCFormBtn button{
+    outline: none;
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+    transition: 0.2s;
+    padding: 10%;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.fifthSecCFormBtn button:hover{
+    background-color: white;
+    color: black;
+}
