@@ -44,10 +44,7 @@ servBtn.addEventListener("click", () => {
 });
 
 gallBtn.addEventListener('click', () => {
-    fourthSec.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start'
-    });
+  window.location.href = "/gallery";
 });
 
 contBtn.addEventListener('click', () => {
