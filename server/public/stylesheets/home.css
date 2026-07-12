@@ -39,6 +39,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .navBar{
+    border-bottom:  2px solid white;
     height: 13vh;
     width: 100%;
     display: flex;
@@ -588,7 +589,7 @@ button{
     justify-content: space-between;
     align-items: center;
     padding: 2% 9%;
-    border-top: 2px dashed white;
+    border-top: 2px solid white;
     background-image: url(/static/images/background/1.png);
     background-repeat: no-repeat;
     background-size: cover;
