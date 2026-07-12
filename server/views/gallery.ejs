@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etched In Stone | Gallery</title>
+    <link rel="icon" href="/static/logo/S.png">
+    <link rel="stylesheet" href="/static/stylesheets/gallery.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader">
+        <img src="/static/logo/anim3.gif" alt="">
+    </div>
+    <div class="navBar">
+        <nav>
+            <div class="navSec1">
+                <img src="/static/logo/white.png" alt="">
+            </div>
+            <div class="navSec2">
+                <button id="homeBtn">Home</button>
+                <button id="servBtn">Services</button>
+                <button id="abtBtn">About</button>
+                <button id="contBtn">Contact</button>
+            </div>
+        </nav>
+    </div> 
+    <section id="fourthSec">
+            <div class="fourthSecHeader">
+                <h1>Gallery</h1>
+            </div>
+            <div class="fourthSecImages">
+                <div>
+                    <img src="<%= items[0]?.imageUrl %>" alt="">
+                    <img src="<%= items[1]?.imageUrl %>" alt="">
+                    <img src="<%= items[2]?.imageUrl %>" alt="">
+                </div>
+                <div>
+                    <img src="<%= items[3]?.imageUrl %>" alt="">
+                    <img src="<%= items[4]?.imageUrl %>" alt="">
+                    <img src="<%= items[5]?.imageUrl %>" alt="">
+                    <img src="<%= items[6]?.imageUrl %>" alt="">
+                </div>
+                <div>
+                    <img src="<%= items[7]?.imageUrl %>" alt="">
+                    <img src="<%= items[8]?.imageUrl %>" alt="">
+                    <img src="<%= items[9]?.imageUrl %>" alt="">
+                </div>
+            </div>
+        </section>
+    <section id="sixthSec">
+        <div class="sixthSecLogo">
+            <img src="/static/logo/white.png" alt="">
+        </div>
+        <div class="sixthSecLinks">
+            <a href="/services">Services</a>
+            <a href="">About</a>
+            <a href="">Gallery</a>
+            <a href="">Contact</a>
+        </div>
+        <div class="sixthSecLinks1">
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/facebook.png" alt="">
+            </span>
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/instagram.png" alt="">
+            </span>
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/linkedin.png" alt="">
+            </span>
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/x.png" alt="">
+            </span>
+        </div>
+        <div class="sixthSecLinks2">
+            <span>
+                <a href="">Johnny Daniels</a>
+                <img src="/static/icons/contact.png" alt="">
+            </span>
+            <span>
+                <a href="">+1 123 232 2323</a>
+                <img src="/static/icons/phone.png" alt="">
+            </span>
+            <span>
+                <a href="">contact@etchedinstone.com</a>
+                <img src="/static/icons/mail.png" alt="">
+            </span>
+            <span>
+                <a href="">New Hampshire, New York</a>
+                <img src="/static/icons/address.png" alt="">
+            </span>
+        </div>
+        <div id="backToTopBtn2">
+            <img src="/static/icons/top.png" alt="">
+        </div>
+    </section>
+</body>
+<script src="/static/scripts/services.js"></script>
+<script src="/static/scripts/gallery.js"></script>
+</html>

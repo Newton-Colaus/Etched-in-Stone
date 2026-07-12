@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etched In Stone | Admin</title>
+    <link rel="icon" href="/static/logo/S.png">
+    <link rel="stylesheet" href="/static/stylesheets/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader">
+        <img src="/static/logo/anim3.gif" alt="">
+    </div>
+    <div class="navBar">
+        <nav>
+            <div class="navSec1">
+                <img src="/static/logo/white.png" alt="">
+            </div>
+            <div class="navSec2">
+                <button id="homeBtn">Home</button>
+                <button id="servBtn">Services</button>
+                <button id="abtBtn">About</button>
+                <button id="contBtn">Contact</button>
+            </div>
+        </nav>
+    </div>
+    <section class="adminDashboard">
+        <div id="adminForm">
+            <img id="imgPreview"  src="/static/images/background/2.png" alt="">
+            <form action="/gallery/upload" method="POST" enctype="multipart/form-data">
+                <div class="formGroup">
+                    <label for="title">Image Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter the title of the image">
+                </div>  
+                <div class="formGroup">
+                    <label for="galleryImage">Select Image</label>
+                    <input type="file" id="galleryImage" name="galleryImage" accept="image/*" required>
+                </div>              
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+        <div class="adminDeleteImg">
+            <div class="img">
+                <img id="imgImg" src="<%= items[0]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[0]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[0]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[1]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[1]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[1]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[2]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[2]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[2]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[3]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[3]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[3]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[4]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[4]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[4]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[5]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[5]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[5]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[6]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[6]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[6]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[7]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[7]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[7]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[8]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[8]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[8]?._id %>"">Delete</button>
+            </div>
+            <div class="img">
+                <img id="imgImg" src="<%= items[9]?.imageUrl %>" alt="">
+                <span id="imgTitle"><%= items[9]?.title %></span>
+                <button class="deleteBtn" data-id="<%= items[9]?._id %>"">Delete</button>
+            </div>
+        </div>
+    </section>
+    <section id="sixthSec">
+        <div class="sixthSecLogo">
+            <img src="/static/logo/white.png" alt="">
+        </div>
+        <div class="sixthSecLinks">
+            <a href="/services">Services</a>
+            <a href="">About</a>
+            <a href="/gallery">Gallery</a>
+            <a href="">Contact</a>
+        </div>
+        <div class="sixthSecLinks1">
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/facebook.png" alt="">
+            </span>
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/instagram.png" alt="">
+            </span>
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/linkedin.png" alt="">
+            </span>
+            <span>
+                <a href="">etchedinstone</a>
+                <img src="/static/icons/x.png" alt="">
+            </span>
+        </div>
+        <div class="sixthSecLinks2">
+            <span>
+                <a href="">Johnny Daniels</a>
+                <img src="/static/icons/contact.png" alt="">
+            </span>
+            <span>
+                <a href="">+1 123 232 2323</a>
+                <img src="/static/icons/phone.png" alt="">
+            </span>
+            <span>
+                <a href="">contact@etchedinstone.com</a>
+                <img src="/static/icons/mail.png" alt="">
+            </span>
+            <span>
+                <a href="">New Hampshire, New York</a>
+                <img src="/static/icons/address.png" alt="">
+            </span>
+        </div>
+        <div id="backToTopBtn2">
+            <img src="/static/icons/top.png" alt="">
+        </div>
+    </section>
+</body>
+<script src="/static/scripts/script.js"></script>
+<script src="/static/scripts/admin.js"></script>
+</html>

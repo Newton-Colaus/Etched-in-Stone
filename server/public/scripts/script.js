@@ -10,6 +10,21 @@ const thirdSec = document.getElementById("thirdSec");
 const fourthSec = document.getElementById("fourthSec");
 const fifthSec = document.getElementById("fifthSec");
 
+const serviceSec = document.getElementById("serviceSec");
+
+const backToTopBtn = document.getElementById("backToTopBtn");
+
+
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    
+    preloader.classList.add('preloader-hidden');
+    
+    setTimeout(() => {
+        preloader.remove();
+    }, 500); 
+});
+
 abtBtn.addEventListener('click', () => {
     secondSec.scrollIntoView({ 
       behavior: 'smooth', 
@@ -17,18 +32,19 @@ abtBtn.addEventListener('click', () => {
     });
 });
 
-servBtn.addEventListener('click', () => {
-    hrsep.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start'
-    });
+// servBtn.addEventListener('click', () => {
+//     hrsep.scrollIntoView({ 
+//       behavior: 'smooth', 
+//       block: 'start'
+//     });
+// });
+
+servBtn.addEventListener("click", () => {
+  window.location.href = "/services";
 });
 
 gallBtn.addEventListener('click', () => {
-    fourthSec.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start'
-    });
+  window.location.href = "/gallery";
 });
 
 contBtn.addEventListener('click', () => {
@@ -45,12 +61,8 @@ contBtn2.addEventListener('click', () => {
     });
 });
 
-window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    
-    preloader.classList.add('preloader-hidden');
-    
-    setTimeout(() => {
-        preloader.remove();
-    }, 500); 
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({top:0, behavior: "smooth"});
 });
+
+
