@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Stack Sans Notch";
+    font-family: "Stack Sans Text";
 }
 
 body{
@@ -30,7 +30,7 @@ body::-webkit-scrollbar-thumb:hover {
 #firstSec{
     height: 100vh;
     width: 100%;
-    background-image: url("/static/images/background/1.png");
+    background-image: url("/static/images/background/driveway.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,8 +39,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .navBar{
-    border-bottom:  2px solid white;
-    height: 13vh;
+    border-bottom:  1px solid white;
+    height: 10vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -48,7 +48,14 @@ body::-webkit-scrollbar-thumb:hover {
     left: 0;
     top: 0;
     padding: 0% 9%;
-    background: black;
+    background: transparent;
+    transition: 0.5s;
+    z-index: 100;
+}
+
+.navBarScrolled{
+    border-color: grey !important;
+    background-color: white !important;
 }
 
 .navBar nav{
@@ -65,7 +72,17 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .navSec1 img{
-    width: 11%;
+    width: 9%;
+    backdrop-filter: blur(6px);
+    border-radius: 50px;
+    box-shadow: 0 0 30px #00000060;
+}
+
+.navBarLogoScrolled{
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    filter: invert(100%);
+    transition: filter 0.5s;
 }
 
 .navSec2{
@@ -81,9 +98,9 @@ body::-webkit-scrollbar-thumb:hover {
     margin-left: 4%;
     background-color: #ffffff0d;
     color: white;
-    width: 15%;
+    width: 13%;
     height: 45%;
-    font-size: 1.15rem;
+    font-size: 1rem;
     border: 1px solid white;
     transition: 0.5s;
     cursor: pointer;
@@ -94,6 +111,17 @@ body::-webkit-scrollbar-thumb:hover {
     color: black;
 }
 
+.navBarButtonScrolled{
+    border-color: black !important;
+    box-shadow: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.navBarButtonScrolled:hover{
+    background-color: black !important;
+    color: white !important;
+}
+
 .heroLandingContent{
     height: 80%;    
     width: 100%;
@@ -102,14 +130,24 @@ body::-webkit-scrollbar-thumb:hover {
     justify-content: center;
     flex-direction: column;
     margin-top: 7%;
+    gap: 5%;
 }
 
 .heroLandingContent div{
     height: 35%;
     text-align: center;
-    font-size: 150px;
     display: flex;
     align-items: center;
+    text-shadow: 0 0 30px #00000050;
+    flex-direction: column;
+}
+
+#hlC1{
+    font-size: 10rem !important;
+}
+
+#hlC2{
+    font-size: 2.5rem !important;
 }
 
 .heroLandingContent div:nth-child(2){
@@ -135,9 +173,9 @@ body::-webkit-scrollbar-thumb:hover {
     outline: none;
     background-color: transparent;
     color: white;
-    width: 10%;
-    height: 80%;
-    font-size: 1.15rem;
+    width: 7%;
+    height: 70%;
+    font-size: 1rem;
     border: 1px solid white;
     transition: 0.5s;
     cursor: pointer;
@@ -535,7 +573,7 @@ body::-webkit-scrollbar-thumb:hover {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #000000; 
+    background-color: #ffffff; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -555,6 +593,8 @@ body::-webkit-scrollbar-thumb:hover {
 
 button{
     border-radius: 30px !important;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 15px #00000050;
 }
 
 #secondSec, #thirdSec, #fourthSec, #fifthSec{
