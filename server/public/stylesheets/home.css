@@ -5,6 +5,10 @@
     font-family: "Stack Sans Text";
 }
 
+a{
+    text-decoration: none;
+}
+
 body{
     background-color: black;
 }
