@@ -14,6 +14,9 @@ const serviceSec = document.getElementById("serviceSec");
 
 const backToTopBtn = document.getElementById("backToTopBtn");
 
+const navBar = document.getElementById("navBar");
+const navBarLogo = document.getElementById("navBarLogo");
+const navBarButtons = [servBtn, gallBtn, contBtn, abtBtn]
 
 window.addEventListener('load', function() {
     const preloader = document.getElementById('preloader');
@@ -65,4 +68,19 @@ backToTopBtn.addEventListener("click", () => {
   window.scrollTo({top:0, behavior: "smooth"});
 });
 
+window.addEventListener("scroll", () => {
+  if(window.scrollY > 50){
+    navBar.classList.add("navBarScrolled");
+    navBarLogo.classList.add("navBarLogoScrolled");
+    for(i = 0; i < navBarButtons.length; i++){
+      navBarButtons[i].classList.add("navBarButtonScrolled");
+    };
+  } else {
+    navBar.classList.remove("navBarScrolled");
+    navBarLogo.classList.remove("navBarLogoScrolled");
+    for(i = 0; i < navBarButtons.length; i++){
+      navBarButtons[i].classList.remove("navBarButtonScrolled");
+    };
+  }
+});
 
