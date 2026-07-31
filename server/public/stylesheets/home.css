@@ -56,6 +56,7 @@ body::-webkit-scrollbar-thumb:hover {
 .navBarScrolled{
     border-color: grey !important;
     background-color: white !important;
+    box-shadow: 0 0 10px #00000029;
 }
 
 .navBar nav{
@@ -208,46 +209,82 @@ body::-webkit-scrollbar-thumb:hover {
 .secondSec1{
     display: flex;
     width: 100%;
-    height: 50%;
-}
-
-.div25{
-    width: 25%;
     height: 100%;
 }
 
+.div25{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
 .div75{
-    width: 75%;
+    width: 50%;
     height: 100%;
 }
 
 .div25 img{
-    width: 75%;
+    width: 92%;
+    height: 95%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .div75 h1{
-    font-size: 50px;
+    font-size: 3.5rem;
 }
 .div75 div{
     text-align: end;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.div75 div:nth-child(1) img{
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-left: 1.5%;
 }
 
 .div75 div:nth-child(2) p{
-    font-size: 23px;
+    font-size: 1.3rem;
     color: rgb(43, 43, 43);
     line-height: 165%;
+    margin-top: 3%;
+}
+
+.secondSecQuote{
+    display: flex;
+    flex-direction: column !important;
+    width: 100%;
+    margin-top: 20%;
+}
+
+.secondSecQuote h1{
+    font-size: 3.5rem !important;
+}
+
+.secondSecQuote span{
+    font-size: 1.3rem !important;
 }
 
 .secondSec2{
     width: 100%;
     height: 50%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 9%;
 }
 
 .secSeparator{
     border: none;
     height: 2px;
     background-color: black;
-    scroll-margin-top: 13vh;
+    scroll-margin-top: 10vh;
+    margin-top: 5%;
 }
 
 .secondSec2Header{
@@ -259,11 +296,11 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .secondSec2Header h1{
-    font-size: 50px;
+    font-size: 3.5rem;
 }
 
 .secondSec2p{
-    display: flex;
+    display: none;
     width: 100%;
     height: 20%;
     justify-content: center;
@@ -314,16 +351,18 @@ body::-webkit-scrollbar-thumb:hover {
 #thirdSec{
     width: 100%;
     color: rgb(255, 255, 255);
-    /* background-color: rgb(0, 0, 0); */
-    background-image: url("/static/images/background/1.png");
+    background-color: rgb(255, 255, 255);
+    /* background-image: url("/static/images/background/1.png"); */
     background-position: right;
     /* background-size: cover; */
     padding: 2% 9%;
+    height: 300vh !important;
+    border-top: 1px solid #000;
 }
 
 .thirdSec1{
     width: 100%;
-    height: 45%;
+    height: 5%;
     display: flex;
     justify-content: space-between;
 }
@@ -334,15 +373,19 @@ body::-webkit-scrollbar-thumb:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 5%;
 }
 
 .thirdSec1Header h1:nth-child(1){
-    font-size: 50px;
-    display: none;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.586);
+    font-weight: 400;
+    letter-spacing: 3px;
 }
 
 .thirdSec1Header h1:nth-child(2){
-    font-size: 99px;
+    font-size: 3rem;
+    color: black;
 }
 
 .thirdSec1Graphic{
@@ -364,11 +407,80 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .thirdSec2{
+    display: none !important;
     width: 100%;
     height: 55%;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
+}
+
+
+.servicesContainer{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.services{
+    width: 100%;
+    height: 18.5%;
+    padding: 2%;
+    border: 2px dashed black;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.services:nth-child(1){
+    margin-top: 2%;
+}
+
+.services:nth-child(2) .serviceImage, .services:nth-child(4) .serviceImage{
+    justify-content: end;
+}
+
+.serviceImage{
+    width: 50%;
+    display: flex;
+    height: 100%;
+    justify-content: start;
+    align-items: center;
+}
+
+.serviceImage img{
+    width: 95%;
+    object-fit: cover;
+    height: 95%;
+    object-position: center;
+    border-radius: 4px;
+}
+
+.serviceDescription{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    gap: 5%;
+}
+
+.servicesHeading{
+    font-size: 2.75rem;
+    margin-bottom: 2%;
+    color: black;
+    text-decoration: underline;
+    text-underline-offset: 30%;
+}
+
+.serviceInfo{
+    font-size: 1.3rem;
+    text-align: justify;
+    color: #2B2B2B;
+    line-height: 165%;
 }
 
 .thirdSec2Projs{
@@ -448,18 +560,20 @@ body::-webkit-scrollbar-thumb:hover {
 
 #fifthSec{
     width: 100%;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     /* background-color: rgb(0, 0, 0); */
-    background-image: url("/static/images/background/2.png");
-    background-position: center;
-    background-size: cover;
+    /* background-image: url("/static/images/background/2.png"); */
+    /* background-position: center; */
+    /* background-size: cover; */
+    background-color: white;
     padding: 2% 9%;
     padding-top: 0% !important;
+    border-top: 1px solid #000;
 }
 
 .fifthSecHeader{
     width: 100%;
-    height: 20%;
+    height: 17%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -467,7 +581,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .fifthSecHeader span{
-    font-size: 70px;
+    font-size: 3.5rem;
+    font-weight: 700;
 }
 
 .fifthSecForm{
@@ -487,6 +602,7 @@ body::-webkit-scrollbar-thumb:hover {
     object-position: center;
     object-fit: cover;
     height: 100%;
+    border-radius: 2px;
 }
 
 .fifthSecContactForm{
@@ -496,8 +612,9 @@ body::-webkit-scrollbar-thumb:hover {
     flex-direction: column;
     justify-content: space-between;
     padding: 2%;
-    border: 2px solid white;
+    border: 1px solid rgb(0, 0, 0);
     background-color: #ffffff0d;
+    border-radius: 2px;
 }
 
 .fifthSecCFormHeader{
@@ -526,15 +643,17 @@ body::-webkit-scrollbar-thumb:hover {
 .fifthSecCFormInp input{
     background: transparent;
     outline: none;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 1.5%;
     font-size: 20px;
-    border: 2px solid white;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
+    font-weight: 500;
 }
 
 .fifthSecCFormInp input::placeholder{
     color: rgb(177, 177, 177);
+    font-weight: 400;
 }
 
 .fifthSecCFormBtn{
@@ -544,18 +663,19 @@ body::-webkit-scrollbar-thumb:hover {
 
 .fifthSecCFormBtn button{
     outline: none;
-    color: white;
+    color: rgb(0, 0, 0);
     background: transparent;
-    border: 2px solid white;
+    border: 1px solid rgb(0, 0, 0);
     transition: 0.2s;
     padding: 10%;
     font-size: 17px;
     cursor: pointer;
+    box-shadow: none;
 }
 
 .fifthSecCFormBtn button:hover{
-    background-color: white;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 #contactForm{
@@ -598,8 +718,9 @@ button{
 }
 
 #secondSec, #thirdSec, #fourthSec, #fifthSec{
-    height: 87vh;
-    scroll-margin-top: 13vh;
+    height: 100vh;
+    scroll-margin-top: 10vh;
+    position: relative;
 }
 
 #backToTopBtn{
@@ -611,29 +732,40 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #db4523;
+    background: #ffffff;
     border-radius: 50px;
-    border: 2px dashed white;
+    border: 2px dashed rgb(0, 0, 0);
     cursor: pointer;
 }
 
 #backToTopBtn img{
     width: 28px;
     height: 30px;
+    filter: invert(1);
+}
+
+#copyright{
+    font-size: 0.8rem;
+    position: absolute;
+    top: 635vh;
+    left: 40vw;
+    color: #000000b0;
 }
 
 #sixthSec{
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2% 9%;
     border-top: 2px solid white;
-    background-image: url(/static/images/background/1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+    background-color: white;
+    border-top: 1px solid black;
+    /* background-image: url(/static/images/background/1.png); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* background-position: top; */
 }
 
 .sixthSecLogo{
@@ -650,7 +782,7 @@ button{
 
 .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
     height: 62%;
-    font-size: 30px;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -670,16 +802,16 @@ button{
 }
 
 .sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a{
-    color: white;
+    color: rgb(0, 0, 0);
     transition: 0.2s;
 }
 
 .sixthSecLinks a:hover, .sixthSecLinks1 a:hover, .sixthSecLinks2 a:hover{
-    color: #db4523;
+    color: #003b09;
 }
 
 .sixthSecLinks1 span{
-    width: 64%;
+    width: 56%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -692,31 +824,98 @@ button{
 }
 
 .sixthSecLinks2 span:nth-child(1){
-    width: 46%;
+    width: 41%;
 }
 
 .sixthSecLinks2 span:nth-child(2){
-    width: 50%;
+    width: 44%;
 }
 
 .sixthSecLinks2 span:nth-child(3){
-    width: 84%;
+    width: 73%;
 }
 
 .sixthSecLinks2 span:nth-child(4){
-    width: 74%;
+    width: 65%;
 }
 
 .sixthSecLinks1 span img{
     width: 28px;
     height: 28px;
+    filter: invert(1);
 }
 
 .sixthSecLinks2 span img{
     width: 28px;
     height: 28px;
+    filter: invert(1);
 }
 
+
+.shapes{
+    width: 10%;
+    position: absolute;
+}
+
+.secondSecShape1{
+    position: absolute;
+    width: 14%;
+    top: 0;
+    left: 0;
+}
+
+.secondSecShape2{
+    position: absolute;
+    width: 15%;
+    top: 35%;
+    right: 0;
+}
+
+.thirdSecShape1{
+    position: absolute;
+    width: 13%;
+    top: 0;
+    right: 0;
+}
+
+.thirdSecShape2{
+    position: absolute;
+    width: 14%;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(-1);
+}
+
+.thirdSecShape3{
+    position: absolute;
+    width: 14%;
+    top: 29.5%;
+    left: 0;
+    transform: scaleX(-1);
+}
+
+.thirdSecShape4{
+    position: absolute;
+    width: 14%;
+    top: 66.5%;
+    right: 0;
+}
+
+.fifthSecShape1{
+    position: absolute;
+    width: 15%;
+    top: 0;
+    right: 0;
+    transform: scaleX(-1);
+}
+
+.fifthSecShape2{
+    position: absolute;
+    width: 15%;
+    bottom: 0;
+    left: 0;
+    transform: scaleY(-1);
+}
 
 /* responsive code */
 
