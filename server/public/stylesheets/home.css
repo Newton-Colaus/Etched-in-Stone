@@ -388,7 +388,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .thirdSec1Header h1:nth-child(2){
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: black;
 }
 
@@ -716,7 +716,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 button{
-    border-radius: 30px !important;
+    border-radius: 100px !important;
     backdrop-filter: blur(3px);
     box-shadow: 0 0 15px #00000050;
 }
@@ -752,7 +752,7 @@ button{
     font-size: 0.8rem;
     position: absolute;
     top: 635vh;
-    left: 40vw;
+    left: 43vw;
     color: #000000b0;
 }
 
@@ -945,11 +945,223 @@ button{
     
 }
 
-@media(max-width: 1440px){
-    
+@media(min-width: 1440px){
+    #hlC1{
+        font-size: 8rem !important;
+    }
+
+    #hlC2{
+        font-size: 2rem !important;
+    }
+
+    .heroLandingContent{
+        gap: 0% !important;
+    }
+
+    .heroLandingContent div{
+        height: 35%;
+    }
+
+    .heroLandingContent div:nth-child(2) button{
+        font-size: 0.9rem !important;
+    }
+
+    .navSec2 button{
+        font-size: 0.9rem !important;
+    }
+
+    .scrollDownIco img{
+        width: 30px !important;
+    }
+
+    .div75 h1{
+        font-size: 4.5rem !important;
+    }
+
+    .div75 div:nth-child(2) p{
+        font-size: 1.7rem !important;
+    }
+
+    .div75 div:nth-child(1) img{
+        width: 4.5rem !important;
+        height: 4.5rem !important;
+    }
+
+    .thirdSec1Header h1:nth-child(1){
+        font-size: 1.5rem;
+        letter-spacing: 2.5px;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        font-size: 4.5rem !important;
+    }
+
+    .servicesHeading{
+        font-size: 3.75rem !important;
+    }
+
+    .serviceInfo{
+        font-size: 1.7rem !important;
+    }
+
+    .fifthSecHeader span{
+        font-size: 4.5rem !important;
+    }
+
+    .fifthSecCFormHeader span {
+        font-size: 3.5rem;
+    }
+
+    .fifthSecCFormInp span{
+        font-size: 1.7rem !important;
+    }
+
+    .fifthSecCFormInp input{
+        font-size: 1.5rem !important;
+        height: 55% !important;
+        margin-top: 1%;
+    }
+
+    .fifthSecCFormBtn{
+        width: 28% !important;
+    }
+
+    .fifthSecCFormBtn button{
+        font-size: 1.3rem !important;
+    }
+
+    .sixthSecLogo img{
+        width: 350px;
+        height: 350px;
+    }
+
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+        font-size: 2rem;
+    }
+
+    .sixthSecLinks1 span img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .sixthSecLinks2 span img{
+        width: 40px;
+        height: 40px;
+    }
+
+    #copyright{
+        left: 43vw;
+        font-size: 1rem;
+    }
 }
 
 
-@media(max-width: 2560px){
-    
+@media(min-width: 2560px){
+    #hlC1{
+        font-size: 13rem !important;
+    }
+
+    #hlC2{
+        font-size: 3rem !important;
+    }
+
+    .heroLandingContent{
+        gap: 0% !important;
+    }
+
+    .heroLandingContent div{
+        height: 40%;
+    }
+
+    .heroLandingContent div:nth-child(2) button{
+        font-size: 1.4rem !important;
+    }
+
+    .navSec2 button{
+        font-size: 1.2rem !important;
+    }
+
+    .scrollDownIco img{
+        width: 45px !important;
+    }
+
+    .div75 h1{
+        font-size: 4.5rem !important;
+    }
+
+    .div75 div:nth-child(2) p{
+        font-size: 1.7rem !important;
+    }
+
+    .div75 div:nth-child(1) img{
+        width: 4.5rem !important;
+        height: 4.5rem !important;
+    }
+
+    .thirdSec1Header h1:nth-child(1){
+        font-size: 1.5rem;
+        letter-spacing: 2.5px;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        font-size: 4.5rem !important;
+    }
+
+    .servicesHeading{
+        font-size: 3.75rem !important;
+    }
+
+    .serviceInfo{
+        font-size: 1.7rem !important;
+    }
+
+    .fifthSecHeader span{
+        font-size: 4.5rem !important;
+    }
+
+    .fifthSecCFormHeader span {
+        font-size: 3.5rem;
+    }
+
+    .fifthSecCFormInp span{
+        font-size: 1.7rem !important;
+    }
+
+    .fifthSecCFormInp input{
+        font-size: 1.5rem !important;
+        height: 55% !important;
+        margin-top: 1%;
+    }
+
+    .fifthSecCFormBtn{
+        width: 28% !important;
+    }
+
+    .fifthSecCFormBtn button{
+        font-size: 1.3rem !important;
+    }
+
+    .sixthSecLogo img{
+        width: 350px;
+        height: 350px;
+    }
+
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+        font-size: 2rem;
+    }
+
+    .sixthSecLinks1 span img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .sixthSecLinks2 span img{
+        width: 40px;
+        height: 40px;
+    }
+
+    #copyright{
+        left: 43vw;
+        font-size: 1rem;
+    }
 }
