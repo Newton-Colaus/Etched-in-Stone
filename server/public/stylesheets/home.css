@@ -923,26 +923,1128 @@ button{
 
 /* responsive code */
 
-@media(max-width: 320px){
+/* @media(max-width: 320px){
+    #hlC1{
+        font-size: 3rem !important;
+    }
+
+    #hlC2{
+        font-size: 1rem !important;
+    }
+
+    .heroLandingContent{
+        gap: 0% !important;
+        margin-top: 22%;
+    }
+
     .heroLandingContent div{
-        font-size: 60px;
+        height: 21%;
+    }
+
+    .heroLandingContent div:nth-child(2){
+        margin-top: 8%;
+    }
+
+    .heroLandingContent div:nth-child(2) button{
+        font-size: 0.8rem !important;
+        width: 24%;
+    }
+
+    .navSec1 img{
+        width: 32%;
+    }
+
+    #servBtn, #gallBtn, #abtBtn, #contBtn{
+        /* font-size: 0.8rem;
+        width: 30%;
+        height: 50%; 
+        display: none;
+    }
+
+    .scrollDownIco img{
+        width: 30px !important;
+    }
+
+    .secondSec1{
+        flex-direction: column;
+    }
+
+    .div25{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .div25 img{
+        height: 80%;
+        width: 95%;
+    }
+
+    .div75{
+        padding: 12% 0;
+        width: 100%;
+        height: 50%;
+    }
+
+    .div75 h1{
+        font-size: 1.4rem !important;
+    }
+
+    .div75 div:nth-child(2) p{
+        font-size: 0.9rem !important;
+    }
+
+    .div75 div:nth-child(1) img{
+        display: none;
+    }
+
+    .services{
+        flex-direction: column;
+    }
+
+    .serviceImage{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center !important;
+        align-items: center;
+    }
+
+    .serviceDescription{
+        width: 95%;
+        height: 50%;
+    }
+
+    .secondSecQuote{
+        display: none !important;
+    }
+
+    .secSeparator{
+        display: none;
+    }
+
+    .thirdSec1Header h1:nth-child(1){
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        font-size: 1.5rem !important;
+    }
+
+    .servicesHeading{
+        font-size: 1.2rem !important;
+    }
+
+    .serviceInfo{
+        font-size: 0.65rem !important;
+    }
+
+    .fifthSecHeader span{
+        font-size: 1.9rem !important;
+    }
+
+    .fifthSecFormImg{
+        display: none;
+    }
+
+    .fifthSecContactForm{
+        width: 100%;
+    }
+
+    .fifthSecCFormHeader{
+        display: flex;
+        justify-content: center;
+    }
+
+    .fifthSecCFormHeader span {
+        font-size: 1.4rem;
+    }
+
+    .fifthSecCFormInp span{
+        font-size: 1rem !important;
+        text-align: center;
+    }
+
+    .fifthSecCFormInp input{
+        font-size: 1.1rem !important;
+        height: 55% !important;
+        margin-top: 1%;
+    }
+
+    .fifthSecCFormBtn{
+        width: 24% !important;
+    }
+
+    .fifthSecCFormBtn button{
+        font-size: 1rem !important;
+    }
+
+    #sixthSec{
+        flex-direction: column !important;
+        height: 50vh;
+    }
+
+    .sixthSecLogo img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+        font-size: 1rem;
+    }
+
+    .sixthSecLinks1{
+        width: 69%;
+    }
+
+    .sixthSecLinks2{
+        width: 80% !important;
+    }
+
+    .sixthSecLinks1 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks{
+        width: 15%;
+        display: none;
+    }
+
+    .sixthSecLinks1{
+        width: 69%;
+        align-items: center;
+    }
+
+    .sixthSecLinks2{
+        width: 33%;
+    }
+
+    .sixthSecLinks2 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks2 span:nth-child(1){
+        width: 67%;
+    }
+
+    .sixthSecLinks2 span:nth-child(2){
+        width: 73%;
+    }
+
+    .sixthSecLinks2 span:nth-child(3){
+        width: 122%;
+    }
+
+    .sixthSecLinks2 span:nth-child(4){
+        width: 108%;
+    }
+
+    .sixthSecLogo{
+        display: none;
+    }
+    
+    #copyright{
+        left: 15vw;
+        font-size: 0.7rem;
+        top: 647vh !important;
+    }
+
+    #backToTopBtn{
+        width: 40px;
+        height: 40px;
+        left: 50%;
+        top: -5%;
+    }
+
+    #backToTopBtn img{
+        width: 20px;
+        height: 22px;
     }
 }
 
 @media(max-width: 375px){
+    #hlC1{
+        font-size: 3rem !important;
+    }
+
+    #hlC2{
+        font-size: 1rem !important;
+    }
+
+    .heroLandingContent{
+        gap: 0% !important;
+        margin-top: 22%;
+    }
+
+    .heroLandingContent div{
+        height: 21%;
+    }
+
+    .heroLandingContent div:nth-child(2){
+        margin-top: 8%;
+    }
+
+    .heroLandingContent div:nth-child(2) button{
+        font-size: 0.8rem !important;
+        width: 24%;
+    }
+
+    .navSec1 img{
+        width: 32%;
+    }
+
+    #servBtn, #gallBtn, #abtBtn, #contBtn{
+        /* font-size: 0.8rem;
+        width: 30%;
+        height: 50%; 
+        display: none;
+    }
+
+    .scrollDownIco img{
+        width: 30px !important;
+    }
+
+    .secondSec1{
+        flex-direction: column;
+    }
+
+    .div25{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .div25 img{
+        height: 80%;
+        width: 95%;
+    }
+
+    .div75{
+        padding: 12% 0;
+        width: 100%;
+        height: 50%;
+    }
+
+    .div75 h1{
+        font-size: 1.4rem !important;
+    }
+
+    .div75 div:nth-child(2) p{
+        font-size: 0.9rem !important;
+    }
+
+    .div75 div:nth-child(1) img{
+        display: none;
+    }
+
+    .services{
+        flex-direction: column;
+    }
+
+    .serviceImage{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center !important;
+        align-items: center;
+    }
+
+    .serviceDescription{
+        width: 95%;
+        height: 50%;
+    }
+
+    .secondSecQuote{
+        display: none !important;
+    }
+
+    .secSeparator{
+        display: none;
+    }
+
+    .thirdSec1Header h1:nth-child(1){
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        font-size: 1.5rem !important;
+    }
+
+    .servicesHeading{
+        font-size: 1.2rem !important;
+    }
+
+    .serviceInfo{
+        font-size: 0.7rem !important;
+    }
+
+    .fifthSecHeader span{
+        font-size: 1.9rem !important;
+    }
+
+    .fifthSecFormImg{
+        display: none;
+    }
+
+    .fifthSecContactForm{
+        width: 100%;
+    }
+
+    .fifthSecCFormHeader{
+        display: flex;
+        justify-content: center;
+    }
+
+    .fifthSecCFormHeader span {
+        font-size: 1.4rem;
+    }
+
+    .fifthSecCFormInp span{
+        font-size: 1rem !important;
+        text-align: center;
+    }
+
+    .fifthSecCFormInp input{
+        font-size: 1.1rem !important;
+        height: 55% !important;
+        margin-top: 1%;
+    }
+
+    .fifthSecCFormBtn{
+        width: 24% !important;
+    }
+
+    .fifthSecCFormBtn button{
+        font-size: 1rem !important;
+    }
+
+    #sixthSec{
+        flex-direction: column !important;
+        height: 50vh;
+    }
+
+    .sixthSecLogo img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+        font-size: 1rem;
+    }
+
+    .sixthSecLinks1{
+        width: 69%;
+    }
+
+    .sixthSecLinks2{
+        width: 69% !important;
+    }
+
+    .sixthSecLinks1 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks{
+        width: 15%;
+        display: none;
+    }
+
+    .sixthSecLinks1{
+        width: 69%;
+        align-items: center;
+    }
+
+    .sixthSecLinks2{
+        width: 33%;
+    }
+
+    .sixthSecLinks2 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks2 span:nth-child(1){
+        width: 67%;
+    }
+
+    .sixthSecLinks2 span:nth-child(2){
+        width: 73%;
+    }
+
+    .sixthSecLinks2 span:nth-child(3){
+        width: 122%;
+    }
+
+    .sixthSecLinks2 span:nth-child(4){
+        width: 108%;
+    }
+
+    .sixthSecLogo{
+        display: none;
+    }
     
+    #copyright{
+        left: 20vw;
+        font-size: 0.7rem;
+        top: 647vh !important;
+    }
+
+    #backToTopBtn{
+        width: 40px;
+        height: 40px;
+        left: 50%;
+        top: -5%;
+    }
+
+    #backToTopBtn img{
+        width: 20px;
+        height: 22px;
+    }
 }
 
 @media(max-width: 425px){
+    #hlC1{
+        font-size: 3rem !important;
+    }
+
+    #hlC2{
+        font-size: 1rem !important;
+    }
+
+    .heroLandingContent{
+        gap: 0% !important;
+        margin-top: 22%;
+    }
+
+    .heroLandingContent div{
+        height: 21%;
+    }
+
+    .heroLandingContent div:nth-child(2){
+        margin-top: 8%;
+    }
+
+    .heroLandingContent div:nth-child(2) button{
+        font-size: 0.8rem !important;
+        width: 24%;
+    }
+
+    .navSec1 img{
+        width: 32%;
+    }
+
+    #servBtn, #gallBtn, #abtBtn, #contBtn{
+        /* font-size: 0.8rem;
+        width: 30%;
+        height: 50%; 
+        display: none;
+    }
+
+    .scrollDownIco img{
+        width: 30px !important;
+    }
+
+    .secondSec1{
+        flex-direction: column;
+    }
+
+    .div25{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .div25 img{
+        height: 80%;
+        width: 95%;
+    }
+
+    .div75{
+        padding: 12% 0;
+        width: 100%;
+        height: 50%;
+    }
+
+    .div75 h1{
+        font-size: 1.4rem !important;
+    }
+
+    .div75 div:nth-child(2) p{
+        font-size: 0.9rem !important;
+    }
+
+    .div75 div:nth-child(1) img{
+        display: none;
+    }
+
+    .services{
+        flex-direction: column;
+    }
+
+    .serviceImage{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center !important;
+        align-items: center;
+    }
+
+    .serviceDescription{
+        width: 95%;
+        height: 50%;
+    }
+
+    .secondSecQuote{
+        display: none !important;
+    }
+
+    .secSeparator{
+        display: none;
+    }
+
+    .thirdSec1Header h1:nth-child(1){
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        font-size: 1.5rem !important;
+    }
+
+    .servicesHeading{
+        font-size: 1.2rem !important;
+    }
+
+    .serviceInfo{
+        font-size: 0.7rem !important;
+    }
+
+    .fifthSecHeader span{
+        font-size: 1.9rem !important;
+    }
+
+    .fifthSecFormImg{
+        display: none;
+    }
+
+    .fifthSecContactForm{
+        width: 100%;
+    }
+
+    .fifthSecCFormHeader{
+        display: flex;
+        justify-content: center;
+    }
+
+    .fifthSecCFormHeader span {
+        font-size: 1.4rem;
+    }
+
+    .fifthSecCFormInp span{
+        font-size: 1rem !important;
+        text-align: center;
+    }
+
+    .fifthSecCFormInp input{
+        font-size: 1.1rem !important;
+        height: 55% !important;
+        margin-top: 1%;
+    }
+
+    .fifthSecCFormBtn{
+        width: 24% !important;
+    }
+
+    .fifthSecCFormBtn button{
+        font-size: 1rem !important;
+    }
+
+    #sixthSec{
+        flex-direction: column !important;
+        height: 50vh;
+    }
+
+    .sixthSecLogo img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+        font-size: 1rem;
+    }
+
+    .sixthSecLinks1{
+        width: 69%;
+    }
+
+    .sixthSecLinks2{
+        width: 69% !important;
+    }
+
+    .sixthSecLinks1 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks{
+        width: 15%;
+        display: none;
+    }
+
+    .sixthSecLinks1{
+        width: 69%;
+        align-items: center;
+    }
+
+    .sixthSecLinks2{
+        width: 33%;
+    }
+
+    .sixthSecLinks2 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks2 span:nth-child(1){
+        width: 67%;
+    }
+
+    .sixthSecLinks2 span:nth-child(2){
+        width: 73%;
+    }
+
+    .sixthSecLinks2 span:nth-child(3){
+        width: 122%;
+    }
+
+    .sixthSecLinks2 span:nth-child(4){
+        width: 108%;
+    }
+
+    .sixthSecLogo{
+        display: none;
+    }
     
+    #copyright{
+        left: 25vw;
+        font-size: 0.7rem;
+        top: 647vh !important;
+    }
+
+    #backToTopBtn{
+        width: 40px;
+        height: 40px;
+        left: 50%;
+        top: -5%;
+    }
+
+    #backToTopBtn img{
+        width: 20px;
+        height: 22px;
+    }
 }
 
 @media(max-width: 768px){
-    
-}
+    #hlC1{
+        font-size: 5rem !important;
+    }
 
-@media(max-width: 1024px){
+    #hlC2{
+        font-size: 1.4rem !important;
+    }
+
+    .heroLandingContent{
+        gap: 0% !important;
+        margin-top: 12%;
+    }
+
+    .heroLandingContent div{
+        height: 17% !important;
+    }
+
+    .heroLandingContent div:nth-child(2){
+        margin-top: 0 !important;
+    }
+
+    .heroLandingContent div:nth-child(2) button{
+        font-size: 0.8rem !important;
+        width: 11%;
+        height: 30%;
+    }
+
+    .navSec1 img{
+        width: 18%;
+    }
+
+    #servBtn, #gallBtn, #abtBtn, #contBtn{
+        font-size: 0.8rem;
+        width: 30%;
+        height: 50%;
+        display: block;
+    }
+
+    .scrollDownIco img{
+        width: 30px !important;
+    }
+
+    .div25{
+        align-items: end !important;
+    }
+
+    .div25 img{
+        height: 80%;
+        width: 95%;
+    }
+
+    .div75{
+        padding: 12% 3%;
+        /* padding-top: 5% !important;
+    }
+
+    .div75 h1{
+        font-size: 2.5rem !important;
+    }
+
+    .div75 div:nth-child(2) p{
+        font-size: 1rem !important;
+    }
+
+    .div75 div:nth-child(1) img{
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .thirdSec1Header h1:nth-child(1){
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        font-size: 2rem !important;
+    }
+
+    .services{
+        flex-direction: row !important;
+    }
+
+    .serviceImage{
+        width: 50% !important;
+        height: 100% !important;
+    }
+
+    .serviceDescription{
+        width: 50% !important;
+        height: 100% !important;
+    }
+
+    .servicesHeading{
+        font-size: 1.8rem !important;
+    }
+
+    .serviceInfo{
+        font-size: 0.85rem !important;
+    }
+
+    .fifthSecHeader span{
+        font-size: 3rem !important;
+    }
+
+    .fifthSecFormImg{
+        display: none;
+    }
+
+    .fifthSecContactForm{
+        width: 100%;
+    }
+
+    .fifthSecCFormHeader span {
+        font-size: 2rem;
+    }
+
+    .fifthSecCFormInp span{
+        font-size: 1.2rem !important;
+    }
+
+    .fifthSecCFormInp input{
+        font-size: 1.1rem !important;
+        height: 55% !important;
+        margin-top: 1%;
+    }
+
+    .fifthSecCFormBtn{
+        width: 24% !important;
+    }
+
+    .fifthSecCFormBtn button{
+        font-size: 1rem !important;
+    }
+
+    .sixthSecLogo img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+        font-size: 1rem;
+    }
+
+    .sixthSecLinks1 span{
+        width: 59%;
+    }
+
+    .sixthSecLinks1 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks{
+        width: 15%;
+        display: none;
+    }
+
+    .sixthSecLinks1{
+        width: 38%;
+    }
+
+    .sixthSecLinks2{
+        width: 33%;
+        align-items: center !important;
+    }
+
+    .sixthSecLinks2 span{
+        justify-content: center;
+    }
+
+    .sixthSecLinks2 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks2 span:nth-child(1){
+        width: 67%;
+    }
+
+    .sixthSecLinks2 span:nth-child(2){
+        width: 73%;
+    }
+
+    .sixthSecLinks2 span:nth-child(3){
+        width: 122%;
+    }
+
+    .sixthSecLinks2 span:nth-child(4){
+        width: 108%;
+    }
+
+    .sixthSecLogo{
+        display: none;
+    }
     
+    #copyright{
+        left: 34vw;
+        font-size: 0.7rem;
+    }
+
+    #backToTopBtn{
+        width: 40px;
+        height: 40px;
+        left: 55%;
+        top: -1%;
+    }
+
+    #backToTopBtn img{
+        width: 20px;
+        height: 22px;
+    }
+} */
+
+/* @media(min-width: 1024px){
+    #hlC1{
+        font-size: 6rem !important;
+    }
+
+    #hlC2{
+        font-size: 1.6rem !important;
+    }
+
+    .heroLandingContent{
+        gap: 0% !important;
+        margin-top: 12%;
+    }
+
+    .heroLandingContent div{
+        height: 21% !important;
+    }
+
+    .heroLandingContent div:nth-child(2) button{
+        font-size: 0.8rem !important;
+        width: 11%;
+    }
+
+    .navSec1 img{
+        width: 15%;
+    }
+
+    #servBtn, #gallBtn, #abtBtn, #contBtn{
+        font-size: 0.9rem;
+        width: 18%;
+        height: 50%;
+    }
+
+    .scrollDownIco img{
+        width: 30px !important;
+    }
+
+    .div25 img{
+        height: 80%;
+        width: 95%;
+    }
+
+    .div75{
+        padding: 9% 0;
+    }
+
+    .div75 h1{
+        font-size: 2rem !important;
+    }
+
+    .div75 div:nth-child(2) p{
+        font-size: 1rem !important;
+    }
+
+    .div75 div:nth-child(1) img{
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .thirdSec1Header h1:nth-child(1){
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        font-size: 2rem !important;
+    }
+
+    .servicesHeading{
+        font-size: 2rem !important;
+    }
+
+    .serviceInfo{
+        font-size: 1rem !important;
+    }
+
+    .fifthSecHeader span{
+        font-size: 3rem !important;
+    }
+
+    .fifthSecFormImg{
+        display: none;
+    }
+
+    .fifthSecContactForm{
+        width: 100%;
+    }
+
+    .fifthSecCFormHeader span {
+        font-size: 2rem;
+    }
+
+    .fifthSecCFormInp span{
+        font-size: 1.2rem !important;
+    }
+
+    .fifthSecCFormInp input{
+        font-size: 1.1rem !important;
+        height: 55% !important;
+        margin-top: 1%;
+    }
+
+    .fifthSecCFormBtn{
+        width: 24% !important;
+    }
+
+    .fifthSecCFormBtn button{
+        font-size: 1rem !important;
+    }
+
+    .sixthSecLogo img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+        font-size: 1rem;
+    }
+
+    .sixthSecLinks1 span{
+        width: 59%;
+    }
+
+    .sixthSecLinks1 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks{
+        width: 15%;
+    }
+
+    .sixthSecLinks1{
+        width: 29%;
+    }
+
+    .sixthSecLinks2{
+        width: 33%;
+    }
+
+    .sixthSecLinks2 span img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .sixthSecLinks2 span:nth-child(1){
+        width: 52%;
+    }
+
+    .sixthSecLinks2 span:nth-child(2){
+        width: 57%;
+    }
+
+    .sixthSecLinks2 span:nth-child(3){
+        width: 93%;
+    }
+
+    .sixthSecLinks2 span:nth-child(4){
+        width: 82%;
+    }
+    
+    #copyright{
+        left: 36vw;
+        font-size: 0.8rem;
+    }
+
+    #backToTopBtn{
+        width: 40px;
+        height: 40px;
+        left: 55%;
+    }
+
+    #backToTopBtn img{
+        width: 20px;
+        height: 22px;
+    }
 }
 
 @media(min-width: 1440px){
@@ -959,99 +2061,175 @@ button{
     }
 
     .heroLandingContent div{
-        height: 35%;
+        height: 27% !important;
     }
 
     .heroLandingContent div:nth-child(2) button{
         font-size: 0.9rem !important;
     }
 
-    .navSec2 button{
-        font-size: 0.9rem !important;
+    .navSec1 img{
+        width: 10%;
+    }
+
+    #servBtn, #gallBtn, #abtBtn, #contBtn{
+        font-size: 0.9rem;
+        width: 15%;
     }
 
     .scrollDownIco img{
         width: 30px !important;
     }
 
+    .div25 img{
+        height: 100%;
+    }
+
+    .div75{
+        padding: 9% 2.5%;
+    }
+
     .div75 h1{
-        font-size: 4.5rem !important;
+        font-size: 2.5rem !important;
     }
 
     .div75 div:nth-child(2) p{
-        font-size: 1.7rem !important;
+        font-size: 1.2rem !important;
     }
 
     .div75 div:nth-child(1) img{
-        width: 4.5rem !important;
-        height: 4.5rem !important;
+        width: 3rem !important;
+        height: 3rem !important; 
+        display: block !important;
     }
 
     .thirdSec1Header h1:nth-child(1){
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         letter-spacing: 2.5px;
     }
 
     .thirdSec1Header h1:nth-child(2){
-        font-size: 4.5rem !important;
+        font-size: 3rem !important;
     }
 
     .servicesHeading{
-        font-size: 3.75rem !important;
+        font-size: 2rem !important;
     }
 
     .serviceInfo{
-        font-size: 1.7rem !important;
+        font-size: 1.1rem !important;
     }
 
     .fifthSecHeader span{
-        font-size: 4.5rem !important;
+        font-size: 3rem !important;
+    }
+
+    .fifthSecFormImg{
+        display: flex;
+    }
+
+    .fifthSecContactForm {
+        width: 50%;
     }
 
     .fifthSecCFormHeader span {
-        font-size: 3.5rem;
+        font-size: 2rem;
     }
 
     .fifthSecCFormInp span{
-        font-size: 1.7rem !important;
+        font-size: 1.2rem !important;
     }
 
     .fifthSecCFormInp input{
-        font-size: 1.5rem !important;
-        height: 55% !important;
+        font-size: 1.1rem !important;
+        height: 50% !important;
         margin-top: 1%;
     }
 
     .fifthSecCFormBtn{
-        width: 28% !important;
+        width: 24% !important;
     }
 
     .fifthSecCFormBtn button{
-        font-size: 1.3rem !important;
+        font-size: 1rem !important;
+    }
+
+    #sixthSec{
+        flex-direction: row !important;
+    }
+
+    .sixthSecLogo{
+        display: block !important;
     }
 
     .sixthSecLogo img{
-        width: 350px;
-        height: 350px;
+        width: 200px !important;
+        height: 200px !important;
+        display: block !important;
     }
 
     .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
 
     .sixthSecLinks1 span img{
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .sixthSecLinks{
+        width: 15%;
+        display: flex !important;
+    }
+
+    .sixthSecLinks1{
+        width: 30%;
+    }
+
+    .sixthSecLinks2{
+        width: 34% !important;
+        align-items: end;
     }
 
     .sixthSecLinks2 span img{
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
     }
 
+    .sixthSecLinks2 span{
+        align-items: end !important;
+    }
+
+    .sixthSecLinks2 span:nth-child(1){
+        width: 52%;
+    }
+
+    .sixthSecLinks2 span:nth-child(2){
+        width: 57%;
+    }
+
+    .sixthSecLinks2 span:nth-child(3){
+        width: 93%;
+    }
+
+    .sixthSecLinks2 span:nth-child(4){
+        width: 82%;
+    }
+    
     #copyright{
-        left: 43vw;
-        font-size: 1rem;
+        left: 40vw;
+        font-size: 0.8rem;
+    }
+
+    #backToTopBtn{
+        width: 40px;
+        height: 40px;
+        left: 6%;
+    }
+
+    #backToTopBtn img{
+        width: 20px;
+        height: 22px;
     }
 }
 
@@ -1070,11 +2248,15 @@ button{
     }
 
     .heroLandingContent div{
-        height: 40%;
+        height: 32% !important;
     }
 
     .heroLandingContent div:nth-child(2) button{
         font-size: 1.4rem !important;
+    }
+
+    .navSec1 img{
+        width: 9% !important;
     }
 
     .navSec2 button{
@@ -1164,4 +2346,4 @@ button{
         left: 43vw;
         font-size: 1rem;
     }
-}
+} */
