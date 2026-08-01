@@ -9,50 +9,57 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="preloader">
-        <img src="/static/logo/anim3.gif" alt="">
+        <img src="/static/logo/black.png" alt="">
     </div>
-    <div class="navBar">
+    <div class="navBar navBarScrolled">
         <nav>
             <div class="navSec1">
-                <img src="/static/logo/white.png" alt="">
+                <img id="navBarLogo" src="/static/logo/black.png" alt="">
             </div>
             <div class="navSec2">
-                <button id="homeBtn">Home</button>
-                <button id="servBtn">Services</button>
-                <button id="abtBtn">About</button>
-                <button id="contBtn">Contact</button>
+                <button class="navBarButtonScrolled"  id="homeBtn">Home</button>
+                <button class="navBarButtonScrolled"  id="servBtn">Services</button>
+                <button class="navBarButtonScrolled"  id="abtBtn">About</button>
+                <button class="navBarButtonScrolled"  id="contBtn">Contact</button>
             </div>
         </nav>
     </div> 
     <section id="fourthSec">
-            <div class="fourthSecHeader">
-                <h1>Gallery</h1>
+        <div class="fourthSecHeader">
+            <h1>Gallery</h1>
+        </div>
+        <div class="fourthSecImages">
+            <div>
+                <img src="<%= items[0]?.imageUrl %>" alt="">
+                <img src="<%= items[1]?.imageUrl %>" alt="">
+                <img src="<%= items[2]?.imageUrl %>" alt="">
             </div>
-            <div class="fourthSecImages">
-                <div>
-                    <img src="<%= items[0]?.imageUrl %>" alt="">
-                    <img src="<%= items[1]?.imageUrl %>" alt="">
-                    <img src="<%= items[2]?.imageUrl %>" alt="">
-                </div>
-                <div>
-                    <img src="<%= items[3]?.imageUrl %>" alt="">
-                    <img src="<%= items[4]?.imageUrl %>" alt="">
-                    <img src="<%= items[5]?.imageUrl %>" alt="">
-                    <img src="<%= items[6]?.imageUrl %>" alt="">
-                </div>
-                <div>
-                    <img src="<%= items[7]?.imageUrl %>" alt="">
-                    <img src="<%= items[8]?.imageUrl %>" alt="">
-                    <img src="<%= items[9]?.imageUrl %>" alt="">
-                </div>
+            <div>
+                <img src="<%= items[3]?.imageUrl %>" alt="">
+                <img src="<%= items[4]?.imageUrl %>" alt="">
+                <img src="<%= items[5]?.imageUrl %>" alt="">
+                <img src="<%= items[6]?.imageUrl %>" alt="">
             </div>
-        </section>
+            <div>
+                <img src="<%= items[7]?.imageUrl %>" alt="">
+                <img src="<%= items[8]?.imageUrl %>" alt="">
+                <img src="<%= items[9]?.imageUrl %>" alt="">
+            </div>
+        </div>
+        <img class="shapes s1" src="/static/shapes/triagy.png" alt="">
+        <img class="shapes s2" src="/static/shapes/triag.png" alt="">
+        <img class="shapes s3" src="/static/shapes/triay.png" alt="">
+        <img class="shapes s4" src="/static/shapes/triayg.png" alt="">
+        <img class="shapes s5" src="/static/shapes/yellowave.png" alt="">
+        <img class="shapes s6" src="/static/shapes/greenwave.png" alt="">        
+    </section>
     <section id="sixthSec">
         <div class="sixthSecLogo">
-            <img src="/static/logo/white.png" alt="">
+            <img src="/static/logo/black.png" alt="">
         </div>
         <div class="sixthSecLinks">
             <a href="/services">Services</a>
