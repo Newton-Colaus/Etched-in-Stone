@@ -3,14 +3,16 @@
   "builds": [
     {
       "src": "server/index.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "server/public/**",
+          "server/views/**"
+        ]
+      }
     }
   ],
   "rewrites": [
-    {
-      "source": "/static/(.*)",
-      "destination": "/server/public/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/server/index.js"
