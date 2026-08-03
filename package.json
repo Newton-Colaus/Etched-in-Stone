@@ -15,9 +15,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp -r server/public ./public",
-    "start": "node server/index.js"    
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@vercel/blob": "^2.6.1",
