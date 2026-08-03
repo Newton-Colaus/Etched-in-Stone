@@ -3,9 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Etched In Stone | Home</title>
+        <title>Etched In Stone | Home (Animated)</title>
         <link rel="icon" href="/static/logo/S.png">
-        <link rel="stylesheet" href="/static/stylesheets/home2.css">
+        <!-- Linked to the new animated CSS file -->
+        <link rel="stylesheet" href="/static/stylesheets/home-animated.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
@@ -16,6 +17,8 @@
             <img src="/static/logo/black.png" alt="">
         </div>
         <section id="firstSec">
+            <div id="nextBg" class="next-bg"></div>
+            <div class="color-swipe"></div>
             <div class="navBar" id="navBar">
                 <nav>
                     <div class="navSec1">
@@ -37,9 +40,6 @@
                 <div>
                     <button id="contBtn2">Contact</button>
                 </div>
-                <!-- <div>
-                    <img src="/static/icons/scrollDown.png" alt="">
-                </div> -->
             </div>
             <div class="scrollDownIco">
                 <img src="/static/icons/scrollDown.png" alt="">
@@ -77,33 +77,23 @@
                 </div>
                 <div class="secondSec2Services">
                     <div class="secondSec2Servs">
-                        <div>
-                            <img src="/static/icons/trowel.png" alt="">
-                        </div>
+                        <div><img src="/static/icons/trowel.png" alt=""></div>
                         <span>Stoneworks</span>
                     </div>
                     <div class="secondSec2Servs">
-                        <div>
-                            <img src="/static/icons/wall.png" alt="">
-                        </div>
+                        <div><img src="/static/icons/wall.png" alt=""></div>
                         <span>Wall Designs</span>
                     </div>
                     <div class="secondSec2Servs">
-                        <div>
-                            <img src="/static/icons/path.png" alt="">
-                        </div>
+                        <div><img src="/static/icons/path.png" alt=""></div>
                         <span>Sidewalks</span>
                     </div>
                     <div class="secondSec2Servs">
-                        <div>
-                            <img src="/static/icons/repair.png" alt="">
-                        </div>
+                        <div><img src="/static/icons/repair.png" alt=""></div>
                         <span>Concrete Repairs</span>
                     </div>
                     <div class="secondSec2Servs">
-                        <div>
-                            <img src="/static/icons/stone.png" alt="">
-                        </div>
+                        <div><img src="/static/icons/stone.png" alt=""></div>
                         <span>Stone Crafts</span>
                     </div>
                 </div>
@@ -142,22 +132,14 @@
                     <img src="https://images.unsplash.com/photo-1773920005580-f590d75fdfe5?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                 </div>
                 <div class="serviceDescription">
-                    <div class="servicesHeading">
-                        Stoneworks
-                    </div>
-                    <div class="serviceInfo">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, est nulla. Non tempore soluta officiis minima alias recusandae, itaque aspernatur repellendus doloremque? Fugit quod temporibus ad officia porro! Animi necessitatibus optio, quasi quia cum, quidem voluptate doloribus magnam reiciendis, voluptatum perspiciatis sapiente voluptatibus temporibus repudiandae. Possimus animi harum veritatis quibusdam?
-                    </div>
+                    <div class="servicesHeading">Stoneworks</div>
+                    <div class="serviceInfo">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, est nulla. Non tempore soluta officiis minima alias recusandae, itaque aspernatur repellendus doloremque? Fugit quod temporibus ad officia porro! Animi necessitatibus optio, quasi quia cum, quidem voluptate doloribus magnam reiciendis, voluptatum perspiciatis sapiente voluptatibus temporibus repudiandae. Possimus animi harum veritatis quibusdam?</div>
                 </div>
             </div>
             <div class="services">
                 <div class="serviceDescription">
-                    <div class="servicesHeading">
-                        Driveway
-                    </div>
-                    <div class="serviceInfo">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis modi asperiores excepturi! Hic, quidem ipsam, dolorem asperiores reprehenderit nam esse molestiae obcaecati aliquid eveniet corrupti nulla quis id aut omnis. Itaque incidunt unde blanditiis sint, dicta maiores aperiam exercitationem, suscipit eligendi, voluptatum sunt inventore? Excepturi officia at incidunt nobis quae.
-                    </div>
+                    <div class="servicesHeading">Driveway</div>
+                    <div class="serviceInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis modi asperiores excepturi! Hic, quidem ipsam, dolorem asperiores reprehenderit nam esse molestiae obcaecati aliquid eveniet corrupti nulla quis id aut omnis. Itaque incidunt unde blanditiis sint, dicta maiores aperiam exercitationem, suscipit eligendi, voluptatum sunt inventore? Excepturi officia at incidunt nobis quae.</div>
                 </div>
                 <div class="serviceImage">
                     <img src="https://images.unsplash.com/photo-1588111817213-1a12f73fbf20?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
@@ -168,22 +150,14 @@
                     <img src="https://images.unsplash.com/photo-1574286552092-5632a92a56d8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                 </div>
                 <div class="serviceDescription">
-                    <div class="servicesHeading">
-                        Sidewalk
-                    </div>
-                    <div class="serviceInfo">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dicta, at omnis consectetur et placeat assumenda soluta dolores facilis illum maxime facere, consequatur minima consequuntur ut quo excepturi perferendis delectus. Temporibus est, perferendis laboriosam eius exercitationem deleniti deserunt ea eos facilis, amet ad placeat, libero quia? Autem voluptates provident fugit.
-                    </div>
+                    <div class="servicesHeading">Sidewalk</div>
+                    <div class="serviceInfo">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dicta, at omnis consectetur et placeat assumenda soluta dolores facilis illum maxime facere, consequatur minima consequuntur ut quo excepturi perferendis delectus. Temporibus est, perferendis laboriosam eius exercitationem deleniti deserunt ea eos facilis, amet ad placeat, libero quia? Autem voluptates provident fugit.</div>
                 </div>
             </div>
             <div class="services">
                 <div class="serviceDescription">
-                    <div class="servicesHeading">
-                        Pavement
-                    </div>
-                    <div class="serviceInfo">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, non facilis molestiae sapiente quae reiciendis placeat harum consequuntur nisi numquam perspiciatis iste nemo ullam? Dolores ullam commodi dicta corrupti rem fugit veniam deserunt dolorem? Ad veritatis aut quo, dolor natus tenetur atque est a adipisci illum. Expedita veritatis hic quidem.
-                    </div>
+                    <div class="servicesHeading">Pavement</div>
+                    <div class="serviceInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, non facilis molestiae sapiente quae reiciendis placeat harum consequuntur nisi numquam perspiciatis iste nemo ullam? Dolores ullam commodi dicta corrupti rem fugit veniam deserunt dolorem? Ad veritatis aut quo, dolor natus tenetur atque est a adipisci illum. Expedita veritatis hic quidem.</div>
                 </div>
                 <div class="serviceImage">
                     <img src="https://images.unsplash.com/photo-1599031628962-1f6755a3b1b5?q=80&w=1042&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
@@ -194,12 +168,8 @@
                     <img src="https://images.unsplash.com/photo-1651195297119-afc97f14a40d?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                 </div>
                 <div class="serviceDescription">
-                    <div class="servicesHeading">
-                        Concrete Works
-                    </div>
-                    <div class="serviceInfo">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, est nulla. Non tempore soluta officiis minima alias recusandae, itaque aspernatur repellendus doloremque? Fugit quod temporibus ad officia porro! Animi necessitatibus optio, quasi quia cum, quidem voluptate doloribus magnam reiciendis, voluptatum perspiciatis sapiente voluptatibus temporibus repudiandae. Possimus animi harum veritatis quibusdam?
-                    </div>
+                    <div class="servicesHeading">Concrete Works</div>
+                    <div class="serviceInfo">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint, est nulla. Non tempore soluta officiis minima alias recusandae, itaque aspernatur repellendus doloremque? Fugit quod temporibus ad officia porro! Animi necessitatibus optio, quasi quia cum, quidem voluptate doloribus magnam reiciendis, voluptatum perspiciatis sapiente voluptatibus temporibus repudiandae. Possimus animi harum veritatis quibusdam?</div>
                 </div>
             </div>
             <img class="shapes thirdSecShape1" src="/static/shapes/topright2.png" alt="">
@@ -240,34 +210,24 @@
                 </div>
                 <div class="fifthSecContactForm">
                     <div class="fifthSecCFormHeader">
-                        <span>
-                            Send A Message
-                        </span>
+                        <span>Send A Message</span>
                     </div>
                     <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="a43e8137-5557-4a18-8d6d-940103581743">
                         <div class="fifthSecCFormInp">
-                        <span>
-                            Enter your full name
-                        </span>
-                        <input type="name" name="name" required placeholder="John Johnson">
+                            <span>Enter your full name</span>
+                            <input type="name" name="name" required placeholder="John Johnson">
                         </div>
                         <div class="fifthSecCFormInp">
-                            <span>
-                                Enter your email address
-                            </span>
+                            <span>Enter your email address</span>
                             <input type="email" name="email" required placeholder="jj@gmail.com">
                         </div>
                         <div class="fifthSecCFormInp">
-                            <span>
-                                Enter your phone number
-                            </span>
+                            <span>Enter your phone number</span>
                             <input type="tel" name="phone" required placeholder="+1(676) 676 6769">
                         </div>
                         <div class="fifthSecCFormInp">
-                            <span>
-                                Message
-                            </span>
+                            <span>Message</span>
                             <input type="text" name="message" required placeholder="Enter your Message">
                         </div>
                         <div class="fifthSecCFormBtn">
@@ -332,6 +292,13 @@
                 Copyright &copy; 2026 Etched In Stone Concrete
             </div>
         </section>
+        
+        <!-- GSAP Core -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <!-- GSAP ScrollTrigger Plugin -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        
+        <!-- Linked to the new animated JS file -->
+        <script src="/static/scripts/script-animated.js"></script>
     </body>
-    <script src="/static/scripts/script.js"></script>
 </html>

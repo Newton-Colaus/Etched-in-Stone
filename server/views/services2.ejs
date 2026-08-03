@@ -12,35 +12,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
     <div id="preloader">
-        <img src="/static/logo/black.png" alt="">
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+        <img class="preloader-img" src="/static/logo/black.png" alt="Etched In Stone">
     </div>
+
+    <!-- Navigation -->
     <div class="navBar navBarScrolled" id="navBar">
         <nav>
             <div class="navSec1">
-                <img id="navBarLogo" src="/static/logo/black.png" alt="">
+                <img id="navBarLogo" src="/static/logo/black.png" alt="Logo">
             </div>
             <div class="navSec2">
-                <button class="navBarButtonScrolled"  id="homeBtn">Home</button>
-                <button class="navBarButtonScrolled"  id="gallBtn">Gallery</button>
-                <button class="navBarButtonScrolled"  id="abtBtn">About</button>
-                <button class="navBarButtonScrolled"  id="contBtn">Contact</button>
+                <button class="navBarButtonScrolled" id="homeBtn">Home</button>
+                <button class="navBarButtonScrolled" id="gallBtn">Gallery</button>
+                <button class="navBarButtonScrolled" id="abtBtn">About</button>
+                <button class="navBarButtonScrolled" id="contBtn">Contact</button>
             </div>
         </nav>
     </div> 
+    
+    <!-- Services Section -->
     <section id="serviceSec">
-        <div class="serv">
+        <!-- Service 1 -->
+        <div class="serv firstServ">
             <div class="servHeadliner">
                 <div class="servInfo">
-                    <span>
-                        Service#1
-                    </span>
-                    <h1>
-                        StoneWorks
-                    </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?
-                    </p>
+                    <span>Service#1</span>
+                    <h1>StoneWorks</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?</p>
                 </div>
                 <div class="servImage">
                     <img src="https://images.unsplash.com/photo-1773920005580-f590d75fdfe5?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
@@ -48,69 +50,49 @@
             </div>
             <div class="bottomInfo">
                 <div class="bIleft">
-                    <h1>
-                        Innovative technologies help to lean processes and drive value to your bottom line.
-                    </h1>
+                    <h1>Innovative technologies help to lean processes and drive value to your bottom line.</h1>
                 </div>
                 <div class="bIright">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?
-                    </p>
-                    <span>
-                        STONEWORKS --
-                    </span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?</p>
+                    <span>STONEWORKS --</span>
                 </div>
             </div>
             <img class="shapes s1" src="/static/shapes/topleft.png" alt="">
         </div>
-        <img class="midServImage"  src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <img class="midServImage" src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        
+        <!-- Service 2 -->
         <div class="serv">
             <div class="servHeadliner">
                 <div class="servImage">
                     <img src="https://images.unsplash.com/photo-1588111817213-1a12f73fbf20?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                 </div>
                 <div class="servInfo">
-                    <span>
-                        Service#2
-                    </span>
-                    <h1>
-                        Driveway
-                    </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?
-                    </p>
+                    <span>Service#2</span>
+                    <h1>Driveway</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?</p>
                 </div>
             </div>
             <div class="bottomInfo">
                 <div class="bIleft">
-                    <h1>
-                        Innovative technologies help to lean processes and drive value to your bottom line.
-                    </h1>
+                    <h1>Innovative technologies help to lean processes and drive value to your bottom line.</h1>
                 </div>
                 <div class="bIright">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?
-                    </p>
-                    <span>
-                        STONEWORKS --
-                    </span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?</p>
+                    <span>STONEWORKS --</span>
                 </div>
             </div>
             <img class="shapes s2" src="/static/shapes/topright2.png" alt="">
         </div>
-        <img class="midServImage"  src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?q=80&w=1097&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <img class="midServImage" src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?q=80&w=1097&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        
+        <!-- Service 3 -->
         <div class="serv">
             <div class="servHeadliner">
                 <div class="servInfo">
-                    <span>
-                        Service#3
-                    </span>
-                    <h1>
-                        SideWalk
-                    </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?
-                    </p>
+                    <span>Service#3</span>
+                    <h1>SideWalk</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?</p>
                 </div>
                 <div class="servImage">
                     <img src="https://images.unsplash.com/photo-1574286552092-5632a92a56d8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
@@ -118,69 +100,49 @@
             </div>
             <div class="bottomInfo">
                 <div class="bIleft">
-                    <h1>
-                        Innovative technologies help to lean processes and drive value to your bottom line.
-                    </h1>
+                    <h1>Innovative technologies help to lean processes and drive value to your bottom line.</h1>
                 </div>
                 <div class="bIright">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?
-                    </p>
-                    <span>
-                        STONEWORKS --
-                    </span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?</p>
+                    <span>STONEWORKS --</span>
                 </div>
             </div>
             <img class="shapes s3" src="/static/shapes/greenwave.png" alt="">
         </div>
-        <img class="midServImage"  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <img class="midServImage" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        
+        <!-- Service 4 -->
         <div class="serv">
             <div class="servHeadliner">
                 <div class="servImage">
                     <img src="https://images.unsplash.com/photo-1599031628962-1f6755a3b1b5?q=80&w=1042&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                 </div>
                 <div class="servInfo">
-                    <span>
-                        Service#4
-                    </span>
-                    <h1>
-                        Pavement
-                    </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?
-                    </p>
+                    <span>Service#4</span>
+                    <h1>Pavement</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?</p>
                 </div>
             </div>
             <div class="bottomInfo">
                 <div class="bIleft">
-                    <h1>
-                        Innovative technologies help to lean processes and drive value to your bottom line.
-                    </h1>
+                    <h1>Innovative technologies help to lean processes and drive value to your bottom line.</h1>
                 </div>
                 <div class="bIright">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?
-                    </p>
-                    <span>
-                        STONEWORKS --
-                    </span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?</p>
+                    <span>STONEWORKS --</span>
                 </div>
             </div>
             <img class="shapes s4" src="/static/shapes/topright.png" alt="">
         </div>
-        <img class="midServImage"  src="https://images.unsplash.com/photo-1614127938540-a1139bee1841?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <img class="midServImage" src="https://images.unsplash.com/photo-1614127938540-a1139bee1841?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        
+        <!-- Service 5 -->
         <div class="serv">
             <div class="servHeadliner">
                 <div class="servInfo">
-                    <span>
-                        Service#5
-                    </span>
-                    <h1>
-                        ConcreteWorks
-                    </h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?
-                    </p>
+                    <span>Service#5</span>
+                    <h1>ConcreteWorks</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, repellat vitae eligendi tempora ipsam voluptatibus iste et? Cumque sint, quam a autem ad architecto earum. Consequatur enim eum repellendus esse?</p>
                 </div>
                 <div class="servImage">
                     <img src="https://images.unsplash.com/photo-1651195297119-afc97f14a40d?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
@@ -188,23 +150,19 @@
             </div>
             <div class="bottomInfo">
                 <div class="bIleft">
-                    <h1>
-                        Innovative technologies help to lean processes and drive value to your bottom line.
-                    </h1>
+                    <h1>Innovative technologies help to lean processes and drive value to your bottom line.</h1>
                 </div>
                 <div class="bIright">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?
-                    </p>
-                    <span>
-                        STONEWORKS --
-                    </span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dignissimos sint quisquam maxime nesciunt eveniet perferendis et sequi? Placeat, fugit?</p>
+                    <span>STONEWORKS --</span>
                 </div>
             </div>
             <img class="shapes s5" src="/static/shapes/topright3.png" alt="">
         </div>
-        <img class="midServImage"  src="https://images.unsplash.com/photo-1513692398020-cbaea622c427?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <img class="midServImage" src="https://images.unsplash.com/photo-1513692398020-cbaea622c427?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
     </section>
+
+    <!-- Footer -->
     <section id="sixthSec">
         <div class="sixthSecLogo">
             <img src="/static/logo/black.png" alt="">
@@ -258,6 +216,9 @@
                 Copyright &copy; 2026 Etched In Stone Concrete
         </div>
     </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="/static/scripts/services2.js"></script>
 </body>
-<script src="/static/scripts/services.js"></script>
 </html>

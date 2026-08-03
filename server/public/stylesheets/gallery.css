@@ -375,3 +375,11 @@ body::-webkit-scrollbar-thumb:hover {
     width: 14%;
     transform: scaleX(-1);
 }
+
+#copyright{
+    font-size: 0.8rem;
+    position: absolute;
+    top: 195vh;
+    left: 40vw;
+    color: #000000b0;
+}

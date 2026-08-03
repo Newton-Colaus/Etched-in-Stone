@@ -416,3 +416,10 @@ button {
     transform: scaleX(-1);
 }
 
+#copyright{
+    font-size: 0.8rem;
+    position: absolute;
+    top: 847vh;
+    left: 40vw;
+    color: #000000b0;
+}

@@ -1,0 +1,465 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Stack Sans Text";
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    color: white;
+    overflow-x: hidden; /* Critical for GSAP ScrollTrigger to prevent horizontal jumping */
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.589); 
+    cursor: pointer;
+    transition: 0.2s;
+}
+  
+body::-webkit-scrollbar-thumb:hover {
+    background: #ffffffc7; 
+}
+
+button {
+    border-radius: 30px !important;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 15px #00000050;
+}
+
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    pointer-events: none;
+    background: transparent;
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 9998;
+}
+
+.curtain-left { left: 0; }
+.curtain-right { right: 0; }
+
+.preloader-img {
+    z-index: 9999;
+    width: 150px;
+    height: auto;
+}
+
+#firstSec{
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 2% 9%;
+}
+
+/* Base Navigation Design */
+.navBar{
+    border-bottom:  1px solid grey;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    padding: 0% 9%;
+    background: transparent;
+    transition: 0.5s;
+    z-index: 1000; 
+    border-color: grey !important;
+    background-color: white !important;
+    box-shadow: 0 0 10px #00000029;
+}
+
+.navBar nav{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navSec1{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.navSec1 img{
+    width: 120px;
+    backdrop-filter: blur(6px);
+    border-radius: 50px;
+}
+
+.navBarLogoScrolled{
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    filter: invert(100%);
+    transition: filter 0.5s;
+}
+
+.navSec2{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navSec2 button{
+    outline: none;
+    padding: 1%;
+    margin-left: 4%;
+    background-color: #ffffff0d;
+    color: white;
+    width: auto;
+    min-width: 90px;
+    height: 45px;
+    font-size: 1rem;
+    border: 1px solid white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.navSec2 button:hover{
+    background-color: white;
+    color: black;
+}
+
+.navBarButtonScrolled{
+    border-color: black !important;
+    box-shadow: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.navBarButtonScrolled:hover{
+    background-color: black !important;
+    color: white !important;
+}
+
+/* Base Back to Top Button */
+#backToTopBtn2{
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    right: 9%;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 50px;
+    border: 2px dashed rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+#backToTopBtn2 img{
+    width: 28px;
+    height: 30px;
+    filter: invert(1);
+}
+
+/* Base Footer Design */
+#sixthSec{
+    width: 100%;
+    min-height: 40vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4% 9% 6% 9%;
+    border-top: 1px solid black;
+    background-color: white;
+    position: relative; 
+}
+
+.sixthSecLogo{
+    width: 20%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.sixthSecLogo img{
+    width: 200px;
+    height: auto;
+}
+
+.sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
+    height: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.sixthSecLinks{ width: 15%; }
+.sixthSecLinks1{ width: 25%; }
+.sixthSecLinks2{ width: 35%; }
+
+.sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a{
+    color: rgb(0, 0, 0);
+    transition: 0.2s;
+}
+
+.sixthSecLinks a:hover, .sixthSecLinks1 a:hover, .sixthSecLinks2 a:hover{
+    color: #003b09;
+}
+
+.sixthSecLinks1 span, .sixthSecLinks2 span {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sixthSecLinks1 span img, .sixthSecLinks2 span img{
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+}
+
+#copyright{
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000000b0;
+    width: 100%;
+    text-align: center;
+}
+
+/* Services Sections Design */
+#serviceSec{
+    width: 100%;
+    height: auto;
+    color: black;
+    margin-top: 10vh;
+}
+
+.serv{
+    width: 100%;
+    min-height: 100vh;
+    padding: 5% 0;
+    background-color: white;
+    position: relative;
+}
+
+.firstServ{
+    margin-top: 10vh;
+}
+
+.servHeadliner{
+    display: flex;
+    width: 100%;
+    height: 70vh;
+}
+
+.servInfo{
+    width: 50%;
+    display: flex;
+    padding: 5% 9%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.servInfo span{
+    font-size: 1.2rem;
+    color: #3e3e3e;
+}
+
+.servInfo h1{
+    font-size: 4rem;
+    margin: 2% 0;
+    line-height: 1.1;
+}
+
+.servInfo p{
+    font-size: 1.1rem;
+    font-weight: 100;
+    color: #3e3e3e;
+    line-height: 1.6;
+}
+
+.servImage{
+    width: 50%;
+    height: 100%;
+}
+
+.servImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.bottomInfo{
+    width: 100%;
+    padding: 4% 9%;
+    display: flex;
+    align-items: center;
+}
+
+.bIleft{
+    width: 50%;
+    padding-right: 5%;
+}
+
+.bIleft h1{
+    font-size: 2.4rem;
+    line-height: 1.2;
+}
+
+.bIright{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.bIright p{
+    font-size: 1.2rem;
+    color: #3e3e3e;
+    font-weight: 100;
+    line-height: 1.6;
+}
+
+.bIright span{
+    font-size: 1rem;
+    color: #003b09;
+    font-weight: bold;
+}
+
+.midServImage{
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+.shapes{
+    position: absolute;
+    z-index: 1;
+}
+
+.s1{ top: 0; left: 0; width: 14%; }
+.s2{ top: -0.5%; right: 0; width: 14%; }
+.s3{ top: -0.5%; left: 0; width: 14%; transform: scaleX(-1); }
+.s4{ top: -0.5%; right: 0; width: 14%; }
+.s5{ top: -0.5%; left: 0; width: 16%; transform: scaleX(-1); }
+
+
+/* =========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES) 
+   ========================================= */
+
+/* Laptops & Smaller Desktops (Max 1200px) */
+@media (max-width: 1200px) {
+    .servInfo h1 { font-size: 3rem; }
+    .bIleft h1 { font-size: 2rem; }
+    .sixthSecLinks1 span, .sixthSecLinks2 span { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 5px; 
+    }
+    .sixthSecLinks1 span img, .sixthSecLinks2 span img { display: none; }
+}
+
+/* Tablets (Max 992px) */
+@media (max-width: 992px) {
+    .navBar { padding: 0 5%; }
+    
+    /* Stack Layouts */
+    .servHeadliner { flex-direction: column; height: auto; }
+    .serv:nth-child(even) .servHeadliner { flex-direction: column-reverse; }
+    
+    .servInfo { width: 100%; padding: 8% 5%; text-align: center; }
+    .servImage { width: 100%; height: 50vh; }
+    
+    .bottomInfo { flex-direction: column; text-align: center; gap: 40px; padding: 8% 5%; }
+    .bIleft { width: 100%; padding-right: 0; }
+    .bIright { width: 100%; align-items: center; }
+    
+    .midServImage { height: 40vh; }
+    
+    /* Center Footer */
+    #sixthSec {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+        padding: 10% 5% 15% 5%; 
+    }
+    .sixthSecLogo, .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 {
+        width: 100%;
+        align-items: center;
+    }
+    .sixthSecLinks1 span, .sixthSecLinks2 span { align-items: center; justify-content: center; }
+    
+    #backToTopBtn2 { position: relative; right: auto; top: auto; margin: 20px auto 0; }
+    
+    /* Hide absolute elements on small screens for cleaner layout */
+    .shapes { display: none; }
+}
+
+/* Large Mobile Devices (Max 768px) */
+@media (max-width: 768px) {
+    .navSec2 button { width: auto; min-width: 70px; padding: 2%; font-size: 0.9rem; }
+    .servImage { height: 40vh; }
+    .midServImage { height: 35vh; }
+}
+
+/* Small Mobile Devices (Max 576px) */
+@media (max-width: 576px) {
+    /* Navbar Adjustment - Stack elements but keep it fixed */
+    .navBar { 
+        height: auto; 
+        padding: 15px 5%; 
+    }
+    .navBar nav { flex-direction: column; align-items: center; gap: 15px; }
+    .navSec1 { width: 100%; justify-content: center; }
+    .navSec1 img { width: 100px; }
+    
+    /* Wrap buttons neatly below logo */
+    .navSec2 { width: 100%; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .navSec2 button { margin-left: 0; width: 45%; height: 40px; font-size: 0.85rem; }
+    
+    /* Push content down to compensate for the taller stacked navbar */
+    #serviceSec { margin-top: 20vh; }
+    .firstServ { margin-top: 5vh; }
+    
+    /* Typography Scaling */
+    .servInfo h1 { font-size: 2.2rem; }
+    .bIleft h1 { font-size: 1.6rem; }
+    .servInfo p, .bIright p { font-size: 1rem; }
+    
+    .servImage { height: 35vh; }
+    .midServImage { height: 25vh; }
+}

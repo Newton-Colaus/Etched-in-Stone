@@ -35,13 +35,6 @@ abtBtn.addEventListener('click', () => {
     });
 });
 
-// servBtn.addEventListener('click', () => {
-//     hrsep.scrollIntoView({ 
-//       behavior: 'smooth', 
-//       block: 'start'
-//     });
-// });
-
 servBtn.addEventListener("click", () => {
   window.location.href = "/services";
 });
