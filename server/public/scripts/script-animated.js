@@ -14,8 +14,8 @@ const nextBgDiv = document.getElementById("nextBg"); // Our new image layer
 
 const bgImages = [
     "/static/images/background/driveway.jpg",
-    "https://images.unsplash.com/photo-1588111817213-1a12f73fbf20?q=80&w=1920&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1651195297119-afc97f14a40d?q=80&w=1920&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1612477431581-7d0c5eeb2093?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1634979642325-8d7a87f3d6a4?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ];
 let currentImgIndex = 0;
 
@@ -30,21 +30,21 @@ function startHeroLoop() {
     // 1. FAST swipe in from bottom-left (Starts at 0 seconds)
     swipeTl.to(".color-swipe", {
         clipPath: "circle(150% at 0% 100%)", 
-        duration: 0.7, 
+        duration: 1, 
         ease: "power2.in" // Accelerates into the wipe
     }, 0) 
     
     // 2. Fade the image in right as the green peaks (Starts at 0.4 seconds)
     .to(nextBgDiv, {
         opacity: 1,
-        duration: 0.4,
+        duration: 0.7,
         ease: "none"
-    }, 0.4) 
+    }, 0.7) 
     
     // 3. FAST swipe out to top-right (Starts EXACTLY at 0.7s, right when Step 1 finishes)
     .to(".color-swipe", {
         clipPath: "circle(0% at 100% 0%)", 
-        duration: 0.7,
+        duration: 1,
         ease: "power2.out", // Decelerates out of the wipe
         onComplete: () => {
             // Apply the new image to the main section background
@@ -57,7 +57,7 @@ function startHeroLoop() {
             currentImgIndex = nextImgIndex;
             startHeroLoop();
         }
-    }, 0.7); 
+    }, 1); 
 }
 
 const abtBtn = document.getElementById("abtBtn");
@@ -151,6 +151,55 @@ window.addEventListener("load", () => {
         delay: 2 // Starts bouncing a couple of seconds after page load
     });
 });
+
+if (sessionStorage.getItem("scrollToAbout") === "true") {
+    
+    // 1. Immediately wipe the note from memory so it doesn't fire again on normal refreshes
+    sessionStorage.removeItem("scrollToAbout");
+    
+    // 2. Wait exactly 1.5 seconds for the preloader to disappear
+    setTimeout(() => {
+        const aboutSection = document.getElementById("secondSec");
+        
+        if (aboutSection) {
+            // Force GSAP to lock in its spacing math before we scroll
+            ScrollTrigger.refresh();
+            
+            // Calculate the exact distance from the top, minus 80px for your fixed Navbar
+            const yOffset = aboutSection.getBoundingClientRect().top + window.scrollY - 80;
+            
+            window.scrollTo({
+                top: yOffset,
+                behavior: "smooth"
+            });
+        }
+    }, 1500); 
+}
+
+
+if (sessionStorage.getItem("scrollToContact") === "true") {
+    
+    // 1. Immediately wipe the note from memory so it doesn't fire again on normal refreshes
+    sessionStorage.removeItem("scrollToContact");
+    
+    // 2. Wait exactly 1.5 seconds for the preloader to disappear
+    setTimeout(() => {
+        const aboutSection = document.getElementById("fifthSec");
+        
+        if (aboutSection) {
+            // Force GSAP to lock in its spacing math before we scroll
+            ScrollTrigger.refresh();
+            
+            // Calculate the exact distance from the top, minus 80px for your fixed Navbar
+            const yOffset = aboutSection.getBoundingClientRect().top + window.scrollY - 80;
+            
+            window.scrollTo({
+                top: yOffset,
+                behavior: "smooth"
+            });
+        }
+    }, 1500); 
+}
 
 // =========================================
 // 2. SCROLL ANIMATIONS (ScrollTrigger)
