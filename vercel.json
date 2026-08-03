@@ -6,7 +6,6 @@
       "use": "@vercel/node"
     }
   ],
-  "outputDirectory": "server/public",
   "routes": [
     {
       "handle": "filesystem"
