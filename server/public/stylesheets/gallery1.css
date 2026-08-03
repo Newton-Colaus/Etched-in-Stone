@@ -9,79 +9,57 @@ a{
     text-decoration: none;
 }
 
+button{
+    box-shadow: none !important;
+    color: rgb(0, 0, 0) !important;
+    border-color: black !important;
+    border-radius: 30px;
+}
+
 body{
-    color: white;
-    /* THE FIX: Prevents GSAP from causing horizontal scroll jumps */
-    overflow-x: hidden; 
+    background-color: white;
 }
 
 body::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
+  
 
 body::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.589); 
+    /* border-radius: 15px; */
     cursor: pointer;
     transition: 0.2s;
 }
+  
 
 body::-webkit-scrollbar-thumb:hover {
     background: #ffffffc7; 
 }
 
-button {
-    border-radius: 30px !important;
-    backdrop-filter: blur(3px);
-    box-shadow: 0 0 15px #00000050;
-}
-
-/* =========================================
-   PRELOADER FIX (TRANSPARENT BACKGROUND)
-   ========================================= */
 #preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
+    background-color: #ffffff; 
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999; 
-    pointer-events: none;
-    /* THE FIX: This stops the preloader from acting like a solid white wall */
-    background-color: transparent !important; 
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-
-.curtain {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    /* Choose your curtain color here */
-    background-color: #000000; 
-    z-index: 9998;
-}
-
-.curtain-left { left: 0; }
-.curtain-right { right: 0; }
 
 #preloader img {
     width: 150px; 
     height: auto;
-    z-index: 9999;
 }
 
-/* =========================================
-   RESTORED ORIGINAL LAYOUT
-   ========================================= */
-#firstSec{
-    height: 100vh;
-    width: 100%;
-    background-color: black;
-    color: white;
-    padding: 2% 9%;
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .navBar{
@@ -115,9 +93,8 @@ button {
     align-items: center;
 }
 
-/* Restored to 9% */
 .navSec1 img{
-    width: 9%; 
+    width: 9%;
     backdrop-filter: blur(6px);
     border-radius: 50px;
 }
@@ -136,7 +113,6 @@ button {
     justify-content: end;
 }
 
-/* Restored to 13% width and 45% height */
 .navSec2 button{
     outline: none;
     padding: 1%;
@@ -195,9 +171,13 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 2% 9%;
-    border-top: 1px solid black;
+    border-top: 2px solid white;
     background-color: white;
-    position: relative; /* Added so copyright sticks correctly */
+    border-top: 1px solid black;
+    /* background-image: url(/static/images/background/1.png); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* background-position: top; */
 }
 
 .sixthSecLogo{
@@ -207,7 +187,6 @@ button {
     align-items: center;
 }
 
-/* Restored to 250px by 250px */
 .sixthSecLogo img{
     width: 250px;
     height: 250px;
@@ -222,9 +201,17 @@ button {
     align-items: end;
 }
 
-.sixthSecLinks{ width: 20%; }
-.sixthSecLinks1{ width: 25%; }
-.sixthSecLinks2{ width: 35%; }
+.sixthSecLinks{
+    width: 20%;
+}
+
+.sixthSecLinks1{
+    width: 25%;
+}
+
+.sixthSecLinks2{
+    width: 35%;
+}
 
 .sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a{
     color: rgb(0, 0, 0);
@@ -248,12 +235,29 @@ button {
     align-items: center;
 }
 
-.sixthSecLinks2 span:nth-child(1){ width: 41%; }
-.sixthSecLinks2 span:nth-child(2){ width: 44%; }
-.sixthSecLinks2 span:nth-child(3){ width: 73%; }
-.sixthSecLinks2 span:nth-child(4){ width: 65%; }
+.sixthSecLinks2 span:nth-child(1){
+    width: 41%;
+}
 
-.sixthSecLinks1 span img, .sixthSecLinks2 span img{
+.sixthSecLinks2 span:nth-child(2){
+    width: 44%;
+}
+
+.sixthSecLinks2 span:nth-child(3){
+    width: 73%;
+}
+
+.sixthSecLinks2 span:nth-child(4){
+    width: 65%;
+}
+
+.sixthSecLinks1 span img{
+    width: 28px;
+    height: 28px;
+    filter: invert(1);
+}
+
+.sixthSecLinks2 span img{
     width: 28px;
     height: 28px;
     filter: invert(1);
@@ -266,128 +270,117 @@ button {
     margin-top: 10vh;
 }
 
-/* Restored to strict 100vh */
-.serv{
+#fourthSec{
     width: 100%;
-    height: 100vh; 
-    padding: 5% 0;
+    height: 150vh;
+    display: flex;
+    flex-direction: column;
+    /* background-image: url(/static/images/background/1.png); */
+    /* background-size: cover; */
+    /* background-position: left */
     background-color: white;
+    color: black;
+    padding: 2% 9% 5% 9%;
+    margin-top: 10vh;
     position: relative;
 }
 
-.firstServ{
-    margin-top: 10vh;
-}
-
-/* Restored to strict 80% */
-.servHeadliner{
-    display: flex;
+.fourthSecHeader{
     width: 100%;
-    height: 80%; 
+    color: rgb(0, 0, 0);
+    height: 10%;
 }
 
-/* Restored to strict 7% padding */
-.servInfo{
-    width: 50%;
+.fourthSecHeader h1{
+    font-size: 75px;
+}
+
+.fourthSecImages{
+    width: 100%;
+    height: 90%;
     display: flex;
-    padding: 7%; 
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.servInfo span{
-    font-size: 1.2rem;
-    color: #3e3e3e;
-}
-
-.servInfo h1{
-    font-size: 4rem;
-    margin: 2% 0;
-}
-
-.servInfo p{
-    font-size: 1.1rem;
-    font-weight: 100;
-    color: #3e3e3e;
-}
-
-.servImage{
-    width: 50%;
-    height: 100%;
-}
-
-.servImage img{
+.fourthSecImages div{
     width: 100%;
-    height: 100%;
-    border-radius: 2px;
+    height: 33%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fourthSecImages div img{
+    border-radius: 10px;
     object-fit: cover;
     object-position: center;
 }
 
-/* Restored to strict 30% height and 2% 7% padding */
-.bottomInfo{
-    width: 100%;
-    height: 30%; 
-    padding: 2% 7%;
-    display: flex;
-}
-
-.bIleft{
-    width: 50%;
+.fourthSecImages div:nth-child(1) img{
+    width: 33%;
     height: 100%;
-    display: flex;
-    align-items: center;
 }
 
-.bIleft p, .bIleft h1 {
-    font-size: 2.4rem; /* Targeted both p and h1 just in case */
-}
-
-.bIright{
-    width: 50%;
+.fourthSecImages div:nth-child(2) img{
+    width: 24.75%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 20%;
 }
 
-.bIright p{
-    font-size: 1.2rem;
-    color: #3e3e3e;
-    font-weight: 100;
-}
-
-.bIright span{
-    font-size: 1rem;
-    color: #003b09;
-}
-
-.midServImage{
-    width: 100%;
-    height: 60vh;
-    object-fit: cover;
-    object-position: center;
+.fourthSecImages div:nth-child(3) img{
+    width: 33%;
+    height: 100%;
 }
 
 .shapes{
-    display: none !important;
     width: 10%;
     position: absolute;
+    display: none;
 }
 
-.s1{ top: 0; left: 0; width: 14%; }
-.s2{ top: -0.5%; right: 0; width: 14%; }
-.s3{ top: -0.5%; left: 0; width: 14%; transform: scaleX(-1); }
-.s4{ top: -0.5%; right: 0; width: 14%; }
-.s5{ top: -0.5%; left: 0; width: 16%; transform: scaleX(-1); }
+.s1{
+    top: 0;
+    left: 0;
+    width: 14%;
+}
 
-/* Gently fixed the copyright positioning so it doesn't break if you add more content */
+.s2{
+    top: -0.5%;
+    right: 0;
+    width: 14%;
+    transform: scaleX(-1);
+}
+
+.s3{
+    bottom: 0;
+    left: 0;
+    width: 14%;
+    transform: scaleY(-1);
+}
+
+.s4{
+    bottom: 0;
+    right: 0;
+    width: 14%;
+    transform: scale(-1);
+}
+
+.s5{
+    top: 50%;
+    right: 0;
+    width: 14%;
+}
+
+.s6{
+    top: 50%;
+    left: 0;
+    width: 14%;
+    transform: scaleX(-1);
+}
+
 #copyright{
     font-size: 0.8rem;
     position: absolute;
-    bottom: 20px; 
-    left: 50%;
-    transform: translateX(-50%);
+    top: 195vh;
+    left: 40vw;
     color: #000000b0;
 }

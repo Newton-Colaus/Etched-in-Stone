@@ -380,6 +380,7 @@ button {
 }
 
 .shapes{
+    display: none !important;
     width: 10%;
     position: absolute;
 }

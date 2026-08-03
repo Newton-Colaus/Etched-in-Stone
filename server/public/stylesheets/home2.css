@@ -188,14 +188,15 @@ body::-webkit-scrollbar-thumb:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
+        -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     text-shadow: 0 0 30px #00000050;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
+
 }
 
 #hlC1 {
@@ -204,6 +205,10 @@ body::-webkit-scrollbar-thumb:hover {
 
 #hlC2 {
     font-size: 2.5rem !important;
+}
+
+#hlC1, #hlC2{
+    text-shadow: 0 0 10px black !important;
 }
 
 .heroLandingContent div:nth-child(2) {

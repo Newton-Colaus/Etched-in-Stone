@@ -12,69 +12,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Preloader -->
     <div id="preloader">
         <img src="/static/logo/black.png" alt="">
     </div>
-
-    <!-- Navigation -->
-    <div class="navBar navBarScrolled" id="navBar">
+    <div class="navBar navBarScrolled">
         <nav>
             <div class="navSec1">
                 <img id="navBarLogo" src="/static/logo/black.png" alt="">
             </div>
             <div class="navSec2">
-                <button class="navBarButtonScrolled" id="homeBtn">Home</button>
-                <button class="navBarButtonScrolled" id="servBtn">Services</button>
-                <button class="navBarButtonScrolled" id="abtBtn">About</button>
-                <button class="navBarButtonScrolled" id="contBtn">Contact</button>
+                <button class="navBarButtonScrolled"  id="homeBtn">Home</button>
+                <button class="navBarButtonScrolled"  id="servBtn">Services</button>
+                <button class="navBarButtonScrolled"  id="abtBtn">About</button>
+                <button class="navBarButtonScrolled"  id="contBtn">Contact</button>
             </div>
         </nav>
     </div> 
-
-    <!-- Gallery Section -->
     <section id="fourthSec">
         <div class="fourthSecHeader">
-            <h1 class="reveal-text"><span class="reveal-mask"><span class="reveal-line">Gallery</span></span></h1>
+            <h1>Gallery</h1>
         </div>
-        
         <div class="fourthSecImages">
-            <div class="gallery-row">
+            <div>
                 <img src="<%= items[0]?.imageUrl %>" alt="">
                 <img src="<%= items[1]?.imageUrl %>" alt="">
                 <img src="<%= items[2]?.imageUrl %>" alt="">
             </div>
-            <div class="gallery-row">
+            <div>
                 <img src="<%= items[3]?.imageUrl %>" alt="">
                 <img src="<%= items[4]?.imageUrl %>" alt="">
                 <img src="<%= items[5]?.imageUrl %>" alt="">
                 <img src="<%= items[6]?.imageUrl %>" alt="">
             </div>
-            <div class="gallery-row">
+            <div>
                 <img src="<%= items[7]?.imageUrl %>" alt="">
                 <img src="<%= items[8]?.imageUrl %>" alt="">
                 <img src="<%= items[9]?.imageUrl %>" alt="">
             </div>
-            <div class="gallery-row">
+            <div>
                 <img src="<%= items[3]?.imageUrl %>" alt="">
                 <img src="<%= items[4]?.imageUrl %>" alt="">
                 <img src="<%= items[5]?.imageUrl %>" alt="">
                 <img src="<%= items[6]?.imageUrl %>" alt="">
             </div>
-            <div class="gallery-row">
+            <div>
                 <img src="<%= items[3]?.imageUrl %>" alt="">
                 <img src="<%= items[4]?.imageUrl %>" alt="">
                 <img src="<%= items[5]?.imageUrl %>" alt="">
                 <img src="<%= items[6]?.imageUrl %>" alt="">
             </div>
-             <div class="gallery-row">
+             <div>
                 <img src="<%= items[7]?.imageUrl %>" alt="">
                 <img src="<%= items[8]?.imageUrl %>" alt="">
                 <img src="<%= items[9]?.imageUrl %>" alt="">
             </div>
         </div>
-        
-        <!-- Decorative Shapes -->
         <img class="shapes s1" src="/static/shapes/triagy.png" alt="">
         <img class="shapes s2" src="/static/shapes/triag.png" alt="">
         <img class="shapes s3" src="/static/shapes/triay.png" alt="">
@@ -82,8 +74,6 @@
         <img class="shapes s5" src="/static/shapes/yellowave.png" alt="">
         <img class="shapes s6" src="/static/shapes/greenwave.png" alt="">        
     </section>
-
-    <!-- Footer Section -->
     <section id="sixthSec">
         <div class="sixthSecLogo">
             <img src="/static/logo/black.png" alt="">
@@ -137,10 +127,7 @@
                 Copyright &copy; 2026 Etched In Stone Concrete
         </div>
     </section>
-
-    <!-- GSAP & Main Script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="/static/scripts/gallery.js"></script>
 </body>
+<script src="/static/scripts/services.js"></script>
+<script src="/static/scripts/gallery.js"></script>
 </html>
