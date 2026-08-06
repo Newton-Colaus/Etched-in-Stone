@@ -20,44 +20,72 @@ const bgImages = [
 let currentImgIndex = 0;
 
 function startHeroLoop() {
-    // Wait 4 seconds between each transition
     const swipeTl = gsap.timeline({ delay: 4 }); 
     const nextImgIndex = (currentImgIndex + 1) % bgImages.length;
     
-    // Prep the invisible background layer with the upcoming image
+    // Prep the staging layer with the upcoming image
     nextBgDiv.style.backgroundImage = `url(${bgImages[nextImgIndex]})`;
 
-    // 1. FAST swipe in from bottom-left (Starts at 0 seconds)
-    swipeTl.to(".color-swipe", {
-        clipPath: "circle(150% at 0% 100%)", 
-        duration: 1, 
-        ease: "power2.in" // Accelerates into the wipe
-    }, 0) 
-    
-    // 2. Fade the image in right as the green peaks (Starts at 0.4 seconds)
-    .to(nextBgDiv, {
-        opacity: 1,
-        duration: 0.7,
-        ease: "none"
-    }, 0.7) 
-    
-    // 3. FAST swipe out to top-right (Starts EXACTLY at 0.7s, right when Step 1 finishes)
-    .to(".color-swipe", {
-        clipPath: "circle(0% at 100% 0%)", 
-        duration: 1,
-        ease: "power2.out", // Decelerates out of the wipe
+    // 1. SETUP IMAGE LAYER (Starts hidden with 0px width)
+    gsap.set(nextBgDiv, { 
+        opacity: 1, 
+        clipPath: "polygon(0px 0px, 0px 0px, 0px 100%, 0px 100%)",
+        zIndex: 1 
+    });
+
+    // 2. SETUP THE FADED COLOR TRAIL
+    // We convert the color-swipe into a moving gradient block instead of a clip-path
+    gsap.set(".color-swipe", { 
+        clipPath: "none", 
+        width: "80vw",    // The length of the trail! (40% of the screen)
+        height: "100%",
+        position: "absolute",
+        top: 0,
+        left: "-80vw",    // Start completely hidden off-screen to the left
+        
+        // 🎨 GRADIENT BUILD-UP: Fades from transparent on the left, to solid on the right.
+        // Replace '255, 255, 255' with the RGB values of your brand color!
+        background: "linear-gradient(to right, rgba(210, 81, 0,0) 0%, rgba(210, 81, 0,0.7) 70%, rgba(210, 81, 0,1) 100%)",
+        
+        opacity: 1, 
+        zIndex: 2         // Sits directly ON TOP of the image edge to hide the hard line
+    });
+
+    // 3. THE PROXY ANIMATION
+    // This perfectly syncs the faded color trail with the image reveal
+    const wipeProxy = { progress: 0 };
+
+    swipeTl.to(wipeProxy, {
+        progress: 100,
+        duration: 1.8,        // Slightly longer duration smooths out the motion
+        ease: "power3.inOut", // power3 has a much silkier, smoother curve than power2
+        onUpdate: () => {
+            // Calculate dynamic pixel dimensions so it remains perfectly responsive
+            const totalW = heroSection.offsetWidth;
+            const trailW = totalW * 0.8; // Matches the 40vw width set above
+
+            // Calculate the exact pixel position of the leading edge
+            const currentLeadingEdge = (wipeProxy.progress / 100) * (totalW + trailW);
+
+            // Move the faded color trail smoothly across the screen
+            gsap.set(".color-swipe", { x: currentLeadingEdge });
+
+            // Move the image reveal EXACTLY with the solid edge of the color trail.
+            // Math.min clamps it so the polygon doesn't break once it clears the screen.
+            const clipX = Math.min(currentLeadingEdge, totalW);
+            nextBgDiv.style.clipPath = `polygon(0px 0px, ${clipX}px 0px, ${clipX}px 100%, 0px 100%)`;
+        },
         onComplete: () => {
-            // Apply the new image to the main section background
+            // Apply the new image to the main background
             heroSection.style.backgroundImage = `url(${bgImages[nextImgIndex]})`;
-            // Instantly hide the staging layer and reset the green curtain
-            gsap.set(nextBgDiv, { opacity: 0 });
-            gsap.set(".color-swipe", { clipPath: "circle(0% at 0% 100%)" });
             
-            // Update the index and start the loop all over again
+            // Hide everything to prep for the next cycle
+            gsap.set([nextBgDiv, ".color-swipe"], { opacity: 0 });
+            
             currentImgIndex = nextImgIndex;
             startHeroLoop();
         }
-    }, 1); 
+    }); 
 }
 
 const abtBtn = document.getElementById("abtBtn");
@@ -210,26 +238,90 @@ if (sessionStorage.getItem("scrollToContact") === "true") {
 // =========================================
 // MASTER BOOT SEQUENCE (Waits for Images AND Fonts)
 // =========================================
+// =========================================
+// MASTER BOOT SEQUENCE & ANIMATIONS
+// =========================================
 window.addEventListener("load", () => {
     document.fonts.ready.then(() => {
-        
-        // 1. EVERYTHING IS READY - HIDE PRELOADER
-        const preloader = document.getElementById("preloader");
-        if (preloader) {
-            preloader.classList.add("preloader-hidden");
-            
-            // Remove it from the DOM flow after the CSS fade finishes (0.5s)
-            setTimeout(() => {
-                preloader.style.display = "none";
-            }, 500);
-        }
 
-        // 2. INITIALIZE GSAP ANIMATIONS & SPLITTEXT
+        // 1. MAIN LOAD TIMELINE (Preloader & Hero Reveal)
+        const mainTl = gsap.timeline();
+
+        // Fade out the inner content of the preloader first (logo/spinner)
+        mainTl.to("#preloader > *", {
+            opacity: 0,
+            y: -30, 
+            duration: 0.6,
+            ease: "power2.inOut"
+        })
+        // Slide the entire preloader background UP and away
+        .to("#preloader", {
+            yPercent: -100, 
+            duration: 1.2,
+            ease: "power4.inOut", 
+            onComplete: () => { 
+                // Remove from DOM flow so it doesn't block clicks
+                const preloader = document.getElementById("preloader");
+                if (preloader) preloader.style.display = "none"; 
+            }
+        })
+        // Hero Section background zooms out smoothly
+        .fromTo("#firstSec", 
+            { backgroundSize: "120%" }, 
+            { backgroundSize: "100%", duration: 2.5, ease: "power2.out" }, 
+            "-=0.8" // Overlaps so the zoom is happening as the curtain rises
+        )
+        // Slide Navbar Down
+        .from(".navBar", { 
+            yPercent: -100, 
+            opacity: 0, 
+            duration: 0.8, 
+            ease: "power3.out",
+            clearProps: "transform" // Removes GSAP styling so responsive CSS works correctly
+        }, "-=2")
+        // Reveal Main Hero Text smoothly
+        .from(["#hlC1", "#hlC2"], { 
+            y: 80, 
+            opacity: 0, 
+            duration: 1, 
+            stagger: 0.2, 
+            ease: "power4.out" 
+        }, "-=1.5")
+        // Pop in the Contact/Action Button
+        .from("#contBtn2", { 
+            scale: 0.5, 
+            opacity: 0, 
+            duration: 0.6, 
+            ease: "back.out(1.7)" 
+        }, "-=1")
+        // Start the continuous image loop safely
+        .call(() => {
+            if (typeof startHeroLoop === 'function') startHeroLoop();
+        }); 
+
+        // 2. STANDALONE INFINITE ANIMATION
+        // Kept separate so the infinite loop doesn't pause or block the main timeline
+        gsap.from(".scrollDownIco", { 
+            y: -20, 
+            opacity: 0, 
+            duration: 1, 
+            yoyo: true, 
+            repeat: -1,
+            ease: "power1.inOut",
+            delay: 2 // Starts bouncing a couple of seconds after page load
+        });
+
+        // 3. SCROLL-TRIGGERED ANIMATIONS
         // --- ABOUT SECTION (#secondSec) ---
         const secondSec = document.getElementById("secondSec");
         if (secondSec) {
             const aboutPara = document.querySelector(".div75 > div:nth-child(2) p");
-            const splitAbout = new SplitText(aboutPara, { type: "lines" });
+            let splitAbout;
+            
+            // Safety check to prevent SplitText fatal errors
+            if (aboutPara) {
+                splitAbout = new SplitText(aboutPara, { type: "lines" });
+            }
 
             const aboutTl = gsap.timeline({
                 scrollTrigger: { trigger: secondSec, start: "top 75%" }
@@ -239,9 +331,13 @@ window.addEventListener("load", () => {
                    { clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)" }, 
                    { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1.5, ease: "power4.inOut" } 
             )
-            .from(".div75 h1", { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.9")
-            .from(splitAbout.lines, { x: 50, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out" }, "-=0.7")
-            .from(".secondSecQuote", { scale: 0.9, opacity: 0, duration: 0.6, ease: "back.out(1.5)" }, "-=0.5");
+            .from(".div75 h1", { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.9");
+            
+            if (splitAbout && splitAbout.lines) {
+                aboutTl.from(splitAbout.lines, { x: 50, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out" }, "-=0.7");
+            }
+            
+            aboutTl.from(".secondSecQuote", { scale: 0.9, opacity: 0, duration: 0.6, ease: "back.out(1.5)" }, "-=0.5");
         }
 
         // --- SERVICES CONTAINER ANIMATIONS ---
@@ -252,27 +348,38 @@ window.addEventListener("load", () => {
             const info = service.querySelector('.serviceInfo');
             
             let splitInfo;
-            if (info) splitInfo = new SplitText(info, { type: "lines" });
+            if (info) {
+                splitInfo = new SplitText(info, { type: "lines" });
+            }
             
             const serviceTl = gsap.timeline({
                 scrollTrigger: { trigger: service, start: "top 80%", toggleActions: "play none none none" }
             });
 
             if (img) {
+                // Dynamically alternate wipe direction based on layout structure
                 const isImageOnRight = (index % 2 !== 0); 
                 const startClip = isImageOnRight ? "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)" : "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)";
-                serviceTl.fromTo(img, { clipPath: startClip }, { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1.5, ease: "power4.inOut" });
+                
+                serviceTl.fromTo(img, 
+                    { clipPath: startClip }, 
+                    { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1.5, ease: "power4.inOut" }
+                );
             }
             
-            if (heading) serviceTl.from(heading, { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.9");
-            if (info && splitInfo.lines) serviceTl.from(splitInfo.lines, { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" }, "-=0.7");
+            if (heading) {
+                serviceTl.from(heading, { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.9");
+            }
+            if (info && splitInfo && splitInfo.lines) {
+                serviceTl.from(splitInfo.lines, { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" }, "-=0.7");
+            }
         });
 
-        // 3. FORCE GSAP TO RECALCULATE POSITIONS (Crucial after font loading)
+        // 4. FORCE GSAP TO RECALCULATE POSITIONS 
+        // Crucial step: Updates triggers after custom fonts alter the geometry of the page
         ScrollTrigger.refresh();
 
-        // 4. HANDLE CROSS-PAGE SCROLLING
-        // Wait just slightly longer than the preloader fade to ensure a smooth jump
+        // 5. HANDLE CROSS-PAGE SCROLLING
         const targetSectionId = sessionStorage.getItem("scrollToSection");
         if (targetSectionId) {
             sessionStorage.removeItem("scrollToSection");
@@ -282,7 +389,7 @@ window.addEventListener("load", () => {
                     const yOffset = section.getBoundingClientRect().top + window.scrollY - 80;
                     window.scrollTo({ top: yOffset, behavior: "smooth" });
                 }
-            }, 600); // Triggers right after the 500ms preloader fade finishes
+            }, 1200); // Delayed to wait for the 1.2s preloader curtain animation to completely finish
         }
         
     });
