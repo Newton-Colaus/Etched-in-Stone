@@ -1,5 +1,5 @@
 // Register the ScrollTrigger Plugin
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 // =========================================
 // 1. INITIAL LOAD & HERO TIMELINE
@@ -86,71 +86,71 @@ window.addEventListener("scroll", () => {
 });
 
 
-window.addEventListener("load", () => {
-    // MAIN LOAD TIMELINE
-    const tl = gsap.timeline();
+// window.addEventListener("load", () => {
+//     // MAIN LOAD TIMELINE
+//     const tl = gsap.timeline();
 
-    // 1. Fade out the inner content of the preloader first (logo/spinner)
-    tl.to("#preloader > *", {
-        opacity: 0,
-        y: -30, 
-        duration: 0.6,
-        ease: "power2.inOut"
-    })
-    // 2. Slide the entire preloader background UP and away
-    .to("#preloader", {
-        yPercent: -100, 
-        duration: 1.2,
-        ease: "power4.inOut", 
-        onComplete: () => { 
-            // Remove from DOM flow so it doesn't block clicks
-            document.getElementById("preloader").style.display = "none"; 
-        }
-    })
-    // 3. Hero Section background zooms out smoothly
-    .fromTo("#firstSec", 
-        { backgroundSize: "120%" }, 
-        { backgroundSize: "100%", duration: 2.5, ease: "power2.out" }, 
-        "-=0.8" // Overlaps so the zoom is happening as the curtain rises
-    )
-    // 4. Slide Navbar Down
-    .from(".navBar", { 
-        yPercent: -100, 
-        opacity: 0, 
-        duration: 0.8, 
-        ease: "power3.out",
-        clearProps: "transform"
-    }, "-=2")
-    // 5. Reveal Main Hero Text smoothly
-    .from(["#hlC1", "#hlC2"], { 
-        y: 80, 
-        opacity: 0, 
-        duration: 1, 
-        stagger: 0.2, 
-        ease: "power4.out" 
-    }, "-=1.5")
-    // 6. Pop in the Contact/Action Button
-    .from("#contBtn2", { 
-        scale: 0.5, 
-        opacity: 0, 
-        duration: 0.6, 
-        ease: "back.out(1.7)" 
-    }, "-=1")
-    // 7. Start the continuous color swipe image loop
-    .call(startHeroLoop); 
+//     // 1. Fade out the inner content of the preloader first (logo/spinner)
+//     tl.to("#preloader > *", {
+//         opacity: 0,
+//         y: -30, 
+//         duration: 0.6,
+//         ease: "power2.inOut"
+//     })
+//     // 2. Slide the entire preloader background UP and away
+//     .to("#preloader", {
+//         yPercent: -100, 
+//         duration: 1.2,
+//         ease: "power4.inOut", 
+//         onComplete: () => { 
+//             // Remove from DOM flow so it doesn't block clicks
+//             document.getElementById("preloader").style.display = "none"; 
+//         }
+//     })
+//     // 3. Hero Section background zooms out smoothly
+//     .fromTo("#firstSec", 
+//         { backgroundSize: "120%" }, 
+//         { backgroundSize: "100%", duration: 2.5, ease: "power2.out" }, 
+//         "-=0.8" // Overlaps so the zoom is happening as the curtain rises
+//     )
+//     // 4. Slide Navbar Down
+//     .from(".navBar", { 
+//         yPercent: -100, 
+//         opacity: 0, 
+//         duration: 0.8, 
+//         ease: "power3.out",
+//         clearProps: "transform"
+//     }, "-=2")
+//     // 5. Reveal Main Hero Text smoothly
+//     .from(["#hlC1", "#hlC2"], { 
+//         y: 80, 
+//         opacity: 0, 
+//         duration: 1, 
+//         stagger: 0.2, 
+//         ease: "power4.out" 
+//     }, "-=1.5")
+//     // 6. Pop in the Contact/Action Button
+//     .from("#contBtn2", { 
+//         scale: 0.5, 
+//         opacity: 0, 
+//         duration: 0.6, 
+//         ease: "back.out(1.7)" 
+//     }, "-=1")
+//     // 7. Start the continuous color swipe image loop
+//     .call(startHeroLoop); 
 
-    // STANDALONE INFINITE ANIMATION
-    // Kept separate so the infinite loop doesn't pause the main timeline
-    gsap.from(".scrollDownIco", { 
-        y: -20, 
-        opacity: 0, 
-        duration: 1, 
-        yoyo: true, 
-        repeat: -1,
-        ease: "power1.inOut",
-        delay: 2 // Starts bouncing a couple of seconds after page load
-    });
-});
+//     // STANDALONE INFINITE ANIMATION
+//     // Kept separate so the infinite loop doesn't pause the main timeline
+//     gsap.from(".scrollDownIco", { 
+//         y: -20, 
+//         opacity: 0, 
+//         duration: 1, 
+//         yoyo: true, 
+//         repeat: -1,
+//         ease: "power1.inOut",
+//         delay: 2 // Starts bouncing a couple of seconds after page load
+//     });
+// });
 
 if (sessionStorage.getItem("scrollToAbout") === "true") {
     
@@ -206,19 +206,86 @@ if (sessionStorage.getItem("scrollToContact") === "true") {
 // =========================================
 
 // --- ABOUT SECTION (#secondSec) ---
-const aboutTl = gsap.timeline({
-    scrollTrigger: { trigger: "#secondSec", start: "top 75%" }
-});
+// Wait for all custom fonts to finish downloading and rendering
+// =========================================
+// MASTER BOOT SEQUENCE (Waits for Images AND Fonts)
+// =========================================
+window.addEventListener("load", () => {
+    document.fonts.ready.then(() => {
+        
+        // 1. EVERYTHING IS READY - HIDE PRELOADER
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+            preloader.classList.add("preloader-hidden");
+            
+            // Remove it from the DOM flow after the CSS fade finishes (0.5s)
+            setTimeout(() => {
+                preloader.style.display = "none";
+            }, 500);
+        }
 
-aboutTl.from(".div25 img", { x: -100, opacity: 0, duration: 1, ease: "power3.out" })
-       .from(".div75 h1", { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.5")
-       .from(".div75 p", { x: 50, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.4")
-       .from(".secondSecQuote", { scale: 0.9, opacity: 0, duration: 0.6, ease: "back.out(1.5)" }, "-=0.2");
+        // 2. INITIALIZE GSAP ANIMATIONS & SPLITTEXT
+        // --- ABOUT SECTION (#secondSec) ---
+        const secondSec = document.getElementById("secondSec");
+        if (secondSec) {
+            const aboutPara = document.querySelector(".div75 > div:nth-child(2) p");
+            const splitAbout = new SplitText(aboutPara, { type: "lines" });
 
-// --- SERVICES SECTION (#thirdSec) ---
-gsap.from(".thirdSec1Header h1", {
-    scrollTrigger: { trigger: "#thirdSec", start: "top 80%" },
-    y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
+            const aboutTl = gsap.timeline({
+                scrollTrigger: { trigger: secondSec, start: "top 75%" }
+            });
+
+            aboutTl.fromTo(".div25 img", 
+                   { clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)" }, 
+                   { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1.5, ease: "power4.inOut" } 
+            )
+            .from(".div75 h1", { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.9")
+            .from(splitAbout.lines, { x: 50, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out" }, "-=0.7")
+            .from(".secondSecQuote", { scale: 0.9, opacity: 0, duration: 0.6, ease: "back.out(1.5)" }, "-=0.5");
+        }
+
+        // --- SERVICES CONTAINER ANIMATIONS ---
+        const serviceBlocks = gsap.utils.toArray('.services');
+        serviceBlocks.forEach((service, index) => {
+            const img = service.querySelector('.serviceImage img');
+            const heading = service.querySelector('.servicesHeading');
+            const info = service.querySelector('.serviceInfo');
+            
+            let splitInfo;
+            if (info) splitInfo = new SplitText(info, { type: "lines" });
+            
+            const serviceTl = gsap.timeline({
+                scrollTrigger: { trigger: service, start: "top 80%", toggleActions: "play none none none" }
+            });
+
+            if (img) {
+                const isImageOnRight = (index % 2 !== 0); 
+                const startClip = isImageOnRight ? "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)" : "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)";
+                serviceTl.fromTo(img, { clipPath: startClip }, { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1.5, ease: "power4.inOut" });
+            }
+            
+            if (heading) serviceTl.from(heading, { y: 30, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.9");
+            if (info && splitInfo.lines) serviceTl.from(splitInfo.lines, { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" }, "-=0.7");
+        });
+
+        // 3. FORCE GSAP TO RECALCULATE POSITIONS (Crucial after font loading)
+        ScrollTrigger.refresh();
+
+        // 4. HANDLE CROSS-PAGE SCROLLING
+        // Wait just slightly longer than the preloader fade to ensure a smooth jump
+        const targetSectionId = sessionStorage.getItem("scrollToSection");
+        if (targetSectionId) {
+            sessionStorage.removeItem("scrollToSection");
+            setTimeout(() => {
+                const section = document.getElementById(targetSectionId);
+                if (section) {
+                    const yOffset = section.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: yOffset, behavior: "smooth" });
+                }
+            }, 600); // Triggers right after the 500ms preloader fade finishes
+        }
+        
+    });
 });
 
 // Stagger the service items sliding up
@@ -271,10 +338,7 @@ backToTop.addEventListener("click", () => {
     window.scrollTo(0, 0);
 });
 
-const secondSec = document.getElementById("secondSec");
-const thirdSec = document.getElementById("thirdSec");
-const fourthSec = document.getElementById("fourthSec");
-const fifthSec = document.getElementById("fifthSec");
+
 
 abtBtn.addEventListener('click', () => {
     secondSec.scrollIntoView({ 
@@ -305,4 +369,5 @@ contBtn2.addEventListener('click', () => {
     });
 });
 
-
+// Bouncing Scroll Down Indicator
+gsap.to(".scrollDownIco img", { y: 15, repeat: -1, yoyo: true, duration: 1, ease: "power1.inOut" });

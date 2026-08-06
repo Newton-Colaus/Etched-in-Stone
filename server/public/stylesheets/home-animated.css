@@ -363,8 +363,8 @@ body::-webkit-scrollbar-thumb:hover {
 .div75 h1 {
     font-size: 3.5rem;
 }
-
-.div75 div {
+/* THE FIX: Add the '>' so it only targets the direct child divs */
+.div75 > div {
     text-align: end;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -377,14 +377,16 @@ body::-webkit-scrollbar-thumb:hover {
             align-items: center;
 }
 
-.div75 div:nth-child(1) img {
+/* Also update the nested image selector right below it to be safe */
+.div75 > div:nth-child(1) img {
     width: 3.5rem;
     display: none !important;
     height: 3.5rem;
     margin-left: 1.5%;
 }
 
-.div75 div:nth-child(2) p {
+/* And update the nested paragraph selector */
+.div75 > div:nth-child(2) p {
     font-size: 1.3rem;
     color: rgb(43, 43, 43);
     line-height: 165%;
@@ -909,6 +911,19 @@ body::-webkit-scrollbar-thumb:hover {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+}
+
+/* Smooth transition for form inputs */
+.fifthSecCFormInp input {
+    transition: all 0.3s ease;
+}
+
+/* Elevates the input when the user clicks to type */
+.fifthSecCFormInp input:focus {
+    border-color: #000;
+    background-color: #ffffff20; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transform: translateY(-1px);
 }
 
 .fifthSecCFormInp span {

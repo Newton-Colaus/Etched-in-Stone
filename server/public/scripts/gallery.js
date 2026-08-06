@@ -48,28 +48,6 @@ gsap.utils.toArray(".gallery-row").forEach((row) => {
     });
 });
 
-// =========================================
-// 4. NAVBAR SCROLL LOGIC
-// =========================================
-// window.addEventListener("scroll", () => {
-//     const navBar = document.getElementById("navBar");
-//     const logo = document.getElementById("navBarLogo");
-//     const buttons = document.querySelectorAll(".navSec2 button");
-
-//     if (window.scrollY > 50) {
-//         navBar.classList.add("navBarScrolled");
-//         if (logo) logo.classList.add("navBarLogoScrolled");
-//         buttons.forEach(btn => btn.classList.add("navBarButtonScrolled"));
-//     } else {
-//         navBar.classList.remove("navBarScrolled");
-//         if (logo) logo.classList.remove("navBarLogoScrolled");
-//         buttons.forEach(btn => btn.classList.remove("navBarButtonScrolled"));
-//     }
-// });
-
-// =========================================
-// 5. BACK TO TOP BUTTON
-// =========================================
 const backToTopBtn = document.getElementById("backToTopBtn2");
 if (backToTopBtn) {
     backToTopBtn.addEventListener("click", () => {
