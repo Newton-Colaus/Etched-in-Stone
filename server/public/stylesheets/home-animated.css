@@ -197,12 +197,14 @@ a {
 
 .navSec2 button {
     outline: none;
-    padding: 1%;
-    margin-left: 4%;
+    /* FIX: Swapped % for px padding. Gives text permanent breathing room */
+    padding: 10px 24px; 
+    margin-left: 15px;
     background-color: #ffffff0d;
     color: white;
-    width: 13%;
-    height: 45%;
+    /* FIX: Auto width/height lets the button size itself naturally */
+    width: auto; 
+    height: auto;
     font-size: 1rem;
     border: 1px solid white;
     -webkit-transition: 0.5s;
@@ -1242,6 +1244,28 @@ button {
 .fifthSecShape1 { position: absolute; width: 15%; top: 0; right: 0; -webkit-transform: scaleX(-1); -ms-transform: scaleX(-1); transform: scaleX(-1); }
 .fifthSecShape2 { position: absolute; width: 15%; bottom: 0; left: 0; -webkit-transform: scaleY(-1); -ms-transform: scaleY(-1); transform: scaleY(-1); }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 101; /* Stays above the mobile menu overlay */
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Invert hamburger color when navbar is scrolled */
+.navBarScrolled .hamburger .bar {
+    background-color: black;
+}
 
 /* =========================================
    RESPONSIVE DESIGN 
@@ -1250,7 +1274,8 @@ button {
 @media (max-width: 1024px) {
     #hlC1 { font-size: 6rem !important; }
     #hlC2 { font-size: 1.8rem !important; }
-    .navSec2 button { width: auto; padding: 2% 4%; font-size: 0.9rem; }
+    /* FIX: Converted the % padding to safe px so it doesn't squish on small laptops */
+    .navSec2 button { padding: 8px 18px; font-size: 0.9rem; }
     .div25 { width: 40%; }
     .div75 { width: 60%; }
     .div75 h1 { font-size: 2.8rem; }
@@ -1261,12 +1286,58 @@ button {
 }
 
 @media (max-width: 768px) {
-    #firstSec, #secondSec, #thirdSec, #fourthSec, #fifthSec, #sixthSec { height: auto !important; min-height: 100vh; padding: 10% 5%; }
+    #firstSec, #secondSec, #thirdSec, #fourthSec, #fifthSec { 
+        height: 100dvh !important; 
+    }
     .navBar { height: auto; padding: 15px 0; position: relative; background: #000; }
-    .navBar nav { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; gap: 15px; }
-    .navSec1, .navSec2 { width: 100%; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
-    .navSec1 img { width: 60px; border-radius: 50%; }
-    .navSec2 button { width: auto; font-size: 0.85rem; padding: 8px 12px; margin: 0 5px; }
+    /* .navBar nav { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; gap: 15px; } */
+    .navBar nav {
+        flex-direction: row; /* Keep logo and hamburger inline */
+        justify-content: space-between;
+        align-items: center;
+    }
+    /* .navSec1, .navSec2 { width: 100%; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; } */
+    /* .navSec1 img { width: 60px; border-radius: 50%; } */
+    /* .navSec2 button { width: auto; font-size: 0.85rem; padding: 8px 12px; margin: 0 5px; } */
+    .navSec1 { 
+        width: auto; 
+    }
+    
+    .navSec1 img { 
+        width: 50px; /* Slightly smaller for mobile */
+    }
+
+    /* THE CINEMATIC FULLSCREEN MENU */
+    .navSec2 {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hides it off-screen to the right */
+        width: 100%;
+        height: 100dvh;
+        background-color: rgba(0, 0, 0, 0.95); /* Deep cinematic black */
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* Silky slide */
+        z-index: 100;
+        margin: 0;
+    }
+
+    /* Trigger class applied via JavaScript */
+    .navSec2.active {
+        right: 0;
+    }
+
+    /* Make buttons massive and touch-friendly */
+    .navSec2 button {
+        width: 60%;
+        padding: 20px;
+        margin: 15px 0;
+        font-size: 1.2rem;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
     .heroLandingContent { margin-top: 50px; gap: 30px; height: auto; }
     #hlC1 { font-size: 4rem !important; text-align: center; }
     #hlC2 { font-size: 1.3rem !important; text-align: center; }
@@ -1296,19 +1367,40 @@ button {
     .fifthSecCFormInp input { height: 50px; font-size: 1rem; }
     .fifthSecCFormBtn { width: 100%; margin-top: 20px; }
     .fifthSecCFormBtn button { width: 100%; padding: 15px; font-size: 1.2rem; }
-    #sixthSec { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; gap: 40px; text-align: center; height: auto; padding: 10% 5%; }
+    /* #sixthSec { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; gap: 40px; text-align: center; height: auto; padding: 10% 5%; } */
+    #sixthSec { 
+        height: auto !important; 
+        min-height: 100dvh; 
+        padding: 10% 5%; 
+    }
     .sixthSecLogo, .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { width: 100%; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
     .sixthSecLinks1 span, .sixthSecLinks2 span { width: auto; gap: 15px; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-bottom: 10px; }
     #copyright { position: static; margin-top: 30px; display: block; text-align: center; font-size: 0.9rem; }
     #backToTopBtn { position: static; margin: 30px auto 0 auto; }
     .shapes { display: none; }
+    .hamburger {
+        display: flex;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        background-color: white !important; /* Force white over the dark overlay */
+    }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        background-color: white !important;
+    }
 }
 
 @media (max-width: 480px) {
     #hlC1 { font-size: 3rem !important; }
     #hlC2 { font-size: 1.1rem !important; }
-    .navSec2 button { padding: 6px 8px; font-size: 0.75rem; margin: 0 2px; }
+    /* FIX: Deleted the .navSec2 button rule entirely. Now the massive, 
+       touch-friendly buttons from your 768px menu will safely cascade down here! */
     .div75 h1 { font-size: 2rem; }
+    .servicesHeading { font-size: 1.8rem; }
     .servicesHeading { font-size: 1.8rem; }
 }
 

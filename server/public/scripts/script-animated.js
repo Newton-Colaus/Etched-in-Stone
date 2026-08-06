@@ -97,6 +97,36 @@ const navBar = document.getElementById("navBar");
 const navBarLogo = document.getElementById("navBarLogo");
 const navBarButtons = [servBtn, gallBtn, contBtn, abtBtn]
 
+// =========================================
+// MOBILE HAMBURGER MENU LOGIC
+// =========================================
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navSec2 = document.querySelector(".navSec2");
+
+if (hamburgerBtn && navSec2) {
+    // Toggle menu on click
+    hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("active");
+        navSec2.classList.toggle("active");
+        
+        // Prevent body scrolling when menu is open
+        if (navSec2.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    });
+
+    // Close menu automatically when any navigation button is clicked
+    navBarButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            hamburgerBtn.classList.remove("active");
+            navSec2.classList.remove("active");
+            document.body.style.overflow = ""; // Restore scrolling
+        });
+    });
+}
+
 window.addEventListener("scroll", () => {
   if(window.scrollY > 50){
     navBar.classList.add("navBarScrolled");
