@@ -7,7 +7,7 @@ const { getDb } = require('../config/db'); // Import Firestore instance getter
 const storage = multer.memoryStorage();
 const upload = multer({ 
   storage: storage,
-  limits: { fileSize: 4 * 1024 * 1024 }
+  limits: { fileSize: 4.5 * 1024 * 1024 }
 });
 
 // Helper function to format Firestore docs into a clean array for EJS

@@ -237,16 +237,18 @@ body::-webkit-scrollbar-thumb:hover {
     height: 87vh;
     margin-top: 13vh;
     display: flex;
-    background-image: url(/static/images/background/2.png);
+    /* background-image: url(/static/images/background/2.png); */
     background-position: right;
     padding: 2% 9%;
     justify-content: center;
+    background-color: white;
+    color: black !important;
 }
 
 #adminForm{
     width: 50%;
     height: 100%;
-    border: 2px dashed white;
+    border: 2px dashed rgb(0, 0, 0);
     padding: 1%;
     /* border-radius: 10px; */
 }
@@ -273,9 +275,9 @@ body::-webkit-scrollbar-thumb:hover {
     width: 100%;
     background: transparent;
     height: 30%;
-    color: white;
+    color: rgb(5, 5, 5);
     padding: 2%;
-    border: 2px dashed white;
+    border: 2px dashed rgb(0, 0, 0);
     font-size: 18px;
     margin-bottom: 4%;
 }
@@ -286,9 +288,9 @@ body::-webkit-scrollbar-thumb:hover {
     width: 100%;
     background: transparent;
     height: 30%;
-    color: white;
+    color: rgb(6, 6, 6);
     padding: 20px 20px;
-    border: 2px dashed white;
+    border: 2px dashed rgb(11, 11, 11);
     font-size: 15px;
     cursor: pointer;
     margin-bottom: 4%;
@@ -299,17 +301,17 @@ form button{
     height: 15%;
     background: transparent;
     outline: none;
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 30px;
-    color: white;
+    color: black;
     font-size: 16px;
     transition: 0.2s;
     cursor: pointer;
 }
 
 form button:hover{
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
 }
 
 #imgPreview{
@@ -325,7 +327,7 @@ form button:hover{
     width: 50%;
     height: 100%;
     padding: 1%;
-    border: 2px dashed white;
+    border: 2px dashed rgb(5, 5, 5);
     /* border-radius: 10px; */
     display: flex;
     flex-direction: column;
@@ -360,12 +362,12 @@ form button:hover{
 .deleteBtn{
     outline: none;
     background: red;
-    padding: 1%;
+    padding: 0.5%;
     color: white;
     width: 20%;
-    height: 100%;
+    height: 90%;
     cursor: pointer;
     font-size: 18px;
     border: none;
-    border-radius: 10px;
+    border-radius: 100px;
 }
