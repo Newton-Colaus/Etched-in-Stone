@@ -1,9 +1,11 @@
+/* =========================================
+   BASE STYLES & SCROLLBAR
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    font-family: "Stack Sans Text";
+    box-sizing: border-box;
+    font-family: "Stack Sans Text", sans-serif;
 }
 
 html {
@@ -11,8 +13,6 @@ html {
 }
 
 body {
-    /* background-color: black; */
-    /* Added hidden overflow to prevent horizontal scrollbars during animations */
     overflow-x: hidden; 
     overflow-y: auto;
 }
@@ -21,63 +21,75 @@ a {
     text-decoration: none;
 }
 
-/* Firefox Support Only: Firefox ignores WebKit rules, so we isolate these properties using a feature query
-@supports (-moz-appearance: none) {
-    html {
-        scrollbar-width: thin; 
-        scrollbar-color: rgba(150, 150, 150, 0.5) transparent;
-    }
-} */
-
-/* 1. Set the overall width of the scrollbar */
-/* 2. Set overall width (Slightly wider to make room for the invisible border) */
 ::-webkit-scrollbar {
     width: 14px; 
-    background: transparent !important; /* Forces the main background to stay clear */
+    background: transparent !important; 
 }
 
-/* 3. The Track (Explicitly transparent) */
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track-piece {
     background: transparent !important; 
-    background-color: transparent !important;
 }
 
-/* 4. The Thumb (The Border Hack) */
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(150, 150, 150, 0.6); /* A sleek, semi-transparent grey */
+    background-color: rgba(150, 150, 150, 0.6); 
     border-radius: 10px;
-    
-    /* THE MAGIC TRICK: Creates invisible space around the scrollbar */
     border: 4px solid rgba(0, 0, 0, 0); 
     background-clip: padding-box; 
 }
 
-/* 5. Hover State */
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(200, 200, 200, 0.9); /* Brightens up when hovered */
+    background-color: rgba(200, 200, 200, 0.9); 
 }
 
+/* =========================================
+   PRELOADER
+   ========================================= */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader img {
+    width: 150px;
+    height: auto;
+}
+
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+button {
+    border-radius: 100px !important;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 15px #00000050;
+}
+
+/* =========================================
+   SECTION 1: HERO & NAVBAR
+   ========================================= */
 #firstSec {
     height: 100vh;
     width: 100%;
-    background-image: url("/static/images/background/driveway.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-            background-size: cover;
+    /* Background image moved to .current-bg */
+    background-color: #000;
     color: white;
     padding: 2% 9%;
     position: relative;
     overflow: hidden;
 }
 
-
-
-/* =========================================
-   COLOR SWIPE EFFECT 
-   ========================================= */
-.next-bg {
+.current-bg, .next-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -85,10 +97,16 @@ a {
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    -webkit-background-size: cover;
-            background-size: cover;
-    opacity: 0; /* Invisible until we fade it in */
-    z-index: 0; /* Stays below the swipe curtain */
+    background-size: cover !important; /* Bulletproof lock */
+    z-index: 0; 
+}
+
+.current-bg {
+    background-image: url("/static/images/background/driveway.jpg");
+}
+
+.next-bg {
+    opacity: 0; 
 }
 
 .color-swipe {
@@ -97,118 +115,74 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Dark Green with 80% opacity for that slick transparent look */
     background-color: rgba(210, 81, 0, 0.811); 
-    z-index: 1; /* Stays above the background but below text */
+    z-index: 1; 
     clip-path: circle(0% at 0% 100%);
 }
 
-/* Ensure the hero text and scroll icon stay strictly above the swipe curtain */
-.heroLandingContent, .scrollDownIco {
-    position: relative;
-    z-index: 2; 
-}
-
 .navBar {
-    /* border-bottom: 1px solid white; */
     height: 10vh;
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     position: fixed;
     left: 0;
     top: 0;
     padding: 0% 9%;
     background: transparent;
     z-index: 100;
-    /* Only transition the colors so it doesn't fight GSAP's movement */
-    -webkit-transition: background-color 0.5s, border-color 0.5s;
-    -o-transition: background-color 0.5s, border-color 0.5s;
     transition: background-color 0.5s, border-color 0.5s;
 }
 
 .navBarScrolled {
-    /* border-color: grey !important; */
     background-color: white !important;
-    -webkit-box-shadow: 0 0 10px #00000029;
-            box-shadow: 0 0 10px #00000029;
+    box-shadow: 0 0 10px #00000029;
 }
 
 .navBar nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     height: 100%;
     width: 100%;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
 }
 
 .navSec1 {
     width: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
 }
 
 .navSec1 img {
     width: 9%;
-    -webkit-backdrop-filter: blur(6px);
-            backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     border-radius: 50px;
-    -webkit-box-shadow: 0 0 30px #00000060;
-            box-shadow: 0 0 30px #00000060;
+    box-shadow: 0 0 30px #00000060;
 }
 
 .navBarLogoScrolled {
-    -webkit-backdrop-filter: none !important;
-            backdrop-filter: none !important;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-    -webkit-filter: invert(100%);
-            filter: invert(100%);
-    -webkit-transition: -webkit-filter 0.5s;
-    transition: -webkit-filter 0.5s;
-    -o-transition: filter 0.5s;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    filter: invert(100%);
     transition: filter 0.5s;
-    transition: filter 0.5s, -webkit-filter 0.5s;
 }
 
 .navSec2 {
     width: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: end;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .navSec2 button {
     outline: none;
-    /* FIX: Swapped % for px padding. Gives text permanent breathing room */
-    padding: 10px 24px; 
+    padding: 10px 24px;
     margin-left: 15px;
     background-color: #ffffff0d;
     color: white;
-    /* FIX: Auto width/height lets the button size itself naturally */
-    width: auto; 
+    width: auto;
     height: auto;
     font-size: 1rem;
     border: 1px solid white;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
     transition: 0.5s;
     cursor: pointer;
 }
@@ -220,8 +194,7 @@ a {
 
 .navBarButtonScrolled {
     border-color: black !important;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+    box-shadow: none !important;
     color: rgb(0, 0, 0) !important;
 }
 
@@ -231,39 +204,26 @@ a {
 }
 
 .heroLandingContent {
-    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    height: auto;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-top: 7%;
-    /* gap: 5%; */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 0 !important; /* Kills any lingering margins from media queries */
+    z-index: 2; 
 }
 
 .heroLandingContent div {
-    height: 35%;
+    height: auto; /* Changed from 35% to auto so it wraps naturally */
     text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    text-shadow: 0 0 30px #00000050;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    align-items: center;
+    flex-direction: column;
     text-shadow: 0 0 10px #5f5f5f !important;
 }
 
@@ -275,44 +235,22 @@ a {
     font-size: 2.5rem !important;
 }
 
-.heroLandingContent div:nth-child(2) {
-    height: 10%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-}
-
-.heroLandingContent div:nth-child(3) {
-    height: 10%;
-}
-
 .heroLandingContent div:nth-child(2), .heroLandingContent div:nth-child(3) {
     width: 100%;
     height: 10%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    display: none;
+    justify-content: center;
 }
 
 .heroLandingContent div:nth-child(2) button {
     outline: none;
     background-color: transparent;
     color: white;
-    width: 7%;
-    height: 70%;
-    font-size: 1rem;
+    padding: 12px 35px;
+    width: auto;
+    height: auto;
+    font-size: 1.1rem;
     border: 1px solid white;
-    -webkit-transition: 0.5s;
-    -o-transition: 0.5s;
     transition: 0.5s;
     cursor: pointer;
 }
@@ -323,33 +261,63 @@ a {
 }
 
 .scrollDownIco {
+    position: absolute;
+    bottom: 5%; /* Pins the icon 5% from the bottom of the screen */
+    left: 0;
     width: 100%;
-    height: 5%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    height: auto;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; 
 }
 
 .scrollDownIco img {
     width: 35px;
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 101; 
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navBarScrolled .hamburger .bar {
+    background-color: black;
+}
+
+/* =========================================
+   GENERAL SECTION RULES
+   ========================================= */
+#secondSec, #thirdSec, #fourthSec, #fifthSec {
+    scroll-margin-top: 10vh;
+    position: relative;
+}
+
+/* =========================================
+   SECTION 2: ABOUT
+   ========================================= */
 #secondSec {
     width: 100%;
+    height: 100vh;
     color: black;
     background-color: white;
     padding: 5% 9%;
 }
 
 .secondSec1 {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     width: 100%;
     height: 100%;
@@ -358,15 +326,16 @@ a {
 .div25 {
     width: 50%;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.div25 img {
+    width: 92%;
+    height: 95%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .div75 {
@@ -374,33 +343,17 @@ a {
     height: 100%;
 }
 
-.div25 img {
-    width: 92%;
-    height: 95%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center;
-       object-position: center;
-}
-
 .div75 h1 {
     font-size: 3.5rem;
 }
-/* THE FIX: Add the '>' so it only targets the direct child divs */
+
 .div75 > div {
     text-align: end;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: end;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-/* Also update the nested image selector right below it to be safe */
 .div75 > div:nth-child(1) img {
     width: 3.5rem;
     display: none !important;
@@ -408,46 +361,11 @@ a {
     margin-left: 1.5%;
 }
 
-/* And update the nested paragraph selector */
 .div75 > div:nth-child(2) p {
     font-size: 1.3rem;
     color: rgb(43, 43, 43);
     line-height: 165%;
     margin-top: 3%;
-}
-
-.secondSecQuote {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical !important;
-    -webkit-box-direction: normal !important;
-        -ms-flex-direction: column !important;
-            flex-direction: column !important;
-    width: 100%;
-    margin-top: 20%;
-}
-
-.secondSecQuote h1 {
-    font-size: 3.5rem !important;
-}
-
-.secondSecQuote span {
-    font-size: 1.3rem !important;
-}
-
-.secondSec2 {
-    width: 100%;
-    height: 50%;
-    display: none;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    gap: 9%;
 }
 
 .secSeparator {
@@ -458,132 +376,52 @@ a {
     margin-top: 5%;
 }
 
-.secondSec2Header {
-    width: 100%;
-    height: 30%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+.secondSecQuote {
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-direction: column !important;
+    width: 100%;
+    margin-top: 20%;
 }
 
-.secondSec2Header h1 {
+.secondSecQuote h1 {
     font-size: 3.5rem;
 }
 
-.secondSec2p {
-    display: none;
-    width: 100%;
-    height: 20%;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: start;
+.secondSecQuote span {
+    font-size: 1.3rem;
 }
 
-.secondSec2p p {
-    font-size: 23px;
-    color: rgb(43, 43, 43);
+.secondSec2 {
+    display: none; /* User originally had this hidden */
 }
 
-.secondSec2Services {
-    width: 100%;
-    height: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-}
-
-.secondSec2Servs {
-    width: 100%;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-}
-
-.secondSec2Servs div {
-    width: 140px;
-    height: 140px;
-    background-color: #000;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border-radius: 10px;
-}
-
-.secondSec2Servs div img {
-    width: 80px;
-    height: 80px;
-}
-
-.secondSec2Servs span {
-    font-size: 20px;
-}
-
+/* =========================================
+   SECTION 3: SERVICES
+   ========================================= */
 #thirdSec {
     width: 100%;
     color: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     background-position: right;
     padding: 2% 9%;
-    height: 300vh !important;
+    height: auto !important; /* Adjusted to auto for internal content scaling */
+    min-height: 300vh;
     border-top: 1px solid #000;
 }
 
 .thirdSec1 {
     width: 100%;
-    height: 5%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    height: auto;
+    /* padding-bottom: 50px; */
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
 }
 
 .thirdSec1Header {
     width: 75%;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-direction: column;
+    justify-content: center;
     gap: 5%;
 }
 
@@ -592,6 +430,7 @@ a {
     color: rgba(0, 0, 0, 0.586);
     font-weight: 400;
     letter-spacing: 3px;
+    display: none;
 }
 
 .thirdSec1Header h1:nth-child(2) {
@@ -601,16 +440,9 @@ a {
 
 .thirdSec1Graphic {
     width: 25%;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: end;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .thirdSec1Graphic img {
@@ -624,44 +456,26 @@ a {
 }
 
 .thirdSec2 {
-    display: none !important;
-    width: 100%;
-    height: 55%;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    display: none !important; /* User originally had this hidden */
 }
 
 .servicesContainer {
     width: 100%;
-    height: 95%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    height: auto;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
 }
 
 .services {
     width: 100%;
-    height: 18.5%;
+    /* FIX: Replaced auto/min-height with a strict height so every box is exactly the same size */
+    height: 450px; 
     padding: 2%;
     border: 2px dashed black;
     border-radius: 4px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2%;
 }
 
@@ -669,50 +483,35 @@ a {
     margin-top: 2%;
 }
 
-.services:nth-child(2) .serviceImage, .services:nth-child(4) .serviceImage {
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: end;
+.services:nth-child(even) .serviceImage {
+    justify-content: flex-end;
 }
 
 .serviceImage {
     width: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     height: 100%;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .serviceImage img {
     width: 95%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    height: 95%;
-    -o-object-position: center;
-       object-position: center;
+    object-fit: cover;
+    /* FIX: Forces the image to lock exactly to the container's new uniform height */
+    height: 100%; 
+    object-position: center;
     border-radius: 4px;
 }
 
 .serviceDescription {
     width: 50%;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    gap: 5%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 3%;
+    gap: 20px;
 }
 
 .servicesHeading {
@@ -730,110 +529,19 @@ a {
     line-height: 165%;
 }
 
-.thirdSec2Projs {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    width: 30%;
-    height: 90%;
-}
-
-.thirdSec2Projs img {
-    width: 100%;
-    height: 80%;
-    -o-object-position: center;
-       object-position: center;
-    -o-object-fit: cover;
-       object-fit: cover;
-    border-radius: 10px;
-}
-
-.thirdSec2Projs span {
-    text-align: center;
-    font-size: 25px;
-    margin-top: 4%;
-}
-
+/* =========================================
+   SECTION 4: GALLERY
+   ========================================= */
 #fourthSec {
-    display: none !important;
-    width: 100%;
-    /* display is handled dynamically or set properly in HTML */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    background: white;
-    color: black;
-    padding: 4% 9%;
+    display: none !important; /* User originally had this hidden */
 }
 
-.fourthSecHeader {
-    width: 100%;
-    height: 10%;
-}
-
-.fourthSecHeader h1 {
-    font-size: 50px;
-}
-
-.fourthSecImages {
-    width: 100%;
-    height: 90%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-}
-
-.fourthSecImages div {
-    width: 100%;
-    height: 33%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-}
-
-.fourthSecImages div img {
-    border-radius: 10px;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center;
-       object-position: center;
-}
-
-.fourthSecImages div:nth-child(1) img {
-    width: 33%;
-    height: 100%;
-}
-
-.fourthSecImages div:nth-child(2) img {
-    width: 24.75%;
-    height: 100%;
-}
-
-.fourthSecImages div:nth-child(3) img {
-    width: 33%;
-    height: 100%;
-}
-
+/* =========================================
+   SECTION 5: CONTACT
+   ========================================= */
 #fifthSec {
     width: 100%;
+    height: 100vh;
     color: rgb(0, 0, 0);
     background-color: white;
     padding: 2% 9%;
@@ -844,19 +552,10 @@ a {
 .fifthSecHeader {
     width: 100%;
     height: 17%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .fifthSecHeader span {
@@ -867,25 +566,19 @@ a {
 .fifthSecForm {
     width: 100%;
     height: 80%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
 }
 
 .fifthSecFormImg {
     width: 50%;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
 }
 
 .fifthSecFormImg img {
     width: 95%;
-    -o-object-position: center;
-       object-position: center;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-position: center;
+    object-fit: cover;
     height: 100%;
     border-radius: 2px;
 }
@@ -893,17 +586,10 @@ a {
 .fifthSecContactForm {
     width: 50%;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    padding: 2%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2% 3%;
     border: 1px solid rgb(0, 0, 0);
     background-color: #ffffff0d;
     border-radius: 2px;
@@ -912,41 +598,28 @@ a {
 .fifthSecCFormHeader {
     width: 100%;
     height: 10%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
 }
 
 .fifthSecCFormHeader span {
     font-size: 40px;
 }
 
+#contactForm {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
 .fifthSecCFormInp {
     width: 100%;
-    height: 15%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-}
-
-/* Smooth transition for form inputs */
-.fifthSecCFormInp input {
-    transition: all 0.3s ease;
-}
-
-/* Elevates the input when the user clicks to type */
-.fifthSecCFormInp input:focus {
-    border-color: #000;
-    background-color: #ffffff20; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transform: translateY(-1px);
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .fifthSecCFormInp span {
@@ -958,11 +631,19 @@ a {
     background: transparent;
     outline: none;
     color: rgb(0, 0, 0);
-    padding: 1.5%;
+    padding: 15px;
     font-size: 20px;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
     font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.fifthSecCFormInp input:focus {
+    border-color: #000;
+    background-color: #ffffff20; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transform: translateY(-1px);
 }
 
 .fifthSecCFormInp input::placeholder {
@@ -971,8 +652,8 @@ a {
 }
 
 .fifthSecCFormBtn {
-    width: 20%;
-    height: 10%;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .fifthSecCFormBtn button {
@@ -980,14 +661,11 @@ a {
     color: rgb(0, 0, 0);
     background: transparent;
     border: 1px solid rgb(0, 0, 0);
-    -webkit-transition: 0.2s;
-    -o-transition: 0.2s;
     transition: 0.2s;
-    padding: 10%;
+    padding: 15px 40px;
     font-size: 17px;
     cursor: pointer;
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
 }
 
 .fifthSecCFormBtn button:hover {
@@ -995,177 +673,56 @@ a {
     color: rgb(255, 255, 255);
 }
 
-#contactForm {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-    height: 90%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: start;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: space-around;
-            justify-content: space-around;
-}
-
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #ffffff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    z-index: 9999;
-    -webkit-transition: opacity 0.5s ease, visibility 0.5s ease;
-    -o-transition: opacity 0.5s ease, visibility 0.5s ease;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-#preloader img {
-    width: 150px;
-    height: auto;
-}
-
-.preloader-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-button {
-    border-radius: 100px !important;
-    -webkit-backdrop-filter: blur(3px);
-            backdrop-filter: blur(3px);
-    -webkit-box-shadow: 0 0 15px #00000050;
-            box-shadow: 0 0 15px #00000050;
-}
-
-#secondSec, #thirdSec, #fourthSec, #fifthSec {
-    height: 100vh;
-    scroll-margin-top: 10vh;
-    position: relative;
-}
-
-#backToTopBtn {
-    width: 55px;
-    height: 55px;
-    position: relative;
-    left: 9%;
-    bottom: -45%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    background: #ffffff;
-    border-radius: 50px;
-    border: 2px dashed rgb(0, 0, 0);
-    cursor: pointer;
-    z-index: 50;
-}
-
-#backToTopBtn img {
-    width: 28px;
-    height: 30px;
-    -webkit-filter: invert(1);
-            filter: invert(1);
-}
-
-#copyright {
-    font-size: 0.8rem;
-    color: #000000b0;
-    
-    /* THE FIX: Attaches the text to the bottom of the footer, overriding any massive 'top' values */
-    position: absolute;
-    top: auto; 
-    bottom: 20px; 
-    left: 50%;
-    transform: translateX(-50%);
-}
-
+/* =========================================
+   SECTION 6: FOOTER (SAFE LAYOUT)
+   ========================================= */
+/* =========================================
+   SECTION 6: FOOTER (LOCKED DESKTOP LAYOUT)
+   ========================================= */
 #sixthSec {
     width: 100%;
-    height: 40vh;
+    height: auto !important; 
+    min-height: 35vh; /* Slightly reduced so it's not overly tall */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2% 9%;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 4% 9%;
     border-top: 1px solid black;
     background-color: white;
-    
-    /* THE FIX: This traps the copyright text inside the footer so it can't stretch the page */
     position: relative; 
+    flex-wrap: nowrap; 
 }
 
 .sixthSecLogo {
-    width: 20%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    width: 25%;
     display: flex;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .sixthSecLogo img {
-    width: 250px;
-    height: 250px;
+    /* FIX: Scaled down from 250px so it balances better with the text */
+    width: 180px; 
+    height: 180px;
 }
+
+/* Base Desktop Column Widths */
+/* Base Desktop Column Widths */
+.sixthSecLinks { width: 15%; }
+.sixthSecLinks1 { width: 25%; max-width: 250px; } /* FIX: Added max-width to keep icons close */
+.sixthSecLinks2 { width: 35%; max-width: 350px; } /* FIX: Added max-width to keep icons close */
 
 .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 {
-    height: 62%;
-    font-size: 1.5rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: distribute;
-        -ms-flex-pack: distribute;
-            justify-content: space-around;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: end;
-}
-
-.sixthSecLinks {
-    width: 20%;
-}
-
-.sixthSecLinks1 {
-    width: 25%;
-}
-
-.sixthSecLinks2 {
-    width: 35%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+    gap: 20px; 
+    font-size: 1.25rem; 
 }
 
 .sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a {
     color: rgb(0, 0, 0);
-    -webkit-transition: 0.2s;
-    -o-transition: 0.2s;
     transition: 0.2s;
 }
 
@@ -1173,265 +730,532 @@ button {
     color: #003b09;
 }
 
-.sixthSecLinks1 span {
-    width: 56%;
-    display: -webkit-box;
-    display: -ms-flexbox;
+/* FIX: Forces icons to sit perfectly next to the text with a consistent gap */
+.sixthSecLinks1 span, .sixthSecLinks2 span {
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
+    justify-content: flex-start; /* Removes the huge awkward gap */
+    gap: 15px; 
+    width: 100%;
 }
 
-.sixthSecLinks2 span {
-    display: -webkit-box;
-    display: -ms-flexbox;
+.sixthSecLinks1 span img, .sixthSecLinks2 span img {
+    width: 24px; 
+    height: 24px;
+    filter: invert(1);
+    flex-shrink: 0; 
+    
+    /* THE MAGIC TRICK: Moves the icons to the LEFT side of the text without changing the HTML */
+    order: -1; 
+}
+#copyright {
+    font-size: 0.8rem;
+    color: #000000b0;
+    position: absolute;
+    bottom: 15px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+#backToTopBtn {
+    width: 55px;
+    height: 55px;
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 50px;
+    border: 2px dashed rgb(0, 0, 0);
+    cursor: pointer;
+    z-index: 999; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+    
+    /* FIX: Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); /* Sits slightly lower when hidden */
+    transition: all 0.3s ease;
 }
 
-.sixthSecLinks2 span:nth-child(1) {
-    width: 41%;
+/* FIX: This class will be added by JS when you scroll down */
+#backToTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-.sixthSecLinks2 span:nth-child(2) {
-    width: 44%;
+#backToTopBtn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px); 
 }
 
-.sixthSecLinks2 span:nth-child(3) {
-    width: 69%;
-}
-
-.sixthSecLinks2 span:nth-child(4) {
-    width: 62%;
-}
-
-.sixthSecLinks1 span img {
+#backToTopBtn img {
     width: 28px;
-    height: 28px;
-    -webkit-filter: invert(1);
-            filter: invert(1);
-}
-
-.sixthSecLinks2 span img {
-    width: 28px;
-    height: 28px;
-    -webkit-filter: invert(1);
-            filter: invert(1);
+    height: 30px;
+    filter: invert(1);
 }
 
 .shapes {
-    width: 10%;
-    position: absolute;
-    z-index: 10;
     display: none !important;
 }
 
-.secondSecShape1 { position: absolute; width: 14%; top: 0; left: 0; }
-.secondSecShape2 { position: absolute; width: 15%; top: 35%; right: 0; }
-.thirdSecShape1 { position: absolute; width: 13%; top: 0; right: 0; }
-.thirdSecShape2 { position: absolute; width: 14%; bottom: 0; left: 0; -webkit-transform: scaleX(-1); -ms-transform: scaleX(-1); transform: scaleX(-1); }
-.thirdSecShape3 { position: absolute; width: 14%; top: 29.5%; left: 0; -webkit-transform: scaleX(-1); -ms-transform: scaleX(-1); transform: scaleX(-1); }
-.thirdSecShape4 { position: absolute; width: 14%; top: 66.5%; right: 0; }
-.fifthSecShape1 { position: absolute; width: 15%; top: 0; right: 0; -webkit-transform: scaleX(-1); -ms-transform: scaleX(-1); transform: scaleX(-1); }
-.fifthSecShape2 { position: absolute; width: 15%; bottom: 0; left: 0; -webkit-transform: scaleY(-1); -ms-transform: scaleY(-1); transform: scaleY(-1); }
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 101; /* Stays above the mobile menu overlay */
-}
-
-.hamburger .bar {
-    width: 100%;
-    height: 3px;
-    background-color: white;
-    border-radius: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Invert hamburger color when navbar is scrolled */
-.navBarScrolled .hamburger .bar {
-    background-color: black;
-}
-
 /* =========================================
-   RESPONSIVE DESIGN 
+   RESPONSIVE MEDIA QUERIES
    ========================================= */
 
 @media (max-width: 1024px) {
-    #hlC1 { font-size: 6rem !important; }
-    #hlC2 { font-size: 1.8rem !important; }
-    /* FIX: Converted the % padding to safe px so it doesn't squish on small laptops */
-    .navSec2 button { padding: 8px 18px; font-size: 0.9rem; }
-    .div25 { width: 40%; }
-    .div75 { width: 60%; }
-    .div75 h1 { font-size: 2.8rem; }
-    .servicesHeading { font-size: 2.2rem; }
-    .serviceInfo { font-size: 1.1rem; }
-    .fifthSecFormImg { width: 40%; }
-    .fifthSecContactForm { width: 60%; }
+    /* HERO & NAV */
+    #hlC1 { font-size: 5.5rem !important; } /* Hero landing content smaller */
+    #hlC2 { font-size: 1.5rem !important; }
+    .navSec2 button { padding: 5px 12px; font-size: 0.75rem; } /* Navbar btn small */
+    
+    /* ABOUT */
+    #secondSec { height: auto !important; min-height: 100vh; padding: 6% 5%; display: flex; }
+    
+    /* Force the two columns to exactly match heights */
+    .secondSec1 { display: flex; align-items: stretch !important; width: 100%; } 
+    
+    /* Make the container stretch to the top/bottom */
+    .div25 { width: 50%; height: auto; align-self: stretch !important; display: flex; flex-direction: column; } 
+    
+    /* SLEDGEHAMMER: Absolute force on the image to fill every pixel of the div25 container */
+    .div25 img { 
+        width: 96% !important; 
+        height: 100% !important; 
+        min-height: 100% !important; 
+        max-height: none !important; 
+        object-fit: cover !important; 
+        display: block !important; 
+        margin: 0 !important; 
+        padding: 0 !important; 
+    } 
+    
+    /* Text column vertical centering */
+    .div75 { width: 50%; padding-left: 20px; display: flex; flex-direction: column; justify-content: center; } 
+    .thirdSec1Header h1:nth-child(2){
+        margin: 3% 0;
+    }
+    .div75 h1, .thirdSec1Header h1:nth-child(2) { font-size: 2.2rem !important; } 
+    .div75 > div:nth-child(2) p { font-size: 0.9rem !important; line-height: 140%; } 
+    .secondSecQuote h1 { font-size: 1.8rem !important; }
+    .secondSecQuote span { font-size: 0.9rem !important; }
+    
+    /* SERVICES */
+    .services { height: 300px; } /* Service small */
+    .serviceImage img { height: 100%; max-height: 100%; width: 100%; object-fit: cover; } /* Image max height of the container */
+    .servicesHeading { font-size: 1.5rem !important; } /* Serv heading small */
+    .serviceInfo { font-size: 0.85rem !important; line-height: 130%; } /* Paragraph small */
+    
+    /* CONTACT (Un-chopped, 50/50 split, smaller fonts) */
+    #fifthSec { height: auto !important; min-height: 100vh; padding: 5% 5%; display: flex; flex-direction: column; justify-content: space-evenly;}
+    .fifthSecForm { height: auto !important; display: flex; } /* FIX: Overrides base 80% height to stop the chop */
+    .fifthSecHeader span { font-size: 2.2rem !important; } /* Heading small */
+    .fifthSecFormImg { width: 50%; display: flex; height: auto !important; } /* Image half */
+    .fifthSecContactForm { width: 50%; padding: 4%; justify-content: center; height: auto !important; } /* Form half */
+    .fifthSecCFormHeader span { font-size: 1.5rem; } /* Form heading small */
+    .fifthSecCFormInp { margin-bottom: 8px; }
+    .fifthSecCFormInp span { font-size: 0.9rem !important; margin-bottom: 5px; } /* Inp fonts small */
+    .fifthSecCFormInp input { font-size: 0.85rem !important; padding: 8px; } /* Input sizes small */
+    .fifthSecCFormBtn button { font-size: 0.9rem !important; padding: 8px 20px; } /* Btn small */
+    
+    /* FOOTER (Forced in row, smaller sizes) */
+    #sixthSec { 
+        flex-wrap: nowrap !important; /* Keeps it in a column/row format depending on flex direction, no wrapping */
+        padding: 3% 5%; 
+        gap: 10px; 
+        min-height: auto;
+    }
+    .sixthSecLogo { width: 15%; margin-bottom: 0; }
+    .sixthSecLogo img { width: 100px; height: 100px; } /* Logo small */
+    
+    .sixthSecLinks { width: 15%; font-size: 0.8rem; gap: 8px; margin-left: 10%;}
+    .sixthSecLinks1 { width: 30%; font-size: 0.8rem; gap: 8px; max-width: none; margin-left: 10%;}
+    .sixthSecLinks2 { width: 40%; font-size: 0.8rem; gap: 8px; max-width: none; }
+    
+    .sixthSecLinks1 span, .sixthSecLinks2 span { gap: 6px; }
+    .sixthSecLinks1 span img, .sixthSecLinks2 span img { width: 16px; height: 16px; }
+    
+    #copyright { font-size: 0.65rem; bottom: 5px; }
+    #backToTopBtn{width: 40px; height: 40px;}
+    #backToTopBtn img{ width: 20px; height: 22px;}
+    .navBar{height: 11vh;}
+    #preloader img{width: 125px;}
 }
 
 @media (max-width: 768px) {
-    #firstSec, #secondSec, #thirdSec, #fourthSec, #fifthSec { 
-        height: 100dvh !important; 
+    
+    /* =========================================
+       NAVBAR & HAMBURGER (The Magic)
+       ========================================= */
+    .navBar { 
+        height: auto; 
+        padding: 15px 5%; 
+        position: fixed !important; /* This locks it to the top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: transparent; /* Keeps the solid background so it's readable over the hero image */
+        z-index: 105; 
     }
-    .navBar { height: auto; padding: 15px 0; position: relative; background: #000; }
-    /* .navBar nav { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; gap: 15px; } */
-    .navBar nav {
-        flex-direction: row; /* Keep logo and hamburger inline */
-        justify-content: space-between;
-        align-items: center;
+    .navBar nav { flex-direction: row; justify-content: space-between; align-items: center; }
+    .navSec1 { width: auto; }
+    .navSec1 img { width: 50px; }
+
+    /* The Hamburger Icon */
+    .hamburger { 
+        display: flex; flex-direction: column; gap: 6px; cursor: pointer; 
+        z-index: 110; /* Must be higher than the menu to click it closed! */
     }
-    /* .navSec1, .navSec2 { width: 100%; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; } */
-    /* .navSec1 img { width: 60px; border-radius: 50%; } */
-    /* .navSec2 button { width: auto; font-size: 0.85rem; padding: 8px 12px; margin: 0 5px; } */
-    .navSec1 { 
-        width: auto; 
+    .hamburger .bar {
+        width: 30px; height: 3px; background-color: #fff; border-radius: 3px;
+        transition: all 0.3s ease-in-out;
     }
     
-    .navSec1 img { 
-        width: 50px; /* Slightly smaller for mobile */
-    }
+    /* Active X Animation */
+    .hamburger.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-    /* THE CINEMATIC FULLSCREEN MENU */
+    /* The Off-Canvas Mobile Menu */
     .navSec2 {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Hides it off-screen to the right */
-        width: 100%;
-        height: 100dvh;
-        background-color: rgba(0, 0, 0, 0.95); /* Deep cinematic black */
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1); /* Silky slide */
-        z-index: 100;
-        margin: 0;
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px);
+        flex-direction: column; justify-content: center; align-items: center;
+        transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1); z-index: 100; margin: 0;
+    }
+    .navSec2.active { right: 0; }
+    .navSec2 button { 
+        width: 70%; padding: 18px; margin: 10px 0; font-size: 1.3rem; 
+        background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); 
+        border-radius: 8px; color: #fff; font-weight: 600; letter-spacing: 1px;
     }
 
-    /* Trigger class applied via JavaScript */
-    .navSec2.active {
-        right: 0;
-    }
-
-    /* Make buttons massive and touch-friendly */
-    .navSec2 button {
-        width: 60%;
-        padding: 20px;
-        margin: 15px 0;
-        font-size: 1.2rem;
-        background-color: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .heroLandingContent { margin-top: 50px; gap: 30px; height: auto; }
+    /* =========================================
+       HERO
+       ========================================= */
+    #firstSec { height: 100vh !important; }
+    .heroLandingContent { margin-top: 50px; height: auto; }
     #hlC1 { font-size: 4rem !important; text-align: center; }
-    #hlC2 { font-size: 1.3rem !important; text-align: center; }
-    .heroLandingContent div:nth-child(2) button { width: auto; padding: 15px 30px; }
-    .secondSec1 { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
-    .div25, .div75 { width: 100%; }
-    .div25 img { width: 100%; height: 350px; margin-bottom: 30px; border-radius: 10px; }
-    .div75 div { -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center; }
-    .div75 h1 { font-size: 2.5rem; }
-    .div75 div:nth-child(2) p { text-align: center; font-size: 1.1rem; margin-top: 20px; }
-    .secondSecQuote { margin-top: 15%; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
-    .thirdSec1 { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; height: auto; text-align: center; gap: 20px; margin-bottom: 40px; }
-    .thirdSec1Header, .thirdSec1Graphic { width: 100%; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
-    .thirdSec1Graphic { display: none; }
-    .servicesContainer { height: auto; gap: 30px; }
-    .services { -webkit-box-orient: vertical !important; -webkit-box-direction: normal !important; -ms-flex-direction: column !important; flex-direction: column !important; height: auto; padding: 5%; border: 1px solid #ddd; }
-    .services:nth-child(even) { -webkit-box-orient: vertical !important; -webkit-box-direction: reverse !important; -ms-flex-direction: column-reverse !important; flex-direction: column-reverse !important; }
-    .serviceImage, .serviceDescription { width: 100%; height: auto; }
-    .serviceImage img { width: 100%; height: 250px; margin-bottom: 20px; }
-    .servicesHeading { text-align: center; font-size: 2rem; }
-    .serviceInfo { text-align: center; font-size: 1rem; }
-    .fifthSecForm { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; }
-    .fifthSecFormImg { display: none; }
-    .fifthSecContactForm { width: 100%; padding: 8%; border-radius: 10px; }
-    .fifthSecCFormHeader { -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; text-align: center; margin-bottom: 20px; }
-    .fifthSecCFormHeader span { font-size: 2.5rem; }
-    .fifthSecCFormInp input { height: 50px; font-size: 1rem; }
-    .fifthSecCFormBtn { width: 100%; margin-top: 20px; }
-    .fifthSecCFormBtn button { width: 100%; padding: 15px; font-size: 1.2rem; }
-    /* #sixthSec { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; gap: 40px; text-align: center; height: auto; padding: 10% 5%; } */
+    #hlC2 { font-size: 1.2rem !important; text-align: center; }
+    
+    /* =========================================
+       ABOUT (Image Top, Text Bottom)
+       ========================================= */
+    #secondSec { height: auto !important; min-height: 100vh; padding: 10% 5%; display: flex; align-items: center; }
+    .secondSec1 { flex-direction: column !important; align-items: center; gap: 30px; width: 100%; }
+    
+    #thirdSec{
+        min-height: 0;
+    }
+    
+    .div25 { width: 100% !important; height: auto; display: block; }
+    .div25 img { width: 100% !important; max-height: 400px !important; object-fit: cover !important; }
+    
+    .div75 { width: 100% !important; padding-left: 0; display: flex; flex-direction: column; align-items: center; }
+    .div75 > div { justify-content: start; text-align: center; width: 100%; }
+    .div75 h1, .thirdSec1Header h1:nth-child(2) { font-size: 2.5rem !important; text-align: center; }
+    .div75 > div:nth-child(2) p { font-size: 1.05rem !important; line-height: 160%; text-align: justify; }
+    
+    .secondSecQuote { align-items: center !important; text-align: center; margin-top: 30px; }
+    
+    /* =========================================
+       SERVICES (Image Top, Text Bottom)
+       ========================================= */
+    .services { height: auto !important; padding: 5%; gap: 20px; margin-bottom: 30px; border-radius: 10px;}
+    .serviceImage { width: 100% !important; height: 275px; }
+    .serviceImage img { height: 100%; width: 100%; object-fit: cover; border-radius: 8px; }
+    .serviceDescription { width: 100% !important; padding: 0; text-align: justify; display: flex; flex-direction: column; align-items: center; }
+    .servicesHeading { font-size: 1.8rem !important; margin-bottom: 15px; }
+    .serviceInfo{
+        text-align: justify;
+    }
+
+    /* =========================================
+       CONTACT (Hidden Image, 100% Form)
+       ========================================= */
+    #fifthSec { padding: 10% 5%; height: auto !important; min-height: auto !important; }
+    .fifthSecForm { flex-direction: column !important; align-items: center;}
+    .fifthSecFormImg { display: none !important; } /* PRO MOVE: Hides the image */
+    .fifthSecContactForm { width: 65% !important; padding: 6%; box-sizing: border-box; }
+    .fifthSecHeader span { font-size: 2.5rem !important; text-align: center; display: block; margin-bottom: 30px; margin-top: 30px; }
+    .fifthSecCFormHeader { text-align: center; justify-content: center; width: 100%; }
+    
+    /* =========================================
+       FOOTER (Reverted to Desktop Row Layout)
+       ========================================= */
     #sixthSec { 
-        height: auto !important; 
-        min-height: 100dvh; 
-        padding: 10% 5%; 
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important; /* Forces all 4 columns into a single line */
+        padding: 5% 7% !important; /* Tighter padding to give content maximum horizontal space */
+        gap: 10px; 
+        align-items: center !important;
+        min-height: auto !important;
     }
-    .sixthSecLogo, .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { width: 100%; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
-    .sixthSecLinks1 span, .sixthSecLinks2 span { width: auto; gap: 15px; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; margin-bottom: 10px; }
-    #copyright { position: static; margin-top: 30px; display: block; text-align: center; font-size: 0.9rem; }
-    #backToTopBtn { position: static; margin: 30px auto 0 auto; }
-    .shapes { display: none; }
-    .hamburger {
-        display: flex;
+    
+    /* 1st Column: Logo */
+    .sixthSecLogo { width: 15% !important; justify-content: center; margin: 0; padding: 0; }
+    .sixthSecLogo img { width: 80px; height: 80px; }
+    
+    /* 2nd Column: Nav Links */
+    .sixthSecLinks { width: 15% !important; font-size: 0.8rem; gap: 8px; margin: 0; display: flex; flex-direction: column; margin-left: 5% !important;}
+    
+    /* 3rd Column: Socials */
+    .sixthSecLinks1 { width: 30% !important; font-size: 0.8rem; gap: 8px; margin: 0; max-width: none; display: flex; flex-direction: column; margin-left: 8% !important;}
+    
+    /* 4th Column: Contact Info */
+    .sixthSecLinks2 { width: 40% !important; font-size: 0.8rem; gap: 8px; margin: 0; max-width: none; display: flex; flex-direction: column; }
+    
+    /* Keep icons and text aligned */
+    .sixthSecLinks1 span, .sixthSecLinks2 span { 
+        gap: 6px; 
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
     }
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-        background-color: white !important; /* Force white over the dark overlay */
+    
+    /* Shrink the icons to fit the tablet text size */
+    .sixthSecLinks1 span img, .sixthSecLinks2 span img { width: 16px; height: 16px; flex-shrink: 0; }
+    
+    /* Return Copyright to the absolute bottom center */
+    #copyright { 
+        font-size: 0.55rem !important; 
+        position: absolute !important; 
+        bottom: 8px !important; 
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        display: block; 
     }
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
+
+    .thirdSec1Header{
+        width: 100%;
     }
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-        background-color: white !important;
+
+    .thirdSec1Graphic{
+        display: none;
+    }
+
+    #backToTopBtn{
+        bottom: 6px;
+        right: 6px;
+    }
+
+    #backToTopBtn img{
+        width: 18px !important;
+        height: 20px !important;
     }
 }
 
 @media (max-width: 480px) {
-    #hlC1 { font-size: 3rem !important; }
-    #hlC2 { font-size: 1.1rem !important; }
-    /* FIX: Deleted the .navSec2 button rule entirely. Now the massive, 
-       touch-friendly buttons from your 768px menu will safely cascade down here! */
-    .div75 h1 { font-size: 2rem; }
-    .servicesHeading { font-size: 1.8rem; }
-    .servicesHeading { font-size: 1.8rem; }
+    /* =========================================
+       HERO & NAV
+       ========================================= */
+    .navBar { padding: 12px 5%; }
+    .navSec1 img { width: 45px; } /* Slightly smaller logo for mobile nav */
+    
+    #hlC1 { font-size: 2.8rem !important; line-height: 110%; } /* Prevents giant text from overlapping */
+    #hlC2 { font-size: 1.1rem !important; margin-top: 10px; }
+    
+    .heroLandingContent div:nth-child(2) button { 
+        padding: 12px 30px; 
+        font-size: 1rem !important; 
+    }
+
+    /* =========================================
+       ABOUT SECTION
+       ========================================= */
+    #secondSec { padding: 15% 5%; }
+    .div25 img { 
+        height: 280px !important; /* Shorter cinematic crop for phones */
+        border-radius: 8px; 
+    }
+    
+    .div75 h1, .thirdSec1Header h1:nth-child(2) { font-size: 2.2rem !important; margin: 5% 0;}
+    .div75 > div:nth-child(2) p { font-size: 1rem !important; line-height: 150%; }
+    
+    .secondSecQuote h1 { font-size: 1.8rem !important; }
+    .secondSecQuote span { font-size: 1rem !important; }
+
+    /* =========================================
+       SERVICES SECTION
+       ========================================= */
+    .services { 
+        padding: 8% 5% 10% 5% !important; 
+        gap: 15px; 
+        flex-direction: column;
+    }
+
+    .services:nth-child(2), .services:nth-child(4){
+        flex-direction: column-reverse;
+    }
+
+    .serviceImage { height: 275px !important; }
+    .servicesHeading { font-size: 1.6rem !important; text-underline-offset: 8px; }
+    .serviceInfo { font-size: 0.95rem !important; line-height: 150%; text-align: center; }
+
+    /* =========================================
+       CONTACT SECTION
+       ========================================= */
+    #fifthSec { padding: 15% 5% !important; }
+    .fifthSecContactForm { padding: 8% 5% !important; border-radius: 8px; width: 95% !important;}
+    .fifthSecHeader span { font-size: 2.2rem !important; }
+    .fifthSecCFormHeader span { font-size: 1.8rem; margin-bottom: 7%;}
+    
+    /* Bigger tap targets for mobile typing */
+    .fifthSecCFormInp span { font-size: 1rem !important; }
+    .fifthSecCFormInp input { 
+        font-size: 1rem !important; 
+        padding: 14px !important; /* Taller input boxes */
+    }
+    .fifthSecCFormBtn button { 
+        padding: 15px !important; 
+        font-size: 1.1rem !important; 
+        width: 100%; /* Full width submit button */
+    }
+
+    /* =========================================
+       FOOTER (Perfect Single Column)
+       ========================================= */
+    #sixthSec { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        align-items: center !important; 
+        text-align: center !important; 
+        padding: 15% 5% 8% 5% !important; 
+        gap: 35px; 
+    }
+    
+    /* Reset all widths to 100% and center items */
+    .sixthSecLogo, .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { 
+        width: 100% !important; 
+        max-width: 100% !important; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center !important; 
+        gap: 15px;
+        margin: 0 !important;
+    }
+    
+    .sixthSecLogo img { width: 110px; height: 110px; }
+    
+    /* Center the icons with the text */
+    .sixthSecLinks1 span, .sixthSecLinks2 span { 
+        justify-content: center !important; 
+        width: auto !important; 
+    }
+    
+    .sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a { 
+        font-size: 1rem !important; 
+        padding: 5px 0; /* Adds tap spacing between links */
+    }
+    
+    /* Copyright */
+    #copyright { 
+        position: static !important; 
+        transform: none !important; 
+        margin-top: 20px !important; 
+        font-size: 0.8rem; 
+    }
+    
+    /* Smaller Back to Top button so it doesn't block content */
+    #backToTopBtn {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+    }
+    #backToTopBtn img {
+        width: 20px;
+        height: 22px;
+    }
 }
 
 @media (min-width: 1440px) {
-    #hlC1 { font-size: 8rem !important; }
-    #hlC2 { font-size: 2rem !important; }
-    .navSec2 button { font-size: 1rem; width: 15%; }
+    /* LARGE DESKTOPS - SCALED DOWN SLIGHTLY */
+    #hlC1 { font-size: 7rem !important; }
+    #hlC2 { font-size: 1.75rem !important; }
     .navSec1 img { width: 10%; }
-    .div75 h1 { font-size: 4rem; }
-    .div75 div:nth-child(2) p { font-size: 1.3rem; }
-    .servicesHeading { font-size: 3rem !important; }
-    .serviceInfo { font-size: 1.2rem !important; }
-    .fifthSecHeader span { font-size: 4rem !important; }
-    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { font-size: 1.3rem; }
+    .div75 h1 { font-size: 2.5rem; }
+    .div75 > div:nth-child(2) p { font-size: 1.2rem; }
+    .servicesHeading { font-size: 2.4rem !important; }
+    .serviceInfo { font-size: 1.1rem !important; }
+    .fifthSecHeader span { font-size: 3.7rem !important; }
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { font-size: 1.2rem; }
+    .thirdSec1Header h1:nth-child(2){ font-size: 3rem ;}
+    .services{ height: 425px;}
 }
 
 @media (min-width: 2560px) {
+    /* 4K DISPLAYS */
     #hlC1 { font-size: 13rem !important; }
     #hlC2 { font-size: 3rem !important; }
-    .heroLandingContent div:nth-child(2) button { font-size: 1.5rem !important; width: 10%; }
-    .div75 h1 { font-size: 5.5rem !important; }
-    .div75 div:nth-child(2) p { font-size: 1.8rem !important; }
-    .servicesHeading { font-size: 4.5rem !important; }
-    .serviceInfo { font-size: 1.8rem !important; }
+    .heroLandingContent div:nth-child(2) button { font-size: 1.5rem !important; padding: 20px 50px; }
+    
+    /* ABOUT & SERVICES */
+    .div75 h1, .thirdSec1Header h1:nth-child(2) { font-size: 4.5rem !important; }
+    .div75 > div:nth-child(2) p { font-size: 1.8rem !important; }
+    .services { height: 750px !important; } 
+    .servicesHeading { font-size: 4rem !important; } 
+    .serviceInfo { font-size: 1.8rem !important; line-height: 180%; }
+    
+    /* CONTACT */
     .fifthSecHeader span { font-size: 5.5rem !important; }
     .fifthSecCFormHeader span { font-size: 3.5rem; }
     .fifthSecCFormInp span { font-size: 1.8rem !important; }
-    .fifthSecCFormInp input { font-size: 1.5rem !important; height: 60px !important; }
-    .fifthSecCFormBtn button { font-size: 1.5rem !important; padding: 5%; }
-    .sixthSecLogo img { width: 350px; height: 350px; }
+    .fifthSecCFormInp input { font-size: 1.5rem !important; padding: 25px; }
+    .fifthSecCFormBtn button { font-size: 1.5rem !important; padding: 20px 60px; }
+    
+    /* FOOTER */
+    .sixthSecLogo img { width: 300px; height: 300px; }
     .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { font-size: 2rem; }
     .sixthSecLinks1 span img, .sixthSecLinks2 span img { width: 40px; height: 40px; }
     #copyright { font-size: 1.2rem; }
+    
+    /* FIX: Remove the restrictive max-widths so 4K columns can stretch properly */
+    .sixthSecLinks1 { max-width: 25%; }
+    .sixthSecLinks2 { max-width: 30%; }
+
+    .heroLandingContent{
+        margin-top: 4%;
+    }
+
+    /* Scale up the Navbar Buttons */
+    .navSec2 button { 
+        font-size: 1.6rem; 
+        padding: 18px 45px; 
+        margin-left: 25px; /* Adds a bit more breathing room between the larger buttons */
+    }
+    
+    /* Scale up the Back to Top Button */
+    #backToTopBtn {
+        width: 90px;
+        height: 90px;
+        bottom: 50px; /* Pushes it slightly further out from the corner */
+        right: 50px;
+        border-width: 3px; /* Slightly thicker dashed border to match the scale */
+    }
+    
+    /* Scale up the arrow icon inside the button */
+    #backToTopBtn img {
+        width: 45px;
+        height: 48px;
+    }
+
+    .navBar{
+        height: 12vh;
+    }
+
+    .thirdSec1{
+        margin-top: 2%;
+    }
+
+    .scrollDownIco img{
+        width: 45px;
+    }
 }
