@@ -405,7 +405,7 @@ button {
     background-position: right;
     padding: 2% 9%;
     height: auto !important; /* Adjusted to auto for internal content scaling */
-    min-height: 300vh;
+    /* min-height: 300vh; */
     border-top: 1px solid #000;
 }
 
