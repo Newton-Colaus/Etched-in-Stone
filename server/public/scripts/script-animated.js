@@ -33,11 +33,21 @@ let currentImgIndex = 0;
 function startHeroLoop() {
     const swipeTl = gsap.timeline({ delay: 4 }); 
     const nextImgIndex = (currentImgIndex + 1) % bgImages.length;
+    const currentBgDiv = document.getElementById("currentBg");
     
     nextBgDiv.style.backgroundImage = `url(${bgImages[nextImgIndex]})`;
 
+    // 1. Slow zoom on currentBg while waiting for the swipe to trigger (4 seconds)
+    gsap.to(currentBgDiv, {
+        scale: "+=0.03",
+        duration: 4,
+        ease: "none"
+    });
+
+    // Set initial state for incoming background image
     gsap.set(nextBgDiv, { 
         opacity: 1, 
+        scale: 1, // Starts fresh and gentle
         clipPath: "polygon(0px 0px, 0px 0px, 0px 100%, 0px 100%)",
         zIndex: 1 
     });
@@ -56,6 +66,21 @@ function startHeroLoop() {
 
     const wipeProxy = { progress: 0 };
 
+    // 2. Incoming image starts zooming in slowly the moment the swipe loads/starts (1.8s)
+    swipeTl.to(nextBgDiv, {
+        scale: 1.05,
+        duration: 1.8,        
+        ease: "power1.out"
+    }, 0);
+
+    // Keep currentBg zooming smoothly during the swipe as well
+    swipeTl.to(currentBgDiv, {
+        scale: "+=0.015",
+        duration: 1.8,
+        ease: "none"
+    }, 0);
+
+    // 3. Color Swipe Transition
     swipeTl.to(wipeProxy, {
         progress: 100,
         duration: 1.8,        
@@ -71,12 +96,17 @@ function startHeroLoop() {
             nextBgDiv.style.clipPath = `polygon(0px 0px, ${clipX}px 0px, ${clipX}px 100%, 0px 100%)`;
         },
         onComplete: () => {
-            document.getElementById("currentBg").style.backgroundImage = `url(${bgImages[nextImgIndex]})`;
+            // Capture the exact scale nextBg reached so there is zero abrupt reset/jump
+            const finalScale = gsap.getProperty(nextBgDiv, "scale");
+
+            currentBgDiv.style.backgroundImage = `url(${bgImages[nextImgIndex]})`;
+            gsap.set(currentBgDiv, { scale: finalScale }); // Seamless scale handover
+
             gsap.set([nextBgDiv, ".color-swipe"], { opacity: 0 });
             currentImgIndex = nextImgIndex;
             startHeroLoop();
         }
-    }); 
+    }, 0); 
 }
 
 // =========================================
