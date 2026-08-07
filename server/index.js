@@ -16,9 +16,9 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // ONLY serve static files locally. Vercel handles public/ static assets via CDN in production.
-if (process.env.NODE_ENV !== 'production') {
+// if (process.env.NODE_ENV !== 'production') {
     app.use("/static", express.static(path.join(__dirname, "public")));
-}
+// }
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
@@ -26,10 +26,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(indexRoutes);
 app.use(galleryRoutes);
 
-if (process.env.NODE_ENV !== 'production') {
+// if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
         console.log(`Server is up on PORT: ${PORT}`);
     });
-}
+// }
 
 module.exports = app;
