@@ -5,6 +5,38 @@ const gallBtn = document.getElementById("gallBtn");
 const abtBtn = document.getElementById("abtBtn");
 const contBtn = document.getElementById("contBtn");
 
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navSec2 = document.querySelector(".navSec2");
+
+// =========================================
+// MOBILE MENU TOGGLE LOGIC
+// =========================================
+if (hamburgerBtn && navSec2) {
+    hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("active");
+        navSec2.classList.toggle("active");
+        
+        // Stops the background from scrolling when the menu is open
+        if (navSec2.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    });
+
+    // Closes the menu automatically if a link is clicked
+    const navBarButtons = [homeBtn, gallBtn, contBtn, abtBtn];
+    navBarButtons.forEach(btn => {
+        if (btn) {
+            btn.addEventListener("click", () => {
+                hamburgerBtn.classList.remove("active");
+                navSec2.classList.remove("active");
+                document.body.style.overflow = ""; 
+            });
+        }
+    });
+}
+
 // Event Listeners for Buttons
 if(backToTopBtn2) {
     backToTopBtn2.addEventListener("click", () => {
@@ -150,8 +182,8 @@ window.addEventListener('load', function() {
         }
     });
 
-    const footerElements = gsap.utils.toArray("#sixthSec > div:not(#copyright)");
-
+    const footerElements = gsap.utils.toArray("#sixthSec > div:not(#copyright):not(#backToTopBtn2)");
+    
     footerTl.fromTo(footerElements, 
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "back.out(1.2)" }
@@ -163,4 +195,17 @@ window.addEventListener('load', function() {
     );
 
     ScrollTrigger.refresh();
+});
+
+// =========================================
+// BACK TO TOP BUTTON SCROLL LOGIC
+// =========================================
+window.addEventListener("scroll", () => {
+    if (backToTopBtn2) {
+        if (window.scrollY > 400) { 
+            backToTopBtn2.classList.add("show");
+        } else {
+            backToTopBtn2.classList.remove("show");
+        }
+    }
 });
