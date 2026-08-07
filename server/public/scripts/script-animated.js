@@ -24,9 +24,9 @@ const navSec2 = document.querySelector(".navSec2");
 // HERO IMAGE LOOP (COLOR SWIPE)
 // =========================================
 const bgImages = [
-    "/static/images/background/driveway.jpg",
-    "https://images.unsplash.com/photo-1612477431581-7d0c5eeb2093?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1634979642325-8d7a87f3d6a4?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    "/static/images/background/enhanced/pavement.png",
+    "/static/images/background/enhanced/driveway.png",
+    "/static/images/background/enhanced/pool.png"
 ];
 let currentImgIndex = 0;
 
@@ -59,7 +59,8 @@ function startHeroLoop() {
         position: "absolute",
         top: 0,
         left: "-80vw",    
-        background: "linear-gradient(to right, rgba(210, 81, 0,0) 0%, rgba(210, 81, 0,0.7) 70%, rgba(210, 81, 0,1) 100%)",
+        // background: "linear-gradient(to right, rgba(210, 81, 0,0) 0%, rgba(0, 39, 102,0.7) 70%, rgba(0, 39, 102,1) 100%)",
+        background: "linear-gradient(to right, rgba(210, 81, 0,0) 0%, rgba(181, 179, 179, 0.7) 70%, rgb(172, 168, 168) 100%)",
         opacity: 1, 
         zIndex: 2         
     });
