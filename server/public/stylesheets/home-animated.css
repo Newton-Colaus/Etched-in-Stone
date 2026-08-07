@@ -8,6 +8,10 @@
     font-family: "Stack Sans Text", sans-serif;
 }
 
+html, body{
+    overflow-x: hidden !important;
+}
+
 html {
     scroll-behavior: smooth !important;
 }
@@ -815,7 +819,7 @@ button {
     .navSec2 button { padding: 5px 12px; font-size: 0.75rem; } /* Navbar btn small */
     
     /* ABOUT */
-    #secondSec { height: auto !important; min-height: 100vh; padding: 6% 5%; display: flex; }
+    #secondSec { height: auto !important; padding: 6% 5%; display: flex; }
     
     /* Force the two columns to exactly match heights */
     .secondSec1 { display: flex; align-items: stretch !important; width: 100%; } 
@@ -892,17 +896,31 @@ button {
     /* =========================================
        NAVBAR & HAMBURGER (The Magic)
        ========================================= */
+    /* =========================================
+       BULLETPROOF NAVBAR (Kills the Overflow)
+       ========================================= */
     .navBar { 
-        height: auto; 
-        padding: 15px 5%; 
-        position: fixed !important; /* This locks it to the top */
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: transparent; /* Keeps the solid background so it's readable over the hero image */
+        position: fixed !important; 
+        top: 0; 
+        left: 0; 
+        right: 0; /* PRO MOVE: Anchors to both sides instead of using width: 100% */
+        width: auto !important; /* Strips the buggy 100% calculation */
+        max-width: 100vw !important; /* Hard stop at the physical screen edge */
+        padding: 15px 5% !important; 
+        box-sizing: border-box !important; /* Forces padding to sit INSIDE the box */
         z-index: 105; 
+        background: #00000000;
     }
-    .navBar nav { flex-direction: row; justify-content: space-between; align-items: center; }
+    
+    .navBar nav { 
+        width: 100% !important; 
+        max-width: 100% !important; /* Stops the inner flexbox from stretching */
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center; 
+        box-sizing: border-box !important;
+    }
     .navSec1 { width: auto; }
     .navSec1 img { width: 50px; }
 
@@ -1056,7 +1074,31 @@ button {
     /* =========================================
        HERO & NAV
        ========================================= */
-    .navBar { padding: 12px 5%; }
+    /* =========================================
+       BULLETPROOF NAVBAR (Kills the Overflow)
+       ========================================= */
+    .navBar { 
+        position: fixed !important; 
+        top: 0; 
+        left: 0; 
+        right: 0; /* PRO MOVE: Anchors to both sides instead of using width: 100% */
+        width: auto !important; /* Strips the buggy 100% calculation */
+        max-width: 100vw !important; /* Hard stop at the physical screen edge */
+        padding: 15px 5% !important; 
+        box-sizing: border-box !important; /* Forces padding to sit INSIDE the box */
+        z-index: 105; 
+        background: #00000000;
+    }
+    
+    .navBar nav { 
+        width: 100% !important; 
+        max-width: 100% !important; /* Stops the inner flexbox from stretching */
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center; 
+        box-sizing: border-box !important;
+    }
     .navSec1 img { width: 45px; } /* Slightly smaller logo for mobile nav */
     
     #hlC1 { font-size: 2.8rem !important; line-height: 110%; } /* Prevents giant text from overlapping */
@@ -1073,11 +1115,10 @@ button {
     #secondSec { padding: 15% 5%; }
     .div25 img { 
         height: 280px !important; /* Shorter cinematic crop for phones */
-        border-radius: 8px; 
     }
     
     .div75 h1, .thirdSec1Header h1:nth-child(2) { font-size: 2.2rem !important; margin: 5% 0;}
-    .div75 > div:nth-child(2) p { font-size: 1rem !important; line-height: 150%; }
+    .div75 > div:nth-child(2) p { font-size: 1rem !important; line-height: 170%; }
     
     .secondSecQuote h1 { font-size: 1.8rem !important; }
     .secondSecQuote span { font-size: 1rem !important; }
@@ -1173,6 +1214,46 @@ button {
     #backToTopBtn img {
         width: 20px;
         height: 22px;
+    }
+}
+
+@media (max-width: 425px) {
+    .navBar{
+        height: 10vh;
+    }
+
+    .thirdSec1Header h1:nth-child(2){
+        margin: 7% 0;
+    }
+
+    .fifthSecHeader span{
+        margin-top: 0;
+    }
+
+    .services{
+        padding: 8% 5% 5% 5% !important;
+        border-width: 1px;
+    }
+
+    .serviceInfo{
+        display: none;
+    }
+
+    .servicesHeading{
+        text-decoration: none;
+        margin-bottom: 0;
+    }
+
+    .fifthSecHeader span{
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 375px) { }
+
+@media (max-width: 320px) { 
+    .serviceImage{
+        height: 235px !important;
     }
 }
 
