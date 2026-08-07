@@ -7,7 +7,7 @@ const connectDB = require("./config/db.js");
 
 dotenv.config();
 
-// connectDB();
+connectDB();
 
 const indexRoutes = require("./routes/indexRoutes");
 const galleryRoutes = require("./routes/gallery.js");
