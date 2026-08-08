@@ -5,8 +5,9 @@
     font-family: "Stack Sans Text";
 }
 
-a{
-    text-decoration: none;
+html, body{
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -30,8 +31,13 @@ body::-webkit-scrollbar-thumb:hover {
     background: #ffffffc7; 
 }
 
+
+a{
+    text-decoration: none;
+}
+
 button {
-    border-radius: 30px !important;
+    border-radius: 100px !important;
     backdrop-filter: blur(3px);
     box-shadow: 0 0 15px #00000050;
 }
@@ -83,10 +89,8 @@ button {
     color: white;
     padding: 2% 9%;
 }
-
-.navBar{
-    border-bottom:  1px solid grey;
-    height: 10vh;
+.navBar {
+    height: 12vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -94,11 +98,11 @@ button {
     left: 0;
     top: 0;
     padding: 0% 9%;
-    background: transparent;
-    transition: 0.5s;
     z-index: 100;
-    border-color: grey !important;
+    transition: 0.5s;
+    /* Keeps the solid white styling required for the Services page */
     background-color: white !important;
+    border-bottom: 1px solid #e0e0e0;
     box-shadow: 0 0 10px #00000029;
 }
 
@@ -137,23 +141,23 @@ button {
 }
 
 /* Restored to 13% width and 45% height */
-.navSec2 button{
+.navSec2 button {
     outline: none;
-    padding: 1%;
-    margin-left: 4%;
-    background-color: #ffffff0d;
-    color: white;
-    width: 13%;
-    height: 45%;
+    padding: 10px 24px; /* MATCHES HOME: Clean, exact padding */
+    margin-left: 15px;
+    background-color: transparent;
+    color: black; /* Dark text for the white background */
+    width: auto; /* MATCHES HOME: Removes the weird 13% width */
+    height: auto; 
     font-size: 1rem;
-    border: 1px solid white;
+    border: 1px solid black; 
     transition: 0.5s;
     cursor: pointer;
 }
-
-.navSec2 button:hover{
-    background-color: white;
-    color: black;
+    
+.navSec2 button:hover {
+    background-color: black;
+    color: white;
 }
 
 .navBarButtonScrolled{
@@ -163,29 +167,48 @@ button {
 }
 
 .navBarButtonScrolled:hover{
-    background-color: black !important;
+    background-color: #002766 !important;
     color: white !important;
 }
 
-#backToTopBtn2{
+#backToTopBtn2 {
     width: 55px;
     height: 55px;
-    position: relative;
-    left: 9%;
-    bottom: -45%;
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
     display: flex;
     justify-content: center;
     align-items: center;
     background: #ffffff;
     border-radius: 50px;
-    border: 2px dashed rgb(0, 0, 0);
+    border: 3px solid #002766;
     cursor: pointer;
+    z-index: 999; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+    
+    /* Hidden by default until JS adds the .show class */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); 
+    transition: all 0.3s ease;
+}
+    
+#backToTopBtn2.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-#backToTopBtn2 img{
+#backToTopBtn2:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px); 
+}
+
+#backToTopBtn2 img {
     width: 28px;
     height: 30px;
-    filter: invert(1);
+    /* filter: invert(1); */
 }
 
 #sixthSec{
@@ -213,18 +236,19 @@ button {
     height: 250px;
 }
 
-.sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2{
-    height: 62%;
-    font-size: 1.5rem;
+.sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: end;
+    justify-content: center;
+    align-items: flex-start; /* Forces all text to align cleanly to the left */
+    gap: 20px; 
+    font-size: 1.25rem; 
+    height: auto; 
 }
-
-.sixthSecLinks{ width: 20%; }
-.sixthSecLinks1{ width: 25%; }
-.sixthSecLinks2{ width: 35%; }
+/* 
+.sixthSecLinks{
+    margin-left: 10%;
+} */
 
 .sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a{
     color: rgb(0, 0, 0);
@@ -232,31 +256,23 @@ button {
 }
 
 .sixthSecLinks a:hover, .sixthSecLinks1 a:hover, .sixthSecLinks2 a:hover{
-    color: #003b09;
+    color: #002766;
 }
 
-.sixthSecLinks1 span{
-    width: 56%;
+.sixthSecLinks1 span, .sixthSecLinks2 span {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: flex-start !important; /* Pushes everything to the left edge */
+    gap: 15px; 
+    width: 100% !important;
 }
 
-.sixthSecLinks2 span{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sixthSecLinks2 span:nth-child(1){ width: 41%; }
-.sixthSecLinks2 span:nth-child(2){ width: 44%; }
-.sixthSecLinks2 span:nth-child(3){ width: 73%; }
-.sixthSecLinks2 span:nth-child(4){ width: 65%; }
-
-.sixthSecLinks1 span img, .sixthSecLinks2 span img{
-    width: 28px;
-    height: 28px;
+.sixthSecLinks1 span img, .sixthSecLinks2 span img {
+    width: 24px; 
+    height: 24px;
     filter: invert(1);
+    flex-shrink: 0; 
+    order: -1; /* FLIPS THE ICONS TO THE LEFT OF THE TEXT */
 }
 
 #serviceSec{
@@ -349,7 +365,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 20%;
+    /* gap: 20%; */
 }
 
 .bIright p{
@@ -360,7 +376,7 @@ button {
 
 .bIright span{
     font-size: 1rem;
-    color: #003b09;
+    color: #002766;
 }
 
 .midServImage{
@@ -390,4 +406,253 @@ button {
     left: 50%;
     transform: translateX(-50%);
     color: #000000b0;
+}
+
+/* =========================================
+   SCALING DOWN (Tablets & Phones)
+   Must go from LARGEST to SMALLEST
+   ========================================= */
+
+/* =========================================
+   SCALING DOWN (Tablets & Phones)
+   Must go from LARGEST to SMALLEST
+   ========================================= */
+
+/* 1. SMALL LAPTOPS & LANDSCAPE TABLETS */
+@media (max-width: 1024px) {
+    /* NAVBAR */
+    .navBar { height: 11vh; }
+    .navSec2 button { padding: 9px 12px; font-size: 0.75rem; }
+    .navSec1 img{
+        width: 12%;
+    }
+    /* SERVICES TEXT SCALING */
+    .servInfo h1 { font-size: 3rem; }
+    .servInfo p { font-size: 1rem; line-height: 140%; }
+    .bIleft p, .bIleft h1 { font-size: 1.8rem; }
+    .bIright{ justify-content: center; }
+    .bIright p { font-size: 1rem; }
+    
+    /* FOOTER */
+    #sixthSec { 
+        flex-wrap: nowrap !important; 
+        padding: 3% 5%; 
+        gap: 10px; 
+        min-height: auto;
+    }
+    #sixthSec { 
+        flex-wrap: nowrap !important; 
+        padding: 4% 5%; 
+        gap: 15px; 
+        min-height: auto;
+    }
+    
+    .sixthSecLogo { width: 15%; margin-bottom: 0; }
+    .sixthSecLogo img { width: 140px; height: 140px; } /* Scaled up the logo */
+    
+    /* Bumped fonts up from 0.8rem to 1.05rem and adjusted column widths */
+    .sixthSecLinks { width: 15%; font-size: 1.05rem; gap: 12px; margin-left: 5%; }
+    .sixthSecLinks1 { width: 25%; font-size: 1.05rem; gap: 12px; max-width: none; margin-left: 5%; }
+    .sixthSecLinks2 { width: 35%; font-size: 1.05rem; gap: 12px; max-width: none; }
+    
+    /* Scaled up the spacing and icons to match the new text size */
+    .sixthSecLinks1 span, .sixthSecLinks2 span { gap: 10px; }
+    .sixthSecLinks1 span img, .sixthSecLinks2 span img { width: 20px; height: 20px; }
+    
+    /* Bumped up the copyright text */
+    #copyright { font-size: 0.85rem; bottom: 10px; }
+    #backToTopBtn2 { width: 40px; height: 40px; }
+    #backToTopBtn2 img { width: 20px; height: 22px; }
+}
+
+/* 2. PORTRAIT TABLETS */
+@media (max-width: 768px) {
+    /* NAVBAR */
+    .navBar { 
+        position: fixed !important; top: 0; left: 0; right: 0; width: auto !important; 
+        max-width: 100vw !important; padding: 15px 5% !important; box-sizing: border-box !important; 
+        z-index: 105; background: white !important; 
+    }
+    .navBar nav { 
+        width: 100% !important; max-width: 100% !important; display: flex; flex-direction: row; 
+        justify-content: space-between; align-items: center; box-sizing: border-box !important;
+    }
+    .navSec1 { width: auto; }
+    .navSec1 img { width: 50px; }
+
+    /* HAMBURGER & MENU OVERLAY */
+    .hamburger { display: flex; flex-direction: column; gap: 6px; cursor: pointer; z-index: 110; }
+    .hamburger .bar { width: 30px; height: 3px; background-color: black; border-radius: 3px; transition: all 0.3s ease-in-out; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    .navSec2 {
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
+        flex-direction: column; justify-content: center; align-items: center;
+        transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1); z-index: 100; margin: 0;
+    }
+    .navSec2.active { right: 0; }
+    .navSec2 button { 
+        width: 70%; padding: 18px; margin: 10px 0; font-size: 1.3rem; 
+        background-color: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.1); 
+        border-radius: 8px; color: black; font-weight: 600; letter-spacing: 1px;
+    }
+
+    /* SERVICES LAYOUT (SWITCH TO COLUMN) */
+    .firstServ { margin-top: 15vh; }
+    .serv { height: auto !important; min-height: 100vh; padding: 0 !important; }
+    .servHeadliner { height: auto !important; }
+    
+    /* 1. Force Text on Top for Odd Services (1, 3, 5) */
+    .serv:nth-of-type(odd) .servHeadliner {
+        display: flex !important;
+        flex-direction: column !important; 
+    }
+
+    /* 2. Force Text on Top for Even Services (2, 4) */
+    .serv:nth-of-type(even) .servHeadliner {
+        display: flex !important;
+        flex-direction: column-reverse !important; 
+    }
+    
+    /* Ensure image and text take full width */
+    .servInfo, .servImage { width: 100% !important; height: auto !important; }
+    .servInfo { padding: 10% 7% !important; align-items: center; text-align: center; }
+    .servImage img { height: 400px !important; object-fit: cover; }
+    
+    .bottomInfo { 
+        flex-direction: column !important; height: auto !important; 
+        padding: 8% 7% !important; gap: 30px; 
+    }
+    .bIleft, .bIright { width: 100% !important; height: auto !important; text-align: center; }
+    .bIleft p, .bIleft h1 { font-size: 2rem !important; }
+    .bIright { gap: 15px !important; }
+    
+    .midServImage { height: 40vh !important; }
+
+    /* FOOTER */
+    #sixthSec { 
+        display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
+        padding: 5% 7% !important; gap: 10px; align-items: center !important; min-height: auto !important;
+        height: 30vh;
+    }
+    .sixthSecLogo { width: 15% !important; justify-content: center; margin: 0; padding: 0; }
+    .sixthSecLogo img { width: 80px; height: 80px; }
+    .sixthSecLinks { width: 15% !important; font-size: 0.8rem; gap: 8px; margin: 0; display: flex; flex-direction: column; margin-left: 5% !important;}
+    .sixthSecLinks1 { width: 30% !important; font-size: 0.8rem; gap: 8px; margin: 0; max-width: none; display: flex; flex-direction: column; margin-left: 8% !important;}
+    .sixthSecLinks2 { width: 40% !important; font-size: 0.8rem; gap: 8px; margin: 0; max-width: none; display: flex; flex-direction: column; }
+    .sixthSecLinks1 span, .sixthSecLinks2 span { gap: 6px; justify-content: flex-start; align-items: center; width: 100%; }
+    .sixthSecLinks1 span img, .sixthSecLinks2 span img { width: 16px; height: 16px; flex-shrink: 0; }
+    #copyright { 
+        font-size: 0.55rem !important; position: absolute !important; bottom: 8px !important; 
+        left: 50% !important; transform: translateX(-50%) !important; margin: 0 !important; display: block; 
+    }
+    #backToTopBtn2 { bottom: 6px; right: 6px; }
+    #backToTopBtn2 img { width: 18px !important; height: 20px !important; }
+}
+
+/* 3. LARGE PHONES */
+@media (max-width: 480px) {
+    /* GSAP SCROLLBAR KILLER */
+    html, body { overflow-x: hidden !important; width: 100vw !important; max-width: 100% !important; }
+    section, .serv, .bottomInfo { overflow-x: hidden !important; box-sizing: border-box !important; max-width: 100vw !important; }
+    .servInfo h1, .bIleft p, .bIleft h1, .bIright p { overflow-wrap: break-word !important; word-break: break-word !important; }
+
+    /* NAVBAR */
+    .navBar { padding: 15px 5% !important; }
+    .navSec1 img { width: 45px; }
+
+    /* SERVICES */
+    .servInfo { padding: 12% 5% !important; }
+    .servInfo h1 { font-size: 2.5rem !important; margin: 15px 0 !important; }
+    .servInfo p { font-size: 1.05rem !important; line-height: 160% !important; }
+    .servImage img { height: 300px !important; }
+    
+    .bottomInfo { padding: 12% 5% !important; gap: 20px !important; }
+    .bIleft p, .bIleft h1 { font-size: 1.6rem !important; line-height: 130% !important; }
+    .bIright p { font-size: 1rem !important; line-height: 150%; }
+    
+    .midServImage { height: 250px !important; }
+    .firstServ{
+        margin-top: 6vh;
+    }
+
+    /* OPTIONAL: Force alternating elements to stack consistently (Image Top, Text Bottom) */
+    .servHeadliner { display: flex; flex-direction: column-reverse !important; }
+    .serv:nth-child(even) .servHeadliner { flex-direction: column !important; }
+
+    /* FOOTER */
+    #sixthSec { 
+        height: auto;
+        display: flex !important; flex-direction: column !important; align-items: center !important; 
+        text-align: center !important; padding: 15% 5% 8% 5% !important; gap: 35px; 
+    }
+    .sixthSecLogo, .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { 
+        width: 100% !important; max-width: 100% !important; display: flex; flex-direction: column; 
+        align-items: center !important; gap: 15px; margin: 0 !important;
+    }
+    .sixthSecLogo img { width: 110px; height: 110px; }
+    .sixthSecLinks1 span, .sixthSecLinks2 span { justify-content: center !important; width: auto !important; }
+    .sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a { font-size: 1rem !important; padding: 5px 0; }
+    #copyright { position: static !important; transform: none !important; margin-top: 20px !important; font-size: 0.8rem; }
+    #backToTopBtn2 { width: 45px; height: 45px; bottom: 20px; right: 20px; }
+    #backToTopBtn2 img { width: 20px; height: 22px; }
+}
+
+/* 4. MEDIUM PHONES */
+@media (max-width: 425px) {
+    .navBar { height: 10vh; }
+    .servInfo h1 { font-size: 2.2rem !important; }
+    .bIleft p, .bIleft h1 { font-size: 1.4rem !important; }
+}
+
+@media (max-width: 375px) {}
+
+@media (max-width: 320px) {
+    .servImage img, .midServImage { height: 200px !important; }
+}
+
+/* =========================================
+   SCALING UP (Massive Monitors)
+   ========================================= */
+@media (min-width: 1440px) {
+    .navSec2 button{
+        width: unset;
+        height: unset;
+        padding: 14px 24px;
+    }
+    .navSec1 img { width: 10%; }
+    .servInfo h1 { font-size: 4rem; }
+    .servInfo p { font-size: 1.2rem; line-height: 160%; }
+    .bIleft p, .bIleft h1 { font-size: 2rem; font-weight: 400; padding-right: 5%;}
+    .bIright p { font-size: 1.1rem; line-height: 160%; }
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { font-size: 1.2rem; }
+}
+
+@media (min-width: 2560px) {
+    .navBar { height: 12vh; }
+    .navSec2 button { font-size: 1.6rem; padding: 18px 45px; margin-left: 25px; }
+    
+    .servInfo span { font-size: 1.8rem; }
+    .servInfo h1 { font-size: 7rem; margin: 4% 0; }
+    .servInfo p { font-size: 1.8rem; line-height: 180%; }
+    .bIleft p, .bIleft h1 { font-size: 4.5rem; line-height: 140%; }
+    .bIright p { font-size: 2rem; line-height: 180%; }
+    .bIright span { font-size: 1.5rem; }
+
+    .bottomInfo{
+        gap: 5%;
+    }
+    
+    .sixthSecLogo img { width: 300px; height: 300px; }
+    .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { font-size: 2rem; }
+    .sixthSecLinks1 span img, .sixthSecLinks2 span img { width: 40px; height: 40px; }
+    #copyright { font-size: 1.2rem; }
+    .sixthSecLinks1 { max-width: 25%; }
+    .sixthSecLinks2 { max-width: 30%; }
+    
+    #backToTopBtn2 { width: 90px; height: 90px; bottom: 50px; right: 50px; border-width: 3px; }
+    #backToTopBtn2 img { width: 45px; height: 48px; }
 }

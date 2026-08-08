@@ -1,38 +1,53 @@
-// routes/gallery.js
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { put, del } = require('@vercel/blob');
-const GalleryItem = require('../models/gallery');
+const { getDb } = require('../config/db'); // Import Firestore instance getter
 
 const storage = multer.memoryStorage();
 const upload = multer({ 
   storage: storage,
-  limits: { fileSize: 4 * 1024 * 1024 }
+  limits: { fileSize: 4.5 * 1024 * 1024 }
 });
+
+// Helper function to format Firestore docs into a clean array for EJS
+const formatDocs = (snapshot) => {
+  return snapshot.docs.map(doc => ({
+    id: doc.id, // Firestore uses doc.id instead of Mongoose's _id
+    ...doc.data()
+  }));
+};
 
 router.get('/gallery', async (req, res) => {
   try {
-    const items = await GalleryItem.find().sort({ createdAt: -1 });
+    const db = getDb();
+    const snapshot = await db.collection('galleryItems').orderBy('createdAt', 'desc').get();
+    const items = formatDocs(snapshot);
     res.render('gallery', { items });
   } catch (err) {
-    res.status(500).send('Error connecting to Atlas cloud database.');
+    console.error(err);
+    res.status(500).send('Error connecting to Firebase database.');
   }
 });
 
 router.get('/admin', async (req, res) => {
   try {
-    const items = await GalleryItem.find().sort({ createdAt: -1 });
-    res.render('admin', { items: items });
+    const db = getDb();
+    const snapshot = await db.collection('galleryItems').orderBy('createdAt', 'desc').get();
+    const items = formatDocs(snapshot);
+    res.render('admin', { items });
   } catch (err) {
-    res.status(500).send('Error connecting to Atlas cloud database.');
+    console.error(err);
+    res.status(500).send('Error connecting to Firebase database.');
   }
 });
 
 router.post('/gallery/upload', upload.single('galleryImage'), async (req, res) => {
   try {
-    const totalCount = await GalleryItem.countDocuments();
-    if (totalCount >= 10) {
+    const db = getDb();
+    const snapshot = await db.collection('galleryItems').get();
+    
+    if (snapshot.size >= 10) {
       return res.status(400).send('Gallery cap reached! Please drop an entry first.');
     }
 
@@ -42,29 +57,35 @@ router.post('/gallery/upload', upload.single('galleryImage'), async (req, res) =
       access: 'public',
     });
 
-    const newItem = new GalleryItem({
+    await db.collection('galleryItems').add({
       title: req.body.title || 'Untitled Cloud Image',
-      imageUrl: blob.url
+      imageUrl: blob.url,
+      createdAt: new Date().toISOString()
     });
 
-    await newItem.save();
     res.redirect('/gallery');
   } catch (err) {
-    console.error('Vercel/Atlas upload fail:', err.message);
+    console.error('Vercel/Firebase upload fail:', err.message);
     res.status(500).send('Upload execution failed.');
   }
 });
 
 router.post('/gallery/delete/:id', async (req, res) => {
   try {
-    const item = await GalleryItem.findById(req.params.id);
-    if (!item) return res.status(404).send('Item not registered.');
+    const db = getDb();
+    const docRef = db.collection('galleryItems').doc(req.params.id);
+    const doc = await docRef.get();
+    
+    if (!doc.exists) return res.status(404).send('Item not registered.');
 
-    await del(item.imageUrl);
+    // Delete image from Vercel Blob
+    await del(doc.data().imageUrl);
 
-    await GalleryItem.findByIdAndDelete(req.params.id);
+    // Delete record from Firestore
+    await docRef.delete();
     res.redirect('/gallery');
   } catch (err) {
+    console.error(err);
     res.status(500).send('Error stripping item records.');
   }
 });

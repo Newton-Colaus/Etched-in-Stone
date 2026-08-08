@@ -48,28 +48,6 @@ gsap.utils.toArray(".gallery-row").forEach((row) => {
     });
 });
 
-// =========================================
-// 4. NAVBAR SCROLL LOGIC
-// =========================================
-// window.addEventListener("scroll", () => {
-//     const navBar = document.getElementById("navBar");
-//     const logo = document.getElementById("navBarLogo");
-//     const buttons = document.querySelectorAll(".navSec2 button");
-
-//     if (window.scrollY > 50) {
-//         navBar.classList.add("navBarScrolled");
-//         if (logo) logo.classList.add("navBarLogoScrolled");
-//         buttons.forEach(btn => btn.classList.add("navBarButtonScrolled"));
-//     } else {
-//         navBar.classList.remove("navBarScrolled");
-//         if (logo) logo.classList.remove("navBarLogoScrolled");
-//         buttons.forEach(btn => btn.classList.remove("navBarButtonScrolled"));
-//     }
-// });
-
-// =========================================
-// 5. BACK TO TOP BUTTON
-// =========================================
 const backToTopBtn = document.getElementById("backToTopBtn2");
 if (backToTopBtn) {
     backToTopBtn.addEventListener("click", () => {
@@ -126,3 +104,48 @@ if (contBtn) {
 //       block: 'start'
 //     });
 // });
+
+// =========================================
+// MOBILE MENU TOGGLE LOGIC
+// =========================================
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navSec2 = document.querySelector(".navSec2");
+
+if (hamburgerBtn && navSec2) {
+    hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("active");
+        navSec2.classList.toggle("active");
+        
+        // Locks background scroll
+        if (navSec2.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    });
+
+    // Close menu when a link is clicked
+    const navBarButtons = [homeBtn, servBtn, abtBtn, contBtn];
+    navBarButtons.forEach(btn => {
+        if (btn) {
+            btn.addEventListener("click", () => {
+                hamburgerBtn.classList.remove("active");
+                navSec2.classList.remove("active");
+                document.body.style.overflow = ""; 
+            });
+        }
+    });
+}
+
+// =========================================
+// BACK TO TOP BUTTON SCROLL LOGIC
+// =========================================
+window.addEventListener("scroll", () => {
+    if (backToTopBtn) {
+        if (window.scrollY > 400) { 
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+    }
+});

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error <%= status %> | Etched In Stone</title>
+    <link rel="icon" href="/static/logo/S.png">
+    <style>
+        body {
+            background-color: #F5F5F5;
+            color: #002766;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .error-container {
+            max-width: 600px;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 39, 102, 0.1);
+        }
+        h1 {
+            font-size: 6rem;
+            margin: 0;
+            line-height: 1;
+            font-weight: 800;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #002766;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #001a4d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <!-- We will pass these variables dynamically from Express -->
+        <h1><%= status %></h1>
+        <h2><%= title %></h2>
+        <p><%= message %></p>
+        <a href="/" class="btn">Return to Homepage</a>
+    </div>
+
+</body>
+</html>

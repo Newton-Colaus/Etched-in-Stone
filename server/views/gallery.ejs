@@ -23,6 +23,12 @@
             <div class="navSec1">
                 <img id="navBarLogo" src="/static/logo/black.png" alt="">
             </div>
+            <!-- ADD THIS: The Hamburger Icon -->
+            <div class="hamburger" id="hamburgerBtn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <div class="navSec2">
                 <button class="navBarButtonScrolled" id="homeBtn">Home</button>
                 <button class="navBarButtonScrolled" id="servBtn">Services</button>
@@ -40,37 +46,37 @@
         
         <div class="fourthSecImages">
             <div class="gallery-row">
-                <img src="<%= items[0]?.imageUrl %>" alt="">
-                <img src="<%= items[1]?.imageUrl %>" alt="">
-                <img src="<%= items[2]?.imageUrl %>" alt="">
+                <img src="<%= items[0]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[1]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[2]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
             </div>
             <div class="gallery-row">
-                <img src="<%= items[3]?.imageUrl %>" alt="">
-                <img src="<%= items[4]?.imageUrl %>" alt="">
-                <img src="<%= items[5]?.imageUrl %>" alt="">
-                <img src="<%= items[6]?.imageUrl %>" alt="">
+                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
             </div>
             <div class="gallery-row">
-                <img src="<%= items[7]?.imageUrl %>" alt="">
-                <img src="<%= items[8]?.imageUrl %>" alt="">
-                <img src="<%= items[9]?.imageUrl %>" alt="">
+                <img src="<%= items[7]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[8]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[9]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
             </div>
             <div class="gallery-row">
-                <img src="<%= items[3]?.imageUrl %>" alt="">
-                <img src="<%= items[4]?.imageUrl %>" alt="">
-                <img src="<%= items[5]?.imageUrl %>" alt="">
-                <img src="<%= items[6]?.imageUrl %>" alt="">
+                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
             </div>
             <div class="gallery-row">
-                <img src="<%= items[3]?.imageUrl %>" alt="">
-                <img src="<%= items[4]?.imageUrl %>" alt="">
-                <img src="<%= items[5]?.imageUrl %>" alt="">
-                <img src="<%= items[6]?.imageUrl %>" alt="">
+                <img src="<%= items[7]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[8]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[9]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
             </div>
-             <div class="gallery-row">
-                <img src="<%= items[7]?.imageUrl %>" alt="">
-                <img src="<%= items[8]?.imageUrl %>" alt="">
-                <img src="<%= items[9]?.imageUrl %>" alt="">
+            <div class="gallery-row">
+                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
             </div>
         </div>
         
@@ -114,7 +120,7 @@
         </div>
         <div class="sixthSecLinks2">
             <span>
-                <a href="">Johnny Daniels</a>
+                <a href="">Nolan Simbulan</a>
                 <img src="/static/icons/contact.png" alt="">
             </span>
             <span>
@@ -122,7 +128,7 @@
                 <img src="/static/icons/phone.png" alt="">
             </span>
             <span>
-                <a href="">contact@etchedinstone.com</a>
+                <a href="">contact@etchedinstoneconcrete.com</a>
                 <img src="/static/icons/mail.png" alt="">
             </span>
             <span>
