@@ -90,7 +90,7 @@ button {
     padding: 2% 9%;
 }
 .navBar {
-    height: 10vh;
+    height: 12vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -167,7 +167,7 @@ button {
 }
 
 .navBarButtonScrolled:hover{
-    background-color: black !important;
+    background-color: #002766 !important;
     color: white !important;
 }
 
@@ -182,7 +182,7 @@ button {
     align-items: center;
     background: #ffffff;
     border-radius: 50px;
-    border: 2px dashed rgb(0, 0, 0);
+    border: 3px solid #002766;
     cursor: pointer;
     z-index: 999; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
@@ -208,7 +208,7 @@ button {
 #backToTopBtn2 img {
     width: 28px;
     height: 30px;
-    filter: invert(1);
+    /* filter: invert(1); */
 }
 
 #sixthSec{
@@ -245,10 +245,10 @@ button {
     font-size: 1.25rem; 
     height: auto; 
 }
-
+/* 
 .sixthSecLinks{
     margin-left: 10%;
-}
+} */
 
 .sixthSecLinks a, .sixthSecLinks1 a, .sixthSecLinks2 a{
     color: rgb(0, 0, 0);
@@ -256,7 +256,7 @@ button {
 }
 
 .sixthSecLinks a:hover, .sixthSecLinks1 a:hover, .sixthSecLinks2 a:hover{
-    color: #003b09;
+    color: #002766;
 }
 
 .sixthSecLinks1 span, .sixthSecLinks2 span {
@@ -365,7 +365,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 20%;
+    /* gap: 20%; */
 }
 
 .bIright p{
@@ -376,7 +376,7 @@ button {
 
 .bIright span{
     font-size: 1rem;
-    color: #003b09;
+    color: #002766;
 }
 
 .midServImage{
@@ -621,12 +621,12 @@ button {
     .navSec2 button{
         width: unset;
         height: unset;
-        padding: 10px 24px;
+        padding: 14px 24px;
     }
     .navSec1 img { width: 10%; }
     .servInfo h1 { font-size: 4rem; }
     .servInfo p { font-size: 1.2rem; line-height: 160%; }
-    .bIleft p, .bIleft h1 { font-size: 2rem; font-weight: 400;}
+    .bIleft p, .bIleft h1 { font-size: 2rem; font-weight: 400; padding-right: 5%;}
     .bIright p { font-size: 1.1rem; line-height: 160%; }
     .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { font-size: 1.2rem; }
 }

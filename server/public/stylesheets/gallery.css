@@ -70,7 +70,7 @@ body::-webkit-scrollbar-thumb:hover {
    NAVBAR
    ========================================= */
 .navBar {
-    height: 10vh;
+    height: 12vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -120,7 +120,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .navSec2 button {
     outline: none;
-    padding: 10px 24px; 
+    padding: 14px 24px; 
     margin-left: 15px;
     background-color: transparent;
     color: black; 
@@ -144,7 +144,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .navBarButtonScrolled:hover {
-    background-color: black !important;
+    background-color: #002766 !important;
     color: white !important;
 }
 
@@ -294,7 +294,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .sixthSecLinks a:hover, .sixthSecLinks1 a:hover, .sixthSecLinks2 a:hover {
-    color: #003b09;
+    color: #002766;
 }
 
 #backToTopBtn2 {
@@ -308,7 +308,7 @@ body::-webkit-scrollbar-thumb:hover {
     align-items: center;
     background: #ffffff;
     border-radius: 50px;
-    border: 2px dashed rgb(0, 0, 0);
+    border: 3px solid #002766;
     cursor: pointer;
     z-index: 999; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
@@ -332,7 +332,7 @@ body::-webkit-scrollbar-thumb:hover {
 #backToTopBtn2 img {
     width: 28px;
     height: 30px;
-    filter: invert(1);
+    /* filter: invert(1); */
 }
 
 #copyright {
@@ -465,7 +465,7 @@ body::-webkit-scrollbar-thumb:hover {
    ========================================= */
 @media (min-width: 1440px) {
     .navSec1 img { width: 10%; }
-    .fourthSecHeader h1 { font-size: 90px; }
+    .fourthSecHeader h1 { font-size: 90px; margin-top: 2%;}
     .sixthSecLinks, .sixthSecLinks1, .sixthSecLinks2 { font-size: 1.2rem; }
 }
 

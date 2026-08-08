@@ -43,6 +43,8 @@ router.get('/admin', async (req, res) => {
 });
 
 router.post('/gallery/upload', upload.single('galleryImage'), async (req, res) => {
+  console.log("BODY:", req.body);
+  console.log("FILE:", req.file);
   try {
     const db = getDb();
     const snapshot = await db.collection('galleryItems').get();
