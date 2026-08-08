@@ -24,9 +24,9 @@ const navSec2 = document.querySelector(".navSec2");
 // HERO IMAGE LOOP (COLOR SWIPE)
 // =========================================
 const bgImages = [
-    "/static/images/background/enhanced/pavement.png",
-    "/static/images/background/enhanced/driveway.png",
-    "/static/images/background/enhanced/pool.png"
+    "https://q8w2ldusbcmjarkb.public.blob.vercel-storage.com/images/pavement.png",
+    "https://q8w2ldusbcmjarkb.public.blob.vercel-storage.com/images/driveway.png",
+    "https://q8w2ldusbcmjarkb.public.blob.vercel-storage.com/images/pool.png"
 ];
 let currentImgIndex = 0;
 
