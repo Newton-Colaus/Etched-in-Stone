@@ -45,54 +45,60 @@
         </div>
         
         <div class="fourthSecImages">
+            <!-- First Row (Above the fold: no lazy loading) -->
             <div class="gallery-row">
                 <img src="<%= items[0]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
                 <img src="<%= items[1]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
                 <img src="<%= items[2]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
             </div>
+            <!-- Second Row -->
             <div class="gallery-row">
-                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
             </div>
+            <!-- Third Row -->
             <div class="gallery-row">
-                <img src="<%= items[7]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[8]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[9]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[7]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[8]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[9]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
             </div>
+            <!-- Fourth Row -->
             <div class="gallery-row">
-                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
             </div>
+            <!-- Fifth Row -->
             <div class="gallery-row">
-                <img src="<%= items[7]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[8]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[9]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[7]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[8]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[9]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
             </div>
+            <!-- Sixth Row -->
             <div class="gallery-row">
-                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
+                <img src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
+                <img src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="" loading="lazy">
             </div>
         </div>
         
         <!-- Decorative Shapes -->
-        <img class="shapes s1" src="/static/shapes/triagy.png" alt="">
-        <img class="shapes s2" src="/static/shapes/triag.png" alt="">
-        <img class="shapes s3" src="/static/shapes/triay.png" alt="">
-        <img class="shapes s4" src="/static/shapes/triayg.png" alt="">
-        <img class="shapes s5" src="/static/shapes/yellowave.png" alt="">
-        <img class="shapes s6" src="/static/shapes/greenwave.png" alt="">        
+        <img class="shapes s1" src="/static/shapes/triagy.png" alt="" loading="lazy">
+        <img class="shapes s2" src="/static/shapes/triag.png" alt="" loading="lazy">
+        <img class="shapes s3" src="/static/shapes/triay.png" alt="" loading="lazy">
+        <img class="shapes s4" src="/static/shapes/triayg.png" alt="" loading="lazy">
+        <img class="shapes s5" src="/static/shapes/yellowave.png" alt="" loading="lazy">
+        <img class="shapes s6" src="/static/shapes/greenwave.png" alt="" loading="lazy">        
     </section>
 
     <!-- Footer Section -->
     <section id="sixthSec">
         <div class="sixthSecLogo">
-            <img src="/static/logo/black.png" alt="">
+            <img src="/static/logo/black.png" alt="" loading="lazy">
         </div>
         <div class="sixthSecLinks">
             <a href="/services">Services</a>
@@ -103,41 +109,41 @@
         <div class="sixthSecLinks1">
             <span>
                 <a href="">etchedinstone</a>
-                <img src="/static/icons/facebook.png" alt="">
+                <img src="/static/icons/facebook.png" alt="" loading="lazy">
             </span>
             <span>
                 <a href="">etchedinstone</a>
-                <img src="/static/icons/instagram.png" alt="">
+                <img src="/static/icons/instagram.png" alt="" loading="lazy">
             </span>
             <span>
                 <a href="">etchedinstone</a>
-                <img src="/static/icons/linkedin.png" alt="">
+                <img src="/static/icons/linkedin.png" alt="" loading="lazy">
             </span>
             <span>
                 <a href="">etchedinstone</a>
-                <img src="/static/icons/x.png" alt="">
+                <img src="/static/icons/x.png" alt="" loading="lazy">
             </span>
         </div>
         <div class="sixthSecLinks2">
             <span>
                 <a href="">Nolan Simbulan</a>
-                <img src="/static/icons/contact.png" alt="">
+                <img src="/static/icons/contact.png" alt="" loading="lazy">
             </span>
             <span>
                 <a href="">+1 123 232 2323</a>
-                <img src="/static/icons/phone.png" alt="">
+                <img src="/static/icons/phone.png" alt="" loading="lazy">
             </span>
             <span>
                 <a href="">contact@etchedinstoneconcrete.com</a>
-                <img src="/static/icons/mail.png" alt="">
+                <img src="/static/icons/mail.png" alt="" loading="lazy">
             </span>
             <span>
                 <a href="">New Hampshire, New York</a>
-                <img src="/static/icons/address.png" alt="">
+                <img src="/static/icons/address.png" alt="" loading="lazy">
             </span>
         </div>
         <div id="backToTopBtn2">
-            <img src="/static/icons/top.png" alt="">
+            <img src="/static/icons/top.png" alt="" loading="lazy">
         </div>
         <div id="copyright">
                 Copyright &copy; 2026 Etched In Stone Concrete
