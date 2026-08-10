@@ -119,6 +119,7 @@ nav {
 }
 
 .subTag {
+    display: none;
     font-size: 0.75rem;
     color: var(--accent-gold);
     letter-spacing: 2px;
