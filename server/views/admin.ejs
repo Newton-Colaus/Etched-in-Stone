@@ -82,11 +82,11 @@
         <section class="gallery-manager">
             <div class="gallery-manager-header">
                 <h2>Current Portfolio</h2>
-                <span class="count-badge">10 Slots</span>
+                <span class="count-badge">21 Slots</span>
             </div>
 
             <div class="adminDeleteImg grid-container">
-                <% for(let i = 0; i < 10; i++) { %>
+                <% for(let i = 0; i < 21; i++) { %>
                     <div class="img-card">
                         <div class="img-wrapper">
                             <img id="imgImg" src="<%= items[i]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="Gallery Image">
@@ -188,7 +188,7 @@
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Preloader Logic
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
