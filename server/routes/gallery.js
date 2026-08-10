@@ -30,17 +30,17 @@ router.get('/gallery', async (req, res) => {
   }
 });
 
-router.get('/admin', async (req, res) => {
-  try {
-    const db = getDb();
-    const snapshot = await db.collection('galleryItems').orderBy('createdAt', 'desc').get();
-    const items = formatDocs(snapshot);
-    res.render('admin', { items });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error connecting to Firebase database.');
-  }
-});
+// router.get('/admin', async (req, res) => {
+//   try {
+//     const db = getDb();
+//     const snapshot = await db.collection('galleryItems').orderBy('createdAt', 'desc').get();
+//     const items = formatDocs(snapshot);
+//     res.render('admin', { items });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Error connecting to Firebase database.');
+//   }
+// });
 
 router.post('/gallery/upload', upload.single('galleryImage'), async (req, res) => {
   try {

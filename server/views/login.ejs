@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etched In Stone | Admin Login</title>
+    <link rel="icon" href="/static/logo/S.png">
+    <link rel="stylesheet" href="/static/stylesheets/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <!-- Swapped to black logo for light mode -->
+        <img src="/static/logo/black.png" alt="Etched In Stone">
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navBar">
+        <nav>
+            <div class="navSec1">
+                <!-- Swapped to black logo for light mode -->
+                <a href="/"><img id="navBarLogo" src="/static/logo/black.png" alt="Logo"></a>
+            </div>
+            <div class="navSec2">
+                <button id="homeBtn" onclick="window.location.href='/'">Home</button>
+                <button id="servBtn" onclick="window.location.href='/services'">Services</button>
+                <button id="gallBtn" onclick="window.location.href='/gallery'">Gallery</button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Login Container -->
+    <main class="loginSection">
+        <div class="loginCard">
+            <div class="loginHeader">
+                <span class="subTag">// Restricted Access</span>
+                <h1>Admin Portal</h1>
+                <p>Please authenticate to access the site dashboard.</p>
+            </div>
+
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="errorMessage">
+                    <img src="/static/icons/repair.png" alt="" class="errorIcon">
+                    <span><%= error %></span>
+                </div>
+            <% } %>
+
+            <form action="/login" method="POST" class="loginForm">
+                <div class="formGroup">
+                    <label for="username">Username</label>
+                    <div class="inputWrapper">
+                        <input type="text" id="username" name="username" placeholder="Enter username" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="formGroup">
+                    <label for="password">Password</label>
+                    <div class="inputWrapper">
+                        <input type="password" id="password" name="password" placeholder="••••••••••••" required autocomplete="current-password">
+                    </div>
+                </div>
+
+                <button type="submit" id="loginBtn">
+                    <span>Login</span>
+                    <div class="btnGlow"></div>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Simple Preloader fade out
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

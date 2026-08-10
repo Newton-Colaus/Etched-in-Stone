@@ -3,102 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etched In Stone | Admin</title>
+    <title>Etched In Stone | Admin Dashboard</title>
     <link rel="icon" href="/static/logo/S.png">
     <link rel="stylesheet" href="/static/stylesheets/admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
 </head>
 <body>
+    <!-- Preloader -->
     <div id="preloader">
-        <img src="/static/logo/anim3.gif" alt="">
+        <!-- Assuming you have a dark version of the gif, or it has a transparent background -->
+        <img src="/static/logo/black.png" alt="Loading">
     </div>
+
+    <!-- Navigation -->
     <div class="navBar">
         <nav>
             <div class="navSec1">
-                <img src="/static/logo/white.png" alt="">
+                <a href="/"><img id="navBarLogo" src="/static/logo/black.png" alt="Etched In Stone"></a>
             </div>
+
+            <!-- ADD THIS: The Hamburger Icon -->
+            <div class="hamburger" id="adminHamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
             <div class="navSec2">
-                <button id="homeBtn">Home</button>
-                <button id="servBtn">Services</button>
-                <button id="abtBtn">About</button>
-                <button id="gallBtn">Gallery</button>
+                <button onclick="window.location.href='/'">Home</button>
+                <button onclick="window.location.href='/services'">Services</button>
+                <button onclick="window.location.href='/gallery'">Gallery</button>
+                <button class="logout-btn" onclick="window.location.href='/logout'">Logout</button>
             </div>
         </nav>
     </div>
-    <section class="adminDashboard">
-        <div id="adminForm">
-            <img id="imgPreview"  src="/static/images/background/2.png" alt="">
-            <form id="uploadForm">
-                <div class="formGroup">
-                    <label for="title">Image Title</label>
-                    <input type="text" id="title" name="title" placeholder="Enter the title of the image">
-                </div>  
-                <div class="formGroup">
-                    <label for="galleryImage">Select Image</label>
-                    <input type="file" id="galleryImage" name="galleryImage" accept="image/*" required>
-                </div>              
-                <button type="submit" id="submitBtn">Upload</button>
-            </form>
-        </div>
-        <div class="adminDeleteImg">
-            <div class="img">
-                <img id="imgImg" src="<%= items[0]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[0]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[0]?.id %>"">Delete</button>
+
+    <!-- Main Dashboard Container -->
+    <main class="dashboard-wrapper">
+        <header class="dashboard-header">
+            <span class="subTag">// Control Panel</span>
+            <h1>Gallery Management</h1>
+            <p>Upload new project photos and manage your existing portfolio.</p>
+        </header>
+
+        <!-- Upload Widget -->
+        <section class="upload-section">
+            <div class="upload-card">
+                <div class="preview-container">
+                    <img id="imgPreview" src="/static/images/background/2.png" alt="Preview">
+                    <div class="preview-overlay">Image Preview</div>
+                </div>
+                
+                <form id="uploadForm" class="dashboard-form">
+                    <div class="formGroup">
+                        <label for="title">Project Title</label>
+                        <input type="text" id="title" name="title" placeholder="e.g., Luxury Driveway - Summer 2026" required>
+                    </div>  
+                    
+                    <div class="formGroup">
+                        <label for="galleryImage">Select Image</label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="galleryImage" name="galleryImage" accept="image/*" required>
+                        </div>
+                    </div>              
+                    
+                    <button type="submit" id="submitBtn">
+                        <span>Upload to Portfolio</span>
+                    </button>
+                </form>
             </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[1]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[1]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[1]?.id %>"">Delete</button>
+        </section>
+
+        <!-- Gallery Grid Manager -->
+        <section class="gallery-manager">
+            <div class="gallery-manager-header">
+                <h2>Current Portfolio</h2>
+                <span class="count-badge">10 Slots</span>
             </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[2]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[2]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[2]?.id %>"">Delete</button>
+
+            <div class="adminDeleteImg grid-container">
+                <% for(let i = 0; i < 10; i++) { %>
+                    <div class="img-card">
+                        <div class="img-wrapper">
+                            <img id="imgImg" src="<%= items[i]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="Gallery Image">
+                        </div>
+                        <div class="card-details">
+                            <span id="imgTitle" class="project-title"><%= items[i]?.title || 'Empty Slot' %></span>
+                            <button class="deleteBtn" data-id="<%= items[i]?.id %>">
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                <% } %>
             </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[3]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[3]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[3]?.id %>"">Delete</button>
-            </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[4]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[4]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[4]?.id %>"">Delete</button>
-            </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[5]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[5]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[5]?.id %>"">Delete</button>
-            </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[6]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[6]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[6]?.id %>"">Delete</button>
-            </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[7]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[7]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[7]?.id %>"">Delete</button>
-            </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[8]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[8]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[8]?.id %>"">Delete</button>
-            </div>
-            <div class="img">
-                <img id="imgImg" src="<%= items[9]?.imageUrl || '/static/images/background/driveway.jpg'%>" alt="">
-                <span id="imgTitle"><%= items[9]?.title %></span>
-                <button class="deleteBtn" data-id="<%= items[9]?.id %>"">Delete</button>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
+    <!-- Footer -->
     <section id="sixthSec">
         <div class="sixthSecLogo">
-            <img src="/static/logo/white.png" alt="">
+            <!-- Swapped to black logo -->
+            <img src="/static/logo/black.png" alt="">
         </div>
         <div class="sixthSecLinks">
             <a href="/services">Services</a>
@@ -107,82 +116,50 @@
             <a href="">Contact</a>
         </div>
         <div class="sixthSecLinks1">
-            <span>
-                <a href="">etchedinstone</a>
-                <img src="/static/icons/facebook.png" alt="">
-            </span>
-            <span>
-                <a href="">etchedinstone</a>
-                <img src="/static/icons/instagram.png" alt="">
-            </span>
-            <span>
-                <a href="">etchedinstone</a>
-                <img src="/static/icons/linkedin.png" alt="">
-            </span>
-            <span>
-                <a href="">etchedinstone</a>
-                <img src="/static/icons/x.png" alt="">
-            </span>
+            <span><a href="">etchedinstone</a><img src="/static/icons/facebook.png" alt=""></span>
+            <span><a href="">etchedinstone</a><img src="/static/icons/instagram.png" alt=""></span>
+            <span><a href="">etchedinstone</a><img src="/static/icons/linkedin.png" alt=""></span>
+            <span><a href="">etchedinstone</a><img src="/static/icons/x.png" alt=""></span>
         </div>
         <div class="sixthSecLinks2">
-            <span>
-                <a href="">Johnny Daniels</a>
-                <img src="/static/icons/contact.png" alt="">
-            </span>
-            <span>
-                <a href="">+1 123 232 2323</a>
-                <img src="/static/icons/phone.png" alt="">
-            </span>
-            <span>
-                <a href="">contact@etchedinstone.com</a>
-                <img src="/static/icons/mail.png" alt="">
-            </span>
-            <span>
-                <a href="">New Hampshire, New York</a>
-                <img src="/static/icons/address.png" alt="">
-            </span>
+            <span><a href="">Johnny Daniels</a><img src="/static/icons/contact.png" alt=""></span>
+            <span><a href="">+1 123 232 2323</a><img src="/static/icons/phone.png" alt=""></span>
+            <span><a href="">contact@etchedinstone.com</a><img src="/static/icons/mail.png" alt=""></span>
+            <span><a href="">New Hampshire, New York</a><img src="/static/icons/address.png" alt=""></span>
         </div>
         <div id="backToTopBtn2">
             <img src="/static/icons/top.png" alt="">
         </div>
     </section>
+
     <script>
         document.getElementById('uploadForm').addEventListener('submit', async function (e) {
-            e.preventDefault(); // Stop the default HTML page refresh
+            e.preventDefault(); 
             
-            // 1. Grab the file, title, and button
             const imageFile = document.getElementById('galleryImage').files[0];
             const titleValue = document.getElementById('title').value;
             const submitBtn = document.getElementById('submitBtn');
             
             if (!imageFile) return;
 
-            // 2. Visual feedback for the user
             submitBtn.innerText = "Compressing...";
             submitBtn.disabled = true;
 
-            // 3. Compression Settings
             const options = {
-                maxSizeMB: 4,          // Forces the file safely under Vercel's 4.5MB limit
-                maxWidthOrHeight: 1920, // Resizes large photos to standard HD dimensions
-                useWebWorker: true     // Prevents the browser from freezing during compression
+                maxSizeMB: 4,          
+                maxWidthOrHeight: 1920, 
+                useWebWorker: true     
             };
 
             try {
-                // 4. Compress the Image
                 const compressedFile = await imageCompression(imageFile, options);
                 
-                // 5. Package the data for Express (Mimicking a standard form)
                 const formData = new FormData();
                 formData.append('title', titleValue); 
-                
-                // CRITICAL: We use 'imageFile.name' here so Multer sees the original extension
                 formData.append('galleryImage', compressedFile, imageFile.name); 
 
-                // Update UI
                 submitBtn.innerText = "Uploading to Server...";
 
-                // 6. Send to your Express backend
                 const response = await fetch('/gallery/upload', {
                     method: 'POST',
                     body: formData
@@ -190,22 +167,36 @@
 
                 if (response.ok) {
                     alert("Upload successful!");
-                    window.location.reload(); // Refresh the page to show the new image
+                    window.location.reload(); 
                 } else {
                     throw new Error("Server rejected the upload.");
                 }
-
             } catch (error) {
                 console.error("Upload Error:", error);
                 alert("Error during compression or upload. Check the console.");
             } finally {
-                // 7. Reset the button state if something goes wrong
-                submitBtn.innerText = "Upload";
+                submitBtn.innerText = "Upload to Portfolio";
                 submitBtn.disabled = false;
             }
         });
+
+        // Hamburger Menu Logic
+        const hamburger = document.getElementById('adminHamburger');
+        const navMenu = document.querySelector('.navSec2');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+        });
     </script>
+    <script src="/static/scripts/script.js"></script>
+    <script src="/static/scripts/admin.js"></script>
 </body>
-<script src="/static/scripts/script.js"></script>
-<script src="/static/scripts/admin.js"></script>
 </html>
