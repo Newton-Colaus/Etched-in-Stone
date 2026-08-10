@@ -1,14 +1,22 @@
 const path = require("path");
 const express = require("express");
 const app = express();
+const session = require("express-session");
 const PORT = process.env.PORT || 6767;
 const dotenv = require("dotenv");
-// const connectDB = require("./config/db.js");
 const { connectDB } = require("./config/db.js");
+const { getDb } = require('./config/db'); // Import Firestore instance getter
 
 dotenv.config();
 
 connectDB();
+
+const formatDocs = (snapshot) => {
+  return snapshot.docs.map(doc => ({
+    id: doc.id, // Firestore uses doc.id instead of Mongoose's _id
+    ...doc.data()
+  }));
+};
 
 const indexRoutes = require("./routes/indexRoutes");
 const galleryRoutes = require("./routes/gallery.js");
@@ -23,6 +31,62 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
+
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'etched_in_stone_secure_key_2026',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+}));
+
+function requireAuth(req, res, next) {
+    if (req.session && req.session.isAdmin) {
+        return next();
+    }
+    res.redirect('/login');
+}
+
+app.get('/login', (req, res) => {
+    if (req.session.isAdmin) {
+        return res.redirect('/admin');
+    }
+    res.render('login', { error: null });
+});
+
+// 2. POST Login Handler
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    const adminUser = process.env.ADMIN_USERNAME || 'admin';
+    const adminPass = process.env.ADMIN_PASSWORD || 'stone2026';
+
+    if (username === adminUser && password === adminPass) {
+        req.session.isAdmin = true;
+        return res.redirect('/admin');
+    }
+
+    res.render('login', { error: 'Invalid username or password.' });
+});
+
+// 3. Protected Admin Dashboard Route
+app.get('/admin', requireAuth, async (req, res) => {
+    try {
+        const db = getDb();
+        const snapshot = await db.collection('galleryItems').orderBy('createdAt', 'desc').get();
+        const items = formatDocs(snapshot);
+        res.render('admin', { items });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error connecting to Firebase database.');
+    }
+});
+
+// 4. Logout Route
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/login');
+    });
+});
 
 app.use(indexRoutes);
 app.use(galleryRoutes);

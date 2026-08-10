@@ -30,24 +30,24 @@ router.get('/gallery', async (req, res) => {
   }
 });
 
-router.get('/admin', async (req, res) => {
-  try {
-    const db = getDb();
-    const snapshot = await db.collection('galleryItems').orderBy('createdAt', 'desc').get();
-    const items = formatDocs(snapshot);
-    res.render('admin', { items });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error connecting to Firebase database.');
-  }
-});
+// router.get('/admin', async (req, res) => {
+//   try {
+//     const db = getDb();
+//     const snapshot = await db.collection('galleryItems').orderBy('createdAt', 'desc').get();
+//     const items = formatDocs(snapshot);
+//     res.render('admin', { items });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Error connecting to Firebase database.');
+//   }
+// });
 
 router.post('/gallery/upload', upload.single('galleryImage'), async (req, res) => {
   try {
     const db = getDb();
     const snapshot = await db.collection('galleryItems').get();
     
-    if (snapshot.size >= 10) {
+    if (snapshot.size >= 21) {
       return res.status(400).send('Gallery cap reached! Please drop an entry first.');
     }
 
@@ -83,7 +83,7 @@ router.post('/gallery/delete/:id', async (req, res) => {
 
     // Delete record from Firestore
     await docRef.delete();
-    res.redirect('/gallery');
+    res.redirect('/admin');
   } catch (err) {
     console.error(err);
     res.status(500).send('Error stripping item records.');
