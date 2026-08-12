@@ -32,6 +32,8 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
+app.set('trust proxy', 1); 
+
 app.use(cookieSession({
     name: 'etched_admin_session',
     keys: [process.env.SESSION_SECRET || 'etched_in_stone_secure_key_2026'],
