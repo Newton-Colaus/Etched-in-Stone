@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const app = express();
-const session = require("express-session");
+const cookieSession = require("cookie-session");
 const PORT = process.env.PORT || 6767;
 const dotenv = require("dotenv");
 const { connectDB } = require("./config/db.js");
@@ -32,11 +32,16 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'etched_in_stone_secure_key_2026',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 }
+app.set('trust proxy', 1); 
+
+app.use(cookieSession({
+    name: 'etched_admin_session',
+    keys: [process.env.SESSION_SECRET || 'etched_in_stone_secure_key_2026'],
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours in milliseconds
+    
+    // Security flags
+    httpOnly: true, // Prevents client-side JS from reading the cookie
+    secure: process.env.NODE_ENV === 'production' // Requires HTTPS on live Vercel
 }));
 
 function requireAuth(req, res, next) {
@@ -83,9 +88,8 @@ app.get('/admin', requireAuth, async (req, res) => {
 
 // 4. Logout Route
 app.get('/logout', (req, res) => {
-    req.session.destroy(() => {
-        res.redirect('/login');
-    });
+    req.session = null;
+    res.redirect("/login");
 });
 
 app.use(indexRoutes);

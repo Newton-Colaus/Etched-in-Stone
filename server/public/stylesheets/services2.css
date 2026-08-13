@@ -638,7 +638,7 @@ button {
     .servInfo span { font-size: 1.8rem; }
     .servInfo h1 { font-size: 7rem; margin: 4% 0; }
     .servInfo p { font-size: 1.8rem; line-height: 180%; }
-    .bIleft p, .bIleft h1 { font-size: 4.5rem; line-height: 140%; }
+    .bIleft p, .bIleft h1 { font-size: 3rem; line-height: 140%; }
     .bIright p { font-size: 2rem; line-height: 180%; }
     .bIright span { font-size: 1.5rem; }
 
